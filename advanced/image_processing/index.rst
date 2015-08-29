@@ -101,7 +101,7 @@ Creating a numpy array from an image file::
     >>> type(lena)
     <type 'numpy.ndarray'>
     >>> lena.shape, lena.dtype
-    ((512, 512), dtype('uint64'))
+    ((512, 512), dtype('uint8'))
 
 dtype is uint8 for 8-bit images (0-255)
 
