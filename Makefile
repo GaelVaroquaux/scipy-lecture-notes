@@ -20,6 +20,7 @@ all: html-noplot
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  html      to make standalone HTML files"
+	@echo "  html-strict to check rst while making standalone HTML files"
 	@echo "  pickle    to make pickle files (usable by e.g. sphinx-web)"
 	@echo "  htmlhelp  to make HTML files and a HTML help project"
 	@echo "  latex     to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
@@ -52,6 +53,18 @@ html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) build/html
 	@echo
 	@echo "Build finished. The HTML pages are in build/html."
+
+html-strict:
+	# Warnings as errors: used to check the quality of the
+	# documentation
+	mkdir -p build/html build/doctrees
+	# This line makes the build a bit more lengthy, and the
+	# the embedding of images more robust
+	rm -rf build/html/_images
+	$(SPHINXBUILD) -W -b html $(ALLSPHINXOPTS) build/html
+	@echo
+	@echo "Build finished. The HTML pages are in build/html."
+
 
 cleandoctrees:
 	rm -rf build/doctrees

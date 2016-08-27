@@ -41,12 +41,26 @@ extensions = [
         'only_directives',
         'ipython_console_highlighting',
         #'matplotlib.sphinxext.only_directives',
-        'sphinx.ext.pngmath',
         'sphinx.ext.intersphinx',
         'sphinx.ext.extlinks',
 ]
 
+import sphinx
+from distutils.version import LooseVersion
+if LooseVersion(sphinx.__version__) < LooseVersion('1.4'):
+    extensions.append('sphinx.ext.pngmath')
+else:
+    extensions.append('sphinx.ext.imgmath')
+
+imgmath_dvipng_args = pngmath_dvipng_args = ['-gamma 1.5', '-D 180', '-bg',
+        'Transparent']
+imgmath_use_preview = pngmath_use_preview = True
+
+
 doctest_test_doctest_blocks = 'true'
+
+# Suppress warnings on nonlocal images
+suppress_warnings = ['image.nonlocal_uri']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -141,6 +155,16 @@ rst_epilog = """
 |clear-floats|
 
 """
+
+
+#import sphinx.environment
+#from docutils.utils import get_source_line
+#
+#def _warn_node(self, msg, node, **kwargs):
+#    if not msg.startswith('nonlocal image URI found:'):
+#        self._warnfunc(msg, '%s:%s' % get_source_line(node), **kwargs)
+#
+#sphinx.environment.BuildEnvironment.warn_node = _warn_node
 
 # Options for HTML output
 # -----------------------
@@ -367,10 +391,6 @@ extlinks = {
 }
 
 # -- Options for pngmath ------------------------------------------------
-
-pngmath_dvipng_args = ['-gamma 1.5', '-D 180', '-bg', 'Transparent']
-pngmath_use_preview = True
-
 
 
 # Add the 'copybutton' javascript, to hide/show the prompt in code
