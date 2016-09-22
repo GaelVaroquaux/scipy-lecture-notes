@@ -17,6 +17,8 @@ XXX: link back to here from the statistics chapter
 
 * Show loading of data
 
+* shape attribute
+
 * Different types
 
 * Names of columns
@@ -33,6 +35,8 @@ Operations
 * unique/nunique
 
 * missing data
+
+* Concatenate pandas 
 
 Indexes
 --------
