@@ -28,6 +28,26 @@ Examples for scipy
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_t_test_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_t_test.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_t_test
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Explore the normal distribution: a histogram built from samples and the PDF (probability densit...">
 
 .. only:: html

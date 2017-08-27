@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.5.12.1.6. Plotting and manipulating FFTs &#8212; Scipy lecture notes</title>
+    <title>1.5.12.1.7. Plotting and manipulating FFTs &#8212; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../../index.html" />
     <link rel="up" title="1.5.12.1. Examples for scipy" href="index.html" />
-    <link rel="next" title="1.5.12.1.7.1. Crude periodicity finding" href="solutions/plot_periodicity_finder.html" />
-    <link rel="prev" title="1.5.12.1.5. Optimization of a two-parameter function" href="plot_2d_minimization.html" />
+    <link rel="next" title="1.5.12.1.8.1. Crude periodicity finding" href="solutions/plot_periodicity_finder.html" />
+    <link rel="prev" title="1.5.12.1.6. Optimization of a two-parameter function" href="plot_2d_minimization.html" />
    
     <link rel="stylesheet"
 	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
@@ -136,10 +136,10 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="solutions/plot_periodicity_finder.html" title="1.5.12.1.7.1. Crude periodicity finding"
+          <a href="solutions/plot_periodicity_finder.html" title="1.5.12.1.8.1. Crude periodicity finding"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="plot_2d_minimization.html" title="1.5.12.1.5. Optimization of a two-parameter function"
+          <a href="plot_2d_minimization.html" title="1.5.12.1.6. Optimization of a two-parameter function"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >1. Getting started with Python for science</a> &#187;</li>
@@ -174,7 +174,7 @@ $(function () {
           <div class="body" role="main">
             
   <div class="section" id="plotting-and-manipulating-ffts">
-<span id="sphx-glr-intro-scipy-auto-examples-plot-fftpack-py"></span><h1>1.5.12.1.6. Plotting and manipulating FFTs<a class="headerlink" href="#plotting-and-manipulating-ffts" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-intro-scipy-auto-examples-plot-fftpack-py"></span><h1>1.5.12.1.7. Plotting and manipulating FFTs<a class="headerlink" href="#plotting-and-manipulating-ffts" title="Permalink to this headline">¶</a></h1>
 <p>Plot the power of the FFT of a signal and inverse FFT back to reconstruct
 a signal.</p>
 <p>This example is to demonstrate <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft.html#scipy.fftpack.fft" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.fftpack.fft()</span></code></a>,
@@ -187,7 +187,7 @@ used.</p>
 <div class="newline"></div></pre></div>
 </div>
 <div class="section" id="generate-the-signal">
-<h2>1.5.12.1.6.1. Generate the signal<a class="headerlink" href="#generate-the-signal" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.12.1.7.1. Generate the signal<a class="headerlink" href="#generate-the-signal" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Seed the random number generator</span>
 <div class="newline"></div><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
 <div class="newline"></div>
@@ -205,7 +205,7 @@ used.</p>
 <img alt="../../../_images/sphx_glr_plot_fftpack_001.png" class="align-center" src="../../../_images/sphx_glr_plot_fftpack_001.png" />
 </div>
 <div class="section" id="compute-and-plot-the-power">
-<h2>1.5.12.1.6.2. Compute and plot the power<a class="headerlink" href="#compute-and-plot-the-power" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.12.1.7.2. Compute and plot the power<a class="headerlink" href="#compute-and-plot-the-power" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># The FFT of the signal</span>
 <div class="newline"></div><span class="n">sig_fft</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
 <div class="newline"></div>
@@ -240,7 +240,7 @@ used.</p>
 <img alt="../../../_images/sphx_glr_plot_fftpack_002.png" class="align-center" src="../../../_images/sphx_glr_plot_fftpack_002.png" />
 </div>
 <div class="section" id="remove-all-the-high-frequencies">
-<h2>1.5.12.1.6.3. Remove all the high frequencies<a class="headerlink" href="#remove-all-the-high-frequencies" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.12.1.7.3. Remove all the high frequencies<a class="headerlink" href="#remove-all-the-high-frequencies" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>We now remove all the high frequencies and transform back from
 frequencies to signal.</div></blockquote>
@@ -285,10 +285,10 @@ filters.</p>
 	<div class="sidebartoc">
   <h3><a href="../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.5.12.1.6. Plotting and manipulating FFTs</a><ul>
-<li><a class="reference internal" href="#generate-the-signal">1.5.12.1.6.1. Generate the signal</a></li>
-<li><a class="reference internal" href="#compute-and-plot-the-power">1.5.12.1.6.2. Compute and plot the power</a></li>
-<li><a class="reference internal" href="#remove-all-the-high-frequencies">1.5.12.1.6.3. Remove all the high frequencies</a></li>
+<li><a class="reference internal" href="#">1.5.12.1.7. Plotting and manipulating FFTs</a><ul>
+<li><a class="reference internal" href="#generate-the-signal">1.5.12.1.7.1. Generate the signal</a></li>
+<li><a class="reference internal" href="#compute-and-plot-the-power">1.5.12.1.7.2. Compute and plot the power</a></li>
+<li><a class="reference internal" href="#remove-all-the-high-frequencies">1.5.12.1.7.3. Remove all the high frequencies</a></li>
 </ul>
 </li>
 </ul>
@@ -320,10 +320,10 @@ filters.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="solutions/plot_periodicity_finder.html" title="1.5.12.1.7.1. Crude periodicity finding"
+          <a href="solutions/plot_periodicity_finder.html" title="1.5.12.1.8.1. Crude periodicity finding"
              >next</a></li>
         <li class="right" >
-          <a href="plot_2d_minimization.html" title="1.5.12.1.5. Optimization of a two-parameter function"
+          <a href="plot_2d_minimization.html" title="1.5.12.1.6. Optimization of a two-parameter function"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >1. Getting started with Python for science</a> &#187;</li>

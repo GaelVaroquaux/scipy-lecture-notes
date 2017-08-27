@@ -173,8 +173,7 @@ $(function () {
             
   <div class="section" id="scipy-high-level-scientific-computing">
 <span id="scipy"></span><h1>1.5. Scipy : high-level scientific computing<a class="headerlink" href="#scipy-high-level-scientific-computing" title="Permalink to this headline">¶</a></h1>
-<p><strong>Authors</strong>: <em>Adrien Chauve, Andre Espaze, Emmanuelle Gouillart, Gaël
-Varoquaux, Ralf Gommers</em></p>
+<p><strong>Authors</strong>: <em>Gaël Varoquaux, Adrien Chauve, Andre Espaze, Emmanuelle Gouillart, Ralf Gommers</em></p>
 <div class="topic">
 <p class="topic-title first">Scipy</p>
 <p>The <code class="xref py py-mod docutils literal"><span class="pre">scipy</span></code> package contains various toolboxes dedicated to common
@@ -815,22 +814,37 @@ distribution. Here we fit a normal process to the observed data:</p>
 <p>Generate 1000 random variates from a gamma distribution with a shape
 parameter of 1, then plot a histogram from those samples.  Can you plot the
 pdf on top (it should match)?</p>
-<p>Extra: the distributions have a number of useful methods. Explore them by
-reading the docstring or by using IPython tab completion.  Can you find the
-shape parameter of 1 back by using the <code class="docutils literal"><span class="pre">fit</span></code> method on your random
+<p>Extra: the distributions have many useful methods. Explore them by
+reading the docstring or by using tab completion.  Can you recover
+the shape parameter 1 by using the <code class="docutils literal"><span class="pre">fit</span></code> method on your random
 variates?</p>
 </div>
 </div>
 <div class="section" id="mean-median-and-percentiles">
 <h3>1.5.6.2. Mean, median and percentiles<a class="headerlink" href="#mean-median-and-percentiles" title="Permalink to this headline">¶</a></h3>
-<p>The mean is an estimator of the center of the distribution</p>
-<p>The median is the value with half of the observations below, and half
-above:</p>
+<p>The mean is an estimator of the center of the distribution:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>     
+<div class="newline"></div><span class="go">-0.0452567074...</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>The median another estimator of the center. It is the value with half of
+the observations below, and half above:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>     
 <div class="newline"></div><span class="go">-0.0580280347...</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>It is also called the percentile 50, because 50% of the observation are
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Unlike the mean, the median is not sensitive to the tails of the
+distribution. It is <a class="reference external" href="https://en.wikipedia.org/wiki/Robust_statistics">&#8220;robust&#8221;</a>.</p>
+</div>
+<div class="green topic">
+<p class="topic-title first">Exercise: Compare mean and median on samples of a Gamma distribution</p>
+<blockquote>
+<div>Which one seems to be the best estimator of the center for the Gamma
+distribution?</div></blockquote>
+</div>
+<p>The median is also the percentile 50, because 50% of the observation are
 below it:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>     
 <div class="newline"></div><span class="go">-0.0580280347...</span>
@@ -841,16 +855,20 @@ below it:</p>
 <div class="newline"></div><span class="go">1.2315935511...</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>The percentile is an estimator of the CDF: cumulative distribution
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The percentile is an estimator of the CDF: cumulative distribution
 function.</p>
+</div>
 </div>
 <div class="section" id="statistical-tests">
 <h3>1.5.6.3. Statistical tests<a class="headerlink" href="#statistical-tests" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="scipy/auto_examples/plot_t_test.html"><img alt="../_images/sphx_glr_plot_t_test_001.png" class="align-right" src="../_images/sphx_glr_plot_t_test_001.png" style="width: 360.0px; height: 240.0px;" /></a>
 <p>A statistical test is a decision indicator. For instance, if we have two
 sets of observations, that we assume are generated from Gaussian
 processes, we can use a
 <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test">T-test</a> to decide
-whether the two sets of observations are significantly different:</p>
+whether the means of two sets of observations are significantly different:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>   
@@ -1339,7 +1357,7 @@ invited to try these exercises.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="scipy/auto_examples/index.html">1.5.12.1. Examples for scipy</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="scipy/auto_examples/index.html#solutions-of-the-exercises-for-scipy">1.5.12.1.7. Solutions of the exercises for scipy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scipy/auto_examples/index.html#solutions-of-the-exercises-for-scipy">1.5.12.1.8. Solutions of the exercises for scipy</a><ul>
 </ul>
 </li>
 </ul>
