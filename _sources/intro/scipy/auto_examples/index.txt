@@ -1,0 +1,239 @@
+:orphan:
+
+Examples for scipy
+===================
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demos various methods to find the minimum of a function. ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_optimize_example1_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_optimize_example1.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_optimize_example1
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Explore the normal distribution: a histogram built from samples and the PDF (probability densit...">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_normal_distribution_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_normal_distribution.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_normal_distribution
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demos a simple curve fitting ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_curve_fit_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_curve_fit.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_curve_fit
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Demos finding minima and roots of a function. ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_optimize_example2_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_optimize_example2.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_optimize_example2
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_2d_minimization_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_2d_minimization.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_2d_minimization
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot the power of the FFT of a signal and inverse FFT back to reconstruct a signal.">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_fftpack_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_fftpack.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_fftpack
+.. raw:: html
+
+    <div style='clear:both'></div>
+
+=====================================
+Solutions of the exercises for scipy
+=====================================
+
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Discover the periods in ../../data/populations.txt ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_periodicity_finder_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_periodicity_finder.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/solutions/plot_periodicity_finder
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_curvefit_temperature_data_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_curvefit_temperature_data.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/solutions/plot_curvefit_temperature_data
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_image_blur_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_image_blur.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/solutions/plot_image_blur
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Image denoising by implementing a blur with an FFT.">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/solutions/images/thumb/sphx_glr_plot_fft_image_denoise_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_solutions_plot_fft_image_denoise.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/solutions/plot_fft_image_denoise
+.. raw:: html
+
+    <div style='clear:both'></div>
+
+
+
+.. container:: sphx-glr-footer
+
+
+  .. container:: sphx-glr-download
+
+    :download:`Download all examples in Python source code: auto_examples_python.zip <//home/varoquau/dev/scipy-lecture-notes/intro/scipy/auto_examples/auto_examples_python.zip>`
+
+
+
+  .. container:: sphx-glr-download
+
+    :download:`Download all examples in Jupyter notebooks: auto_examples_jupyter.zip <//home/varoquau/dev/scipy-lecture-notes/intro/scipy/auto_examples/auto_examples_jupyter.zip>`
+
+.. rst-class:: sphx-glr-signature
+
+    `Generated by Sphinx-Gallery <https://sphinx-gallery.readthedocs.io>`_

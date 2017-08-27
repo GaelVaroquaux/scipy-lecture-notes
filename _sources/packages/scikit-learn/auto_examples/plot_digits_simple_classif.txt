@@ -1,0 +1,265 @@
+
+
+.. _sphx_glr_packages_scikit-learn_auto_examples_plot_digits_simple_classif.py:
+
+
+Simple visualization and classification of the digits dataset
+=============================================================
+
+Plot the first few samples of the digits dataset and a 2D representation
+built using PCA, then do a simple classification
+
+
+
+.. code-block:: python
+
+
+    from sklearn.datasets import load_digits
+    digits = load_digits()
+
+
+
+
+
+
+
+Plot the data: images of digits
+-------------------------------
+
+Each data in a 8x8 image
+
+
+
+.. code-block:: python
+
+    from matplotlib import pyplot as plt
+    fig = plt.figure(figsize=(6, 6))  # figure size in inches
+    fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+
+    for i in range(64):
+        ax = fig.add_subplot(8, 8, i + 1, xticks=[], yticks=[])
+        ax.imshow(digits.images[i], cmap=plt.cm.binary, interpolation='nearest')
+        # label the image with the target value
+        ax.text(0, 7, str(digits.target[i]))
+
+
+
+
+
+.. image:: /packages/scikit-learn/auto_examples/images/sphx_glr_plot_digits_simple_classif_001.png
+    :align: center
+
+
+
+
+Plot a projection on the 2 first principal axis
+------------------------------------------------
+
+
+
+.. code-block:: python
+
+
+    plt.figure()
+
+    from sklearn.decomposition import RandomizedPCA
+    pca = RandomizedPCA(n_components=2)
+    proj = pca.fit_transform(digits.data)
+    plt.scatter(proj[:, 0], proj[:, 1], c=digits.target)
+    plt.colorbar()
+
+
+
+
+
+.. image:: /packages/scikit-learn/auto_examples/images/sphx_glr_plot_digits_simple_classif_002.png
+    :align: center
+
+
+
+
+Classify with Gaussian naive Bayes
+----------------------------------
+
+
+
+.. code-block:: python
+
+
+    from sklearn.naive_bayes import GaussianNB
+    from sklearn.cross_validation import train_test_split
+
+    # split the data into training and validation sets
+    X_train, X_test, y_train, y_test = train_test_split(digits.data, digits.target)
+
+    # train the model
+    clf = GaussianNB()
+    clf.fit(X_train, y_train)
+
+    # use the model to predict the labels of the test data
+    predicted = clf.predict(X_test)
+    expected = y_test
+
+    # Plot the prediction
+    fig = plt.figure(figsize=(6, 6))  # figure size in inches
+    fig.subplots_adjust(left=0, right=1, bottom=0, top=1, hspace=0.05, wspace=0.05)
+
+    # plot the digits: each image is 8x8 pixels
+    for i in range(64):
+        ax = fig.add_subplot(8, 8, i + 1, xticks=[], yticks=[])
+        ax.imshow(X_test.reshape(-1, 8, 8)[i], cmap=plt.cm.binary,
+                  interpolation='nearest')
+
+        # label the image with the target value
+        if predicted[i] == expected[i]:
+            ax.text(0, 7, str(predicted[i]), color='green')
+        else:
+            ax.text(0, 7, str(predicted[i]), color='red')
+
+
+
+
+
+.. image:: /packages/scikit-learn/auto_examples/images/sphx_glr_plot_digits_simple_classif_003.png
+    :align: center
+
+
+
+
+Quantify the performance
+------------------------
+
+First print the number of correct matches
+
+
+
+.. code-block:: python
+
+    matches = (predicted == expected)
+    print(matches.sum())
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    387
+
+
+The total number of data points
+
+
+
+.. code-block:: python
+
+    print(len(matches))
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    450
+
+
+And now, the ration of correct predictions
+
+
+
+.. code-block:: python
+
+    matches.sum() / float(len(matches))
+
+
+
+
+
+
+
+Print the classification report
+
+
+
+.. code-block:: python
+
+    from sklearn import metrics
+    print(metrics.classification_report(expected, predicted))
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    precision    recall  f1-score   support
+
+              0       1.00      0.95      0.98        43
+              1       0.87      0.71      0.78        48
+              2       0.93      0.75      0.83        36
+              3       0.98      0.81      0.88        52
+              4       0.93      0.85      0.89        48
+              5       0.92      0.92      0.92        38
+              6       0.94      0.98      0.96        45
+              7       0.79      0.98      0.87        50
+              8       0.57      0.91      0.70        44
+              9       0.92      0.74      0.82        46
+
+    avg / total       0.88      0.86      0.86       450
+
+
+Print the confusion matrix
+
+
+
+.. code-block:: python
+
+    print(metrics.confusion_matrix(expected, predicted))
+
+    plt.show()
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    [[41  0  0  0  2  0  0  0  0  0]
+     [ 0 34  1  0  0  0  2  1  7  3]
+     [ 0  1 27  0  1  0  0  0  7  0]
+     [ 0  0  1 42  0  1  0  1  7  0]
+     [ 0  0  0  0 41  0  1  6  0  0]
+     [ 0  0  0  1  0 35  0  1  1  0]
+     [ 0  0  0  0  0  0 44  0  1  0]
+     [ 0  0  0  0  0  1  0 49  0  0]
+     [ 0  3  0  0  0  0  0  1 40  0]
+     [ 0  1  0  0  0  1  0  3  7 34]]
+
+
+**Total running time of the script:** ( 0 minutes  5.676 seconds)
+
+
+
+.. container:: sphx-glr-footer
+
+
+  .. container:: sphx-glr-download
+
+     :download:`Download Python source code: plot_digits_simple_classif.py <plot_digits_simple_classif.py>`
+
+
+
+  .. container:: sphx-glr-download
+
+     :download:`Download Jupyter notebook: plot_digits_simple_classif.ipynb <plot_digits_simple_classif.ipynb>`
+
+.. rst-class:: sphx-glr-signature
+
+    `Generated by Sphinx-Gallery <http://sphinx-gallery.readthedocs.io>`_
