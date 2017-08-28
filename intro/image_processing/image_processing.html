@@ -161,17 +161,15 @@ $(function () {
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>The submodule dedicated to image processing in scipy is <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/ndimage.html#module-scipy.ndimage" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></code></a>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Image processing routines may be sorted according to the category of
-processing they perform.</p>
+  <p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/ndimage.html#module-scipy.ndimage" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></code></a> provides manipulation of n-dimensional arrays as
+images.</p>
 <div class="section" id="geometrical-transformations-on-images">
 <h1>Geometrical transformations on images<a class="headerlink" href="#geometrical-transformations-on-images" title="Permalink to this headline">¶</a></h1>
 <p>Changing orientation, resolution, ..</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">misc</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">misc</span>  <span class="c1"># Load an image</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span> <span class="c1"># Shift, roate and zoom it</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">shifted_face</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">shifted_face2</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">rotated_face</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
@@ -181,9 +179,7 @@ processing they perform.</p>
 <div class="newline"></div><span class="go">(1536, 2048)</span>
 <div class="newline"></div></pre></div>
 </div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="intro/image_processing/image_processing/face_transforms.png"><img alt="intro/image_processing/image_processing/face_transforms.png" src="intro/image_processing/image_processing/face_transforms.png" /></a>
-</div>
+<a class="reference external image-reference" href="scipy/auto_examples/plot_image_transform.html"><img alt="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_image_transform_001.png" class="align-center" src="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_image_transform_001.png" /></a>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">151</span><span class="p">)</span>    
 <div class="newline"></div><span class="go">&lt;matplotlib.axes._subplots.AxesSubplot object at 0x...&gt;</span>
 <div class="newline"></div>
@@ -211,9 +207,7 @@ processing they perform.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">wiener_face</span> <span class="o">=</span> <span class="n">signal</span><span class="o">.</span><span class="n">wiener</span><span class="p">(</span><span class="n">noisy_face</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <div class="newline"></div></pre></div>
 </div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="intro/image_processing/image_processing/filtered_face.png"><img alt="intro/image_processing/image_processing/filtered_face.png" src="intro/image_processing/image_processing/filtered_face.png" /></a>
-</div>
+<a class="reference external image-reference" href="scipy/auto_examples/plot_image_filters.html"><img alt="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_image_filters_001.png" class="align-center" src="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_image_filters_001.png" /></a>
 <p>Many other filters in <code class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage.filters</span></code> and <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></code></a>
 can be applied to images.</p>
 <div class="green topic">
@@ -340,9 +334,7 @@ image.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">closed_mask</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_closing</span><span class="p">(</span><span class="n">opened_mask</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="intro/image_processing/image_processing/morpho.png"><img alt="intro/image_processing/image_processing/morpho.png" src="intro/image_processing/image_processing/morpho.png" /></a>
-</div>
+<a class="reference external image-reference" href="scipy/auto_examples/plot_mathematical_morpho.html"><img alt="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_mathematical_morpho_001.png" class="align-center" src="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_mathematical_morpho_001.png" /></a>
 <div class="green topic">
 <p class="topic-title first">Exercise</p>
 <blockquote>
@@ -375,35 +367,42 @@ structuring element centered on the pixel of interest.</p>
 <div class="newline"></div></pre></div>
 </div>
 </div>
-<div class="section" id="measurements-on-images">
-<h1>Measurements on images<a class="headerlink" href="#measurements-on-images" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="connect-components-and-measurements-on-images">
+<h1>Connect components and measurements on images<a class="headerlink" href="#connect-components-and-measurements-on-images" title="Permalink to this headline">¶</a></h1>
 <p>Let us first generate a nice synthetic binary image.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mf">50.</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mf">50.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mf">50.</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">sig</span> <span class="o">&gt;</span> <span class="mi">1</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Now we look for various information about the objects in the image:</p>
+<a class="reference external image-reference" href="scipy/auto_examples/plot_connect_measurements.html"><img alt="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_connect_measurements_001.png" class="align-center" src="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_connect_measurements_001.png" /></a>
+<a class="reference external image-reference" href="scipy/auto_examples/plot_connect_measurements.html"><img alt="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_connect_measurements_002.png" class="align-right" src="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_connect_measurements_002.png" /></a>
+<p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.label.html#scipy.ndimage.label" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.ndimage.label()</span></code></a> assigns a different label to each connect
+component:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span><span class="p">,</span> <span class="n">nb</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">nb</span>
 <div class="newline"></div><span class="go">8</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span>
-<div class="newline"></div><span class="go">array([ 190.,   45.,  424.,  278.,  459.,  190.,  549.,  424.])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span>
-<div class="newline"></div><span class="go">array([  1.80238238,   1.13527605,   5.51954079,   2.49611818,</span>
-<div class="newline"></div><span class="go">         6.71673619,   1.80238238,  16.76547217,   5.51954079])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span> 
-<div class="newline"></div><span class="go">[(slice(30L, 48L, None), slice(30L, 48L, None))]</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">sl</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="k">as</span> <span class="nn">pl</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sig</span><span class="p">[</span><span class="n">sl</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>   
-<div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
 <div class="newline"></div></pre></div>
 </div>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="intro/image_processing/image_processing/measures.png"><img alt="intro/image_processing/image_processing/measures.png" src="intro/image_processing/image_processing/measures.png" /></a>
+<div style="clear: both"></div><p>Now compute measurements on each connect component:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span>   <span class="c1"># The number of pixels in each connect component</span>
+<div class="newline"></div><span class="go">array([ 190.,   45.,  424.,  278.,  459.,  190.,  549.,  424.])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span>  <span class="c1"># The maximum signal in each connect component</span>
+<div class="newline"></div><span class="go">array([  1.80238238,   1.13527605,   5.51954079,   2.49611818,</span>
+<div class="newline"></div><span class="go">         6.71673619,   1.80238238,  16.76547217,   5.51954079])</span>
+<div class="newline"></div></pre></div>
+</div>
+<a class="reference external image-reference" href="scipy/auto_examples/plot_connect_measurements.html"><img alt="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_connect_measurements_003.png" class="align-right" src="intro/image_processing/scipy/auto_examples/images/sphx_glr_plot_connect_measurements_003.png" /></a>
+<p>Extract the 4th connect component, and crop the array around it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span> 
+<div class="newline"></div><span class="go">[(slice(30L, 48L, None), slice(30L, 48L, None))]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">sl</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sig</span><span class="p">[</span><span class="n">sl</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>   
+<div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
+<div class="newline"></div></pre></div>
 </div>
 <p>See the summary exercise on <a class="reference internal" href="../summary-exercises/image-processing.html#summary-exercise-image-processing"><span class="std std-ref">Image processing application: counting bubbles and unmolten grains</span></a> for a more
 advanced example.</p>
@@ -422,7 +421,7 @@ advanced example.</p>
 <li><a class="reference internal" href="#">Geometrical transformations on images</a></li>
 <li><a class="reference internal" href="#image-filtering">Image filtering</a></li>
 <li><a class="reference internal" href="#mathematical-morphology">Mathematical morphology</a></li>
-<li><a class="reference internal" href="#measurements-on-images">Measurements on images</a></li>
+<li><a class="reference internal" href="#connect-components-and-measurements-on-images">Connect components and measurements on images</a></li>
 </ul>
 </div>
 
