@@ -1,7 +1,7 @@
 :orphan:
 
-Code behind the figures
-------------------------
+Full code for the figures
+==========================
 
 Code examples for the statistics chapter.
 
@@ -172,7 +172,7 @@ Code examples for the statistics chapter.
     <div style='clear:both'></div>
 
 Solutions to this chapter's exercises
-----------------------------------------
+======================================
 
 
 

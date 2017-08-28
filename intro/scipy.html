@@ -897,7 +897,7 @@ loading and visualization outside of scipy.</p>
 </div>
 </div>
 <div class="section" id="interpolation-scipy-interpolate">
-<h2><a class="toc-backref" href="#id25">1.5.7. Interpolation: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html#module-scipy.interpolate" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></code></a></a><a class="headerlink" href="#interpolation-scipy-interpolate" title="Permalink to this headline">¶</a></h2>
+<span id="intro-scipy-interpolate"></span><h2><a class="toc-backref" href="#id25">1.5.7. Interpolation: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html#module-scipy.interpolate" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></code></a></a><a class="headerlink" href="#interpolation-scipy-interpolate" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html#module-scipy.interpolate" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></code></a> is useful for fitting a function from experimental
 data and thus evaluating points where no measure exists. The module is based
 on the <a class="reference external" href="http://www.netlib.org/dierckx/index.html">FITPACK Fortran subroutines</a>.</p>
@@ -1061,8 +1061,11 @@ regularly-sampled signals.</p>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Notice how on the side of the window the resampling is less accurate
+<p>Notice how on the side of the window the resampling is less accurate
 and has a rippling effect.</p>
+<p class="last">This resampling is different from the <span class="xref std std-ref">interpolation
+&lt;intro_scipy_interpolate</span> provided by <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/interpolate.html#module-scipy.interpolate" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.interpolate</span></code></a> as it
+only applies to regularly sampled data.</p>
 </div>
 <p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/signal.html#module-scipy.signal" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.signal</span></code></a> has many window functions: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.hamming.html#scipy.signal.hamming" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.signal.hamming()</span></code></a>,
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.bartlett.html#scipy.signal.bartlett" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.signal.bartlett()</span></code></a>, <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.blackman.html#scipy.signal.blackman" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.signal.blackman()</span></code></a>...</p>
