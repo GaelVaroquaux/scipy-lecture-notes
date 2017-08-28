@@ -190,17 +190,17 @@ of a continuous confound</li>
 <div class="newline"></div><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Load the data</span>
-<div class="newline"></div><span class="n">data</span> <span class="o">=</span> <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv" title="View documentation for pandas.read_csv"><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="s1">&#39;iris.csv&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;iris.csv&#39;</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>Plot a scatter matrix</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Express the names as categories</span>
-<div class="newline"></div><span class="n">categories</span> <span class="o">=</span> <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Categorical.from_codes.html#pandas.Categorical" title="View documentation for pandas.Categorical"><span class="n">pandas</span><span class="o">.</span><span class="n">Categorical</span></a><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<div class="newline"></div><span class="n">categories</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># The parameter &#39;c&#39; is passed to plt.scatter and will control the color</span>
 <div class="newline"></div><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">categories</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="n">fig</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gcf" title="View documentation for matplotlib.pyplot.gcf"><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span></a><span class="p">()</span>
+<div class="newline"></div><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
 <div class="newline"></div><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;blue: setosa, green: versicolor, red: virginica&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -217,7 +217,7 @@ of a continuous confound</li>
 <div class="newline"></div>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Testing the difference between effect of versicolor and virginica&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">f_test</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>

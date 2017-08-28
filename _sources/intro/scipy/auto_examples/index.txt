@@ -1,7 +1,7 @@
 :orphan:
 
-Examples for scipy
-===================
+Full code examples for the scipy chapter
+-----------------------------------------
 
 
 
@@ -28,6 +28,66 @@ Examples for scipy
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip=":func:`scipy.signal.detrend` removes a linear trend. ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_detrend_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_detrend.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_detrend
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=":func:`scipy.signal.resample` uses FFT to resample a 1D signal. ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_resample_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_resample.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_resample
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Solve the ODE dy/dt = -2y between t = 0..4, with the initial condition y(t=0) = 1. ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_odeint_simple_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_odeint_simple.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_odeint_simple
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="">
 
 .. only:: html
@@ -45,6 +105,26 @@ Examples for scipy
    :hidden:
 
    /intro/scipy/auto_examples/plot_t_test
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=" ">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_odeint_damped_spring_mass_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_odeint_damped_spring_mass.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_odeint_damped_spring_mass
 
 .. raw:: html
 
@@ -85,6 +165,26 @@ Examples for scipy
    :hidden:
 
    /intro/scipy/auto_examples/plot_curve_fit
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="">
+
+.. only:: html
+
+    .. figure:: /intro/scipy/auto_examples/images/thumb/sphx_glr_plot_interpolation_thumb.png
+
+        :ref:`sphx_glr_intro_scipy_auto_examples_plot_interpolation.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /intro/scipy/auto_examples/plot_interpolation
 
 .. raw:: html
 
@@ -149,9 +249,8 @@ Examples for scipy
 
     <div style='clear:both'></div>
 
-=====================================
 Solutions of the exercises for scipy
-=====================================
+.....................................
 
 
 

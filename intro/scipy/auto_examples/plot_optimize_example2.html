@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>1.5.12.1.5. Minima and roots of a function &#8212; Scipy lecture notes</title>
+    <title>1.5.12.10. Minima and roots of a function &#8212; Scipy lecture notes</title>
     
     <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
     <link rel="top" title="Scipy lecture notes" href="../../../index.html" />
-    <link rel="up" title="1.5.12.1. Examples for scipy" href="index.html" />
-    <link rel="next" title="1.5.12.1.6. Optimization of a two-parameter function" href="plot_2d_minimization.html" />
-    <link rel="prev" title="1.5.12.1.4. Curve fitting" href="plot_curve_fit.html" />
+    <link rel="up" title="1.5. Scipy : high-level scientific computing" href="../../scipy.html" />
+    <link rel="next" title="1.5.12.11. Optimization of a two-parameter function" href="plot_2d_minimization.html" />
+    <link rel="prev" title="1.5.12.9. A demo of 1D interpolation" href="plot_interpolation.html" />
    
     <link rel="stylesheet"
 	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
@@ -136,15 +136,14 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_2d_minimization.html" title="1.5.12.1.6. Optimization of a two-parameter function"
+          <a href="plot_2d_minimization.html" title="1.5.12.11. Optimization of a two-parameter function"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="plot_curve_fit.html" title="1.5.12.1.4. Curve fitting"
+          <a href="plot_interpolation.html" title="1.5.12.9. A demo of 1D interpolation"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >1. Getting started with Python for science</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../../scipy.html" >1.5. Scipy : high-level scientific computing</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">1.5.12.1. Examples for scipy</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../scipy.html" accesskey="U">1.5. Scipy : high-level scientific computing</a> &#187;</li>
      
     <!-- Insert a menu in the navigation bar -->
     <li class="left">
@@ -174,10 +173,10 @@ $(function () {
           <div class="body" role="main">
             
   <div class="section" id="minima-and-roots-of-a-function">
-<span id="sphx-glr-intro-scipy-auto-examples-plot-optimize-example2-py"></span><h1>1.5.12.1.5. Minima and roots of a function<a class="headerlink" href="#minima-and-roots-of-a-function" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-intro-scipy-auto-examples-plot-optimize-example2-py"></span><h1>1.5.12.10. Minima and roots of a function<a class="headerlink" href="#minima-and-roots-of-a-function" title="Permalink to this headline">¶</a></h1>
 <p>Demos finding minima and roots of a function.</p>
 <div class="section" id="define-the-function">
-<h2>1.5.12.1.5.1. Define the function<a class="headerlink" href="#define-the-function" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.12.10.1. Define the function<a class="headerlink" href="#define-the-function" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
@@ -187,7 +186,7 @@ $(function () {
 </div>
 </div>
 <div class="section" id="find-minima">
-<h2>1.5.12.1.5.2. Find minima<a class="headerlink" href="#find-minima" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.12.10.2. Find minima<a class="headerlink" href="#find-minima" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Global optimization</span>
@@ -207,7 +206,7 @@ $(function () {
 </div>
 </div>
 <div class="section" id="root-finding">
-<h2>1.5.12.1.5.3. Root finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.12.10.3. Root finding<a class="headerlink" href="#root-finding" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># our initial guess is 1</span>
 <div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="s2">&quot;First root found </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">root</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
 <div class="newline"></div><span class="n">root2</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">)</span>
@@ -221,7 +220,7 @@ $(function () {
 </div>
 </div>
 <div class="section" id="plot-function-minima-and-roots">
-<h2>1.5.12.1.5.4. Plot function, minima, and roots<a class="headerlink" href="#plot-function-minima-and-roots" title="Permalink to this headline">¶</a></h2>
+<h2>1.5.12.10.4. Plot function, minima, and roots<a class="headerlink" href="#plot-function-minima-and-roots" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
@@ -267,11 +266,11 @@ $(function () {
 	<div class="sidebartoc">
   <h3><a href="../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.5.12.1.5. Minima and roots of a function</a><ul>
-<li><a class="reference internal" href="#define-the-function">1.5.12.1.5.1. Define the function</a></li>
-<li><a class="reference internal" href="#find-minima">1.5.12.1.5.2. Find minima</a></li>
-<li><a class="reference internal" href="#root-finding">1.5.12.1.5.3. Root finding</a></li>
-<li><a class="reference internal" href="#plot-function-minima-and-roots">1.5.12.1.5.4. Plot function, minima, and roots</a></li>
+<li><a class="reference internal" href="#">1.5.12.10. Minima and roots of a function</a><ul>
+<li><a class="reference internal" href="#define-the-function">1.5.12.10.1. Define the function</a></li>
+<li><a class="reference internal" href="#find-minima">1.5.12.10.2. Find minima</a></li>
+<li><a class="reference internal" href="#root-finding">1.5.12.10.3. Root finding</a></li>
+<li><a class="reference internal" href="#plot-function-minima-and-roots">1.5.12.10.4. Plot function, minima, and roots</a></li>
 </ul>
 </li>
 </ul>
@@ -303,15 +302,14 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_2d_minimization.html" title="1.5.12.1.6. Optimization of a two-parameter function"
+          <a href="plot_2d_minimization.html" title="1.5.12.11. Optimization of a two-parameter function"
              >next</a></li>
         <li class="right" >
-          <a href="plot_curve_fit.html" title="1.5.12.1.4. Curve fitting"
+          <a href="plot_interpolation.html" title="1.5.12.9. A demo of 1D interpolation"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >1. Getting started with Python for science</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../../scipy.html" >1.5. Scipy : high-level scientific computing</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" >1.5.12.1. Examples for scipy</a> &#187;</li>
      
     <!-- Insert a menu in the navigation bar -->
     <li class="left">

@@ -180,13 +180,13 @@ $(function () {
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca" title="View documentation for matplotlib.pyplot.gca"><span class="n">plt</span><span class="o">.</span><span class="n">gca</span></a><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span> <span class="o">=</span> <span class="n">axes3d</span><span class="o">.</span><span class="n">get_test_data</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <div class="newline"></div><span class="n">cset</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">cset</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xticks" title="View documentation for matplotlib.pyplot.xticks"><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span></a><span class="p">(())</span>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.yticks" title="View documentation for matplotlib.pyplot.yticks"><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span></a><span class="p">(())</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">set_zticks</span><span class="p">(())</span>
 <div class="newline"></div>
 <div class="newline"></div>
@@ -196,16 +196,16 @@ $(function () {
 <div class="newline"></div>          <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">),</span>
 <div class="newline"></div>          <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Lint McCree Intl BB&#39;</span><span class="p">,</span>
 <div class="newline"></div>          <span class="n">size</span><span class="o">=</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
-<div class="newline"></div>          <span class="n">transform</span><span class="o">=</span><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca" title="View documentation for matplotlib.pyplot.gca"><span class="n">plt</span><span class="o">.</span><span class="n">gca</span></a><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<div class="newline"></div>          <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">ax</span><span class="o">.</span><span class="n">text2D</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="o">.</span><span class="mi">975</span><span class="p">,</span> <span class="s2">&quot; Plot 2D or 3D data&quot;</span><span class="p">,</span>
 <div class="newline"></div>          <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
 <div class="newline"></div>          <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
 <div class="newline"></div>          <span class="n">family</span><span class="o">=</span><span class="s1">&#39;Lint McCree Intl BB&#39;</span><span class="p">,</span>
 <div class="newline"></div>          <span class="n">size</span><span class="o">=</span><span class="s1">&#39;medium&#39;</span><span class="p">,</span>
-<div class="newline"></div>          <span class="n">transform</span><span class="o">=</span><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gca" title="View documentation for matplotlib.pyplot.gca"><span class="n">plt</span><span class="o">.</span><span class="n">gca</span></a><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<div class="newline"></div>          <span class="n">transform</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
 <p><strong>Total running time of the script:</strong> ( 0 minutes  0.060 seconds)</p>

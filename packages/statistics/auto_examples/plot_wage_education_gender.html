@@ -196,7 +196,7 @@ statsmodels&#8217; formulas
 <div class="newline"></div><span class="c1"># EDUCATION: Number of years of education</span>
 <div class="newline"></div><span class="c1"># SEX: 1=Female, 0=Male</span>
 <div class="newline"></div><span class="c1"># WAGE: Wage (dollars per hour)</span>
-<div class="newline"></div><span class="n">data</span> <span class="o">=</span> <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv" title="View documentation for pandas.read_csv"><span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span></a><span class="p">(</span><span class="s1">&#39;wages.txt&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<div class="newline"></div><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;wages.txt&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
 <div class="newline"></div>                       <span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="s1">&#39;wage&#39;</span><span class="p">],</span>
 <div class="newline"></div>                       <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
 <div class="newline"></div>                       <span class="p">)</span>
@@ -300,7 +300,7 @@ wage but also a different slope</p>
 data does not support the hypothesis that education benefits males
 more than female (p-value &gt; 0.05).</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<div class="newline"></div><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
 <p><strong>Total running time of the script:</strong> ( 0 minutes  0.721 seconds)</p>

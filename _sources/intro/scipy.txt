@@ -780,9 +780,9 @@ whether the means of two sets of observations are significantly different::
 Interpolation: :mod:`scipy.interpolate`
 ---------------------------------------
 
-The :mod:`scipy.interpolate` is useful for fitting a function from experimental
+:mod:`scipy.interpolate` is useful for fitting a function from experimental
 data and thus evaluating points where no measure exists. The module is based
-on the `FITPACK Fortran subroutines`_ from the netlib_ project.
+on the `FITPACK Fortran subroutines`_.
 
 .. _`FITPACK Fortran subroutines` : http://www.netlib.org/dierckx/index.html
 .. _netlib : http://www.netlib.org
@@ -793,61 +793,64 @@ By imagining experimental data close to a sine function::
     >>> noise = (np.random.random(10)*2 - 1) * 1e-1
     >>> measures = np.sin(2 * np.pi * measured_time) + noise
 
-The :class:`scipy.interpolate.interp1d` class can build a linear
-interpolation function::
+:class:`scipy.interpolate.interp1d` can build a linear interpolation
+function::
 
     >>> from scipy.interpolate import interp1d
     >>> linear_interp = interp1d(measured_time, measures)
 
-Then the :obj:`scipy.interpolate.linear_interp` instance needs to be
-evaluated at the time of interest::
+.. image:: scipy/auto_examples/images/sphx_glr_plot_interpolation_001.png
+    :target: scipy/auto_examples/plot_interpolation.html
+    :scale: 60
+    :align: right
 
-    >>> computed_time = np.linspace(0, 1, 50)
-    >>> linear_results = linear_interp(computed_time)
+Then the result can be evaluated at the time of interest::
+
+    >>> interpolation_time = np.linspace(0, 1, 50)
+    >>> linear_results = linear_interp(interpolation_time)
 
 A cubic interpolation can also be selected by providing the ``kind`` optional
 keyword argument::
 
     >>> cubic_interp = interp1d(measured_time, measures, kind='cubic')
-    >>> cubic_results = cubic_interp(computed_time)
+    >>> cubic_results = cubic_interp(interpolation_time)
 
-The results are now gathered on the following Matplotlib figure:
-
-.. plot:: pyplots/scipy_interpolation.py
 
 :class:`scipy.interpolate.interp2d` is similar to
 :class:`scipy.interpolate.interp1d`, but for 2-D arrays. Note that for
-the `interp` family, the computed time must stay within the measured
-time range. See the summary exercise on
-:ref:`summary_exercise_stat_interp` for a more advance spline
+the `interp` family, the interpolation points must stay within the range
+of given data points. See the summary exercise on
+:ref:`summary_exercise_stat_interp` for a more advanced spline
 interpolation example.
 
 
 Numerical integration: :mod:`scipy.integrate`
 ---------------------------------------------
 
-The most generic integration routine is :func:`scipy.integrate.quad`::
+Function integrals
+...................
+
+The most generic integration routine is :func:`scipy.integrate.quad`. To
+compute :math:`\int_0^{\pi / 2} sin(t) dt`::
 
     >>> from scipy.integrate import quad
     >>> res, err = quad(np.sin, 0, np.pi/2)
-    >>> np.allclose(res, 1)
+    >>> np.allclose(res, 1)   # res is the result, is should be close to 1
     True
-    >>> np.allclose(err, 1 - res)
+    >>> np.allclose(err, 1 - res)  # err is an estimate of the err
     True
 
-Others integration schemes are available with ``fixed_quad``,
-``quadrature``, ``romberg``.
+Other integration schemes are available:
+:func:`scipy.integrate.fixed_quad`, :func:`scipy.integrate.quadrature`,
+:func:`scipy.integrate.romberg`...
 
-:mod:`scipy.integrate` also features routines for integrating Ordinary
-Differential Equations (ODE). In particular, :func:`scipy.integrate.odeint`
-is a general-purpose integrator using LSODA (Livermore Solver for
-Ordinary Differential equations with Automatic method switching
-for stiff and non-stiff problems), see the `ODEPACK Fortran library`_
-for more details.
+Integrating differential equations
+...................................
 
-.. _`ODEPACK Fortran library` : http://people.sc.fsu.edu/~jburkardt/f77_src/odepack/odepack.html
-
-``odeint`` solves first-order ODE systems of the form::
+:mod:`scipy.integrate` also features routines for integrating `Ordinary
+Differential Equations (ODE)
+<https://en.wikipedia.org/wiki/Ordinary_differential_equation>`__. In
+particular, :func:`scipy.integrate.odeint` solves ODE of the form::
 
     dy/dt = rhs(y1, y2, .., t0,...)
 
@@ -855,87 +858,85 @@ As an introduction, let us solve the ODE :math:`\frac{dy}{dt} = -2 y` between
 :math:`t = 0 \dots 4`, with the  initial condition :math:`y(t=0) = 1`.
 First the function computing the derivative of the position needs to be defined::
 
-    >>> def calc_derivative(ypos, time, counter_arr):
-    ...     counter_arr += 1
+    >>> def calc_derivative(ypos, time):
     ...     return -2 * ypos
-    ...
 
-An extra argument ``counter_arr`` has been added to illustrate that the
-function may be called several times for a single time step, until solver
-convergence. The counter array is defined as::
+.. image:: scipy/auto_examples/images/sphx_glr_plot_odeint_simple_001.png
+    :target: scipy/auto_examples/plot_odeint_simple.html
+    :scale: 70
+    :align: right
 
-    >>> counter = np.zeros((1,), dtype=np.uint16)
 
-The trajectory will now be computed::
+Then, to compute ``y`` as a function of time::
 
     >>> from scipy.integrate import odeint
     >>> time_vec = np.linspace(0, 4, 40)
-    >>> yvec, info = odeint(calc_derivative, 1, time_vec,
-    ...                     args=(counter,), full_output=True)
+    >>> y = odeint(calc_derivative, y0=1, t=time_vec)
 
-Thus the derivative function has been called more than 40 times
-(which was the number of time steps)::
+.. raw:: html
 
-    >>> counter
-    array([129], dtype=uint16)
+   <div style="clear: both"></div>
 
-and the cumulative number of iterations for each of the 10 first time steps
-can be obtained by::
-
-    >>> info['nfe'][:10]
-    array([31, 35, 43, 49, 53, 57, 59, 63, 65, 69], dtype=int32)
-
-Note that the solver requires more iterations for the first time step.
-The solution ``yvec`` for the trajectory can now be plotted:
-
-  .. plot:: pyplots/odeint_introduction.py
-    :scale: 70
-
-
-Another example with :func:`scipy.integrate.odeint` will be a damped
-spring-mass oscillator (2nd order oscillator).
-The position of a mass attached to a spring obeys the 2nd order **ODE**
+Let us integrate a more complex ODE: a `damped
+spring-mass oscillator
+<https://en.wikipedia.org/wiki/Harmonic_oscillator#Damped_harmonic_oscillator>`__.
+The position of a mass attached to a spring obeys the 2nd order *ODE*
 :math:`y'' + 2 \varepsilon \omega_0  y' + \omega_0^2 y = 0` with 
 :math:`\omega_0^2 = k/m` with :math:`k` the spring constant, :math:`m` the mass
-and :math:`\varepsilon = c/(2 m \omega_0)` with :math:`c` the damping coefficient.
-For this example, we choose the parameters as::
+and :math:`\varepsilon = c/(2 m \omega_0)` with :math:`c` the damping coefficient. We set::
 
     >>> mass = 0.5  # kg
     >>> kspring = 4  # N/m
     >>> cviscous = 0.4  # N s/m
 
-so the system will be underdamped, because::
+Hence::
 
     >>> eps = cviscous / (2 * mass * np.sqrt(kspring/mass))
+    >>> omega = np.sqrt(kspring / mass)
+
+The system is underdamped, as::
+
     >>> eps < 1
     True
 
-For the :func:`scipy.integrate.odeint` solver the 2nd order equation 
-needs to be transformed in a system of two first-order equations for 
-the vector :math:`Y = (y, y')`.  It will be convenient to define 
-:math:`\nu = 2 \varepsilon * \omega_0 = c / m` and :math:`\Omega = \omega_0^2 = k/m`::
+For :func:`~scipy.integrate.odeint`, the 2nd order equation
+needs to be transformed in a system of two first-order equations for the
+vector :math:`Y = (y, y')`: the function computes the
+velocity and acceleration::
+    
+    >>> def calc_deri(yvec, time, eps, omega):
+    ...     return (yvec[1], -eps * omega * yvec[1] - omega **2 * yvec[0])
 
-    >>> nu_coef = cviscous / mass  # nu
-    >>> om_coef = kspring / mass  # Omega
+.. image:: scipy/auto_examples/images/sphx_glr_plot_odeint_damped_spring_mass_001.png
+    :target: scipy/auto_examples/plot_odeint_damped_spring_mass.html
+    :scale: 70
+    :align: right
 
-Thus the function will calculate the velocity and acceleration by::
+Integration of the system follows::
 
-    >>> def calc_deri(yvec, time, nu, om):
-    ...     return (yvec[1], -nu * yvec[1] - om * yvec[0])
-    ...
     >>> time_vec = np.linspace(0, 10, 100)
     >>> yinit = (1, 0)
-    >>> yarr = odeint(calc_deri, yinit, time_vec, args=(nu_coef, om_coef))
+    >>> yarr = odeint(calc_deri, yinit, time_vec, args=(eps, omega))
 
-The final position and velocity are shown on the following Matplotlib figure:
+.. raw:: html
 
-.. plot:: pyplots/odeint_damped_spring_mass.py
-    :scale: 70
+   <div style="clear: both"></div>
 
 
-These two examples were only Ordinary Differential Equations (ODE).
-However, there is no Partial Differential Equations (PDE) solver in Scipy.
-Some Python packages for solving PDE's are available, such as fipy_ or SfePy_.
+.. tip::
+
+    :func:`scipy.integrate.odeint` uses the LSODA (Livermore Solver for
+    Ordinary Differential equations with Automatic method switching for stiff
+    and non-stiff problems), see the `ODEPACK Fortran library`_ for more
+    details.
+
+.. _`ODEPACK Fortran library` : http://people.sc.fsu.edu/~jburkardt/f77_src/odepack/odepack.html
+
+.. seealso:: **Partial Differental Equations**
+
+    There is no Partial Differential Equations (PDE) solver in Scipy.
+    Some Python packages for solving PDE's are available, such as fipy_
+    or SfePy_.
 
 .. _fipy: http://www.ctcms.nist.gov/fipy/
 .. _SfePy: http://sfepy.org/doc/
@@ -944,47 +945,62 @@ Some Python packages for solving PDE's are available, such as fipy_ or SfePy_.
 Signal processing: :mod:`scipy.signal`
 --------------------------------------
 
-::
+.. tip::
 
-    >>> from scipy import signal
+   :mod:`scipy.signal` is for typical signal processing: 1D,
+   regularly-sampled signals.
 
-* :func:`scipy.signal.detrend`: remove linear trend from signal::
+.. image:: scipy/auto_examples/images/sphx_glr_plot_detrend_001.png
+    :target: scipy/auto_examples/plot_detrend.html
+    :scale: 65
+    :align: right
 
-    >>> t = np.linspace(0, 5, 100)
-    >>> x = t + np.random.normal(size=100)
+:func:`scipy.signal.detrend`: remove linear trend from signal::
 
-    >>> plt.plot(t, x, linewidth=3) # doctest: +ELLIPSIS
-    [<matplotlib.lines.Line2D object at ...>]
-    >>> plt.plot(t, signal.detrend(x), linewidth=3) # doctest: +ELLIPSIS
-    [<matplotlib.lines.Line2D object at ...>]
+  >>> t = np.linspace(0, 5, 100)
+  >>> x = t + np.random.normal(size=100)
 
-  .. plot:: pyplots/demo_detrend.py
-    :scale: 70
+  >>> from scipy import signal
+  >>> x_detrended = signal.detrend(x)
 
-* :func:`scipy.signal.resample`: resample a signal to `n` points using FFT. ::
+  >>> plt.plot(t, x) # doctest: +ELLIPSIS
+  [<matplotlib.lines.Line2D object at ...>]
+  >>> plt.plot(t, x_detrended) # doctest: +ELLIPSIS
+  [<matplotlib.lines.Line2D object at ...>]
 
-    >>> t = np.linspace(0, 5, 100)
-    >>> x = np.sin(t)
+.. raw:: html
 
-    >>> plt.plot(t, x, linewidth=3) # doctest: +ELLIPSIS
-    [<matplotlib.lines.Line2D object at ...>]
-    >>> plt.plot(t[::2], signal.resample(x, 50), 'ko') # doctest: +ELLIPSIS
-    [<matplotlib.lines.Line2D object at ...>]
+   <div style="clear: both"></div>
 
-  .. plot:: pyplots/demo_resample.py
-    :scale: 70
+.. image:: scipy/auto_examples/images/sphx_glr_plot_resample_001.png
+    :target: scipy/auto_examples/plot_resample.html
+    :scale: 65
+    :align: right
 
-  .. only:: latex
+:func:`scipy.signal.resample`: resample a signal to `n` points using FFT. ::
+
+  >>> t = np.linspace(0, 5, 100)
+  >>> x = np.sin(t)
+
+  >>> from scipy import signal
+  >>> x_resampled = signal.resample(x, 25)
+
+  >>> plt.plot(t, x) # doctest: +ELLIPSIS
+  [<matplotlib.lines.Line2D object at ...>]
+  >>> plt.plot(t[::4], x_resampled, 'ko') # doctest: +ELLIPSIS
+  [<matplotlib.lines.Line2D object at ...>]
+
+.. tip:: 
 
      Notice how on the side of the window the resampling is less accurate
      and has a rippling effect.
 
-* :mod:`scipy.signal` has many window functions: :func:`scipy.signal.hamming`,
-  :func:`scipy.signal.bartlett`, :func:`scipy.signal.blackman`...
+:mod:`scipy.signal` has many window functions: :func:`scipy.signal.hamming`,
+:func:`scipy.signal.bartlett`, :func:`scipy.signal.blackman`...
 
-* :mod:`scipy.signal` has filtering (median filter :func:`scipy.signal.medfilt`,
-  Wiener :func:`scipy.signal.wiener`), but we will
-  discuss this in the image section.
+:mod:`scipy.signal` has filtering (median filter :func:`scipy.signal.medfilt`,
+Wiener :func:`scipy.signal.wiener`), but we will
+discuss this in the image section.
 
 
 Image processing: :mod:`scipy.ndimage`
@@ -1029,11 +1045,9 @@ invited to try these exercises.
 
       summary-exercises/answers_image_processing.rst
 
-Full code examples for the figures
-----------------------------------
+.. include the gallery. Skip the first line to avoid the "orphan"
+   declaration
 
-.. toctree::
-
-    scipy/auto_examples/index.rst
-
+.. include:: scipy/auto_examples/index.rst
+    :start-line: 1
 
