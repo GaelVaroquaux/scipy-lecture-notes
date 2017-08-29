@@ -174,29 +174,38 @@ $(function () {
             
   <div class="section" id="crude-periodicity-finding">
 <span id="sphx-glr-intro-scipy-auto-examples-solutions-plot-periodicity-finder-py"></span><h1>1.5.12.19.1. Crude periodicity finding<a class="headerlink" href="#crude-periodicity-finding" title="Permalink to this headline">¶</a></h1>
-<p>Discover the periods in ../../data/populations.txt</p>
-<ul class="sphx-glr-horizontal">
-<li><a class="first reference internal image-reference" href="../../../../_images/sphx_glr_plot_periodicity_finder_001.png"><img alt="../../../../_images/sphx_glr_plot_periodicity_finder_001.png" src="../../../../_images/sphx_glr_plot_periodicity_finder_001.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../../../_images/sphx_glr_plot_periodicity_finder_002.png"><img alt="../../../../_images/sphx_glr_plot_periodicity_finder_002.png" src="../../../../_images/sphx_glr_plot_periodicity_finder_002.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-</ul>
+<p>Discover the periods in evolution of animal populations
+(<code class="xref download docutils literal"><span class="pre">../../data/populations.txt</span></code>)</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../../data/populations.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="section" id="load-the-data">
+<h2>1.5.12.19.1.1. Load the data<a class="headerlink" href="#load-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;../../../../data/populations.txt&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">years</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <div class="newline"></div><span class="n">populations</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="n">ft_populations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">populations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<div class="newline"></div><span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">populations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">years</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<div class="newline"></div><span class="n">periods</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">frequencies</span>
-<div class="newline"></div>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<div class="section" id="plot-the-data">
+<h2>1.5.12.19.1.2. Plot the data<a class="headerlink" href="#plot-the-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">populations</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population number ($\cdot10^3$)&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;hare&#39;</span><span class="p">,</span> <span class="s1">&#39;lynx&#39;</span><span class="p">,</span> <span class="s1">&#39;carrot&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img alt="../../../../_images/sphx_glr_plot_periodicity_finder_001.png" class="align-center" src="../../../../_images/sphx_glr_plot_periodicity_finder_001.png" />
+</div>
+<div class="section" id="plot-its-periods">
+<h2>1.5.12.19.1.3. Plot its periods<a class="headerlink" href="#plot-its-periods" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">fftpack</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">ft_populations</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">populations</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="newline"></div><span class="n">frequencies</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">populations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">years</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">years</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="newline"></div><span class="n">periods</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">frequencies</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">periods</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">ft_populations</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
@@ -205,13 +214,13 @@ $(function () {
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power ($\cdot10^3$)&#39;</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="c1"># There&#39;s probably a period of around 10 years (obvious from the</span>
-<div class="newline"></div><span class="c1"># plot), but for this crude a method, there&#39;s not enough data to say</span>
-<div class="newline"></div><span class="c1"># much more.</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.078 seconds)</p>
+<img alt="../../../../_images/sphx_glr_plot_periodicity_finder_002.png" class="align-center" src="../../../../_images/sphx_glr_plot_periodicity_finder_002.png" />
+<p>There&#8217;s probably a period of around 10 years (obvious from the
+plot), but for this crude a method, there&#8217;s not enough data to say
+much more.</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.144 seconds)</p>
 <div class="sphx-glr-footer container">
 <div class="sphx-glr-download container">
 <a class="reference download internal" href="../../../../_downloads/plot_periodicity_finder.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_periodicity_finder.py</span></code></a></div>
@@ -221,6 +230,7 @@ $(function () {
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
+</div>
 
 
           </div>
@@ -228,7 +238,17 @@ $(function () {
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-	<div class="sidebartoc"></div>
+	<div class="sidebartoc">
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.5.12.19.1. Crude periodicity finding</a><ul>
+<li><a class="reference internal" href="#load-the-data">1.5.12.19.1.1. Load the data</a></li>
+<li><a class="reference internal" href="#plot-the-data">1.5.12.19.1.2. Plot the data</a></li>
+<li><a class="reference internal" href="#plot-its-periods">1.5.12.19.1.3. Plot its periods</a></li>
+</ul>
+</li>
+</ul>
+</div>
 
 
 

@@ -282,29 +282,41 @@ is:</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>  <span class="c1"># same for other sub-modules</span>
 <div class="newline"></div></pre></div>
 </div>
-<p class="last">The main <code class="docutils literal"><span class="pre">scipy</span></code> namespace mostly contains functions that are really
+<p class="last">The main <code class="xref py py-mod docutils literal"><span class="pre">scipy</span></code> namespace mostly contains functions that are really
 numpy functions (try <code class="docutils literal"><span class="pre">scipy.cos</span> <span class="pre">is</span> <span class="pre">np.cos</span></code>). Those are exposed for
-historical reasons only; there&#8217;s usually no reason to use <code class="docutils literal"><span class="pre">import</span>
+historical reasons; there&#8217;s no reason to use <code class="docutils literal"><span class="pre">import</span>
 <span class="pre">scipy</span></code> in your code.</p>
 </div>
 <div class="section" id="file-input-output-scipy-io">
 <h2><a class="toc-backref" href="#id26">1.5.1. File input/output: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/io.html#module-scipy.io" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.io</span></code></a></a><a class="headerlink" href="#file-input-output-scipy-io" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">Loading and saving matlab files:</p>
+<p><strong>Matlab files</strong>: Loading and saving:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">io</span> <span class="k">as</span> <span class="n">spio</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">spio</span><span class="o">.</span><span class="n">savemat</span><span class="p">(</span><span class="s1">&#39;file.mat&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">})</span> <span class="c1"># savemat expects a dictionary</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;file.mat&#39;</span><span class="p">,</span> <span class="n">struct_as_record</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;file.mat&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
 <div class="newline"></div><span class="go">array([[ 1.,  1.,  1.],</span>
 <div class="newline"></div><span class="go">       [ 1.,  1.,  1.],</span>
 <div class="newline"></div><span class="go">       [ 1.,  1.,  1.]])</span>
 <div class="newline"></div></pre></div>
 </div>
-</li>
-</ul>
-<ul>
-<li><p class="first">Reading images:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p><strong>Python / Matlab mismatches</strong>, <em>eg</em> matlab does not represent 1D arrays</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<div class="newline"></div><span class="go">array([ 1.,  1.,  1.])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">spio</span><span class="o">.</span><span class="n">savemat</span><span class="p">(</span><span class="s1">&#39;file.mat&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">})</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">spio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;file.mat&#39;</span><span class="p">)[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
+<div class="newline"></div><span class="go">array([[ 1.,  1.,  1.]])</span>
+<div class="newline"></div></pre></div>
+</div>
+<p class="last">Notice the difference?</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Image files</strong>: Reading images:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">misc</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">misc</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;fname.png&#39;</span><span class="p">)</span>    
 <div class="newline"></div><span class="go">array(...)</span>
@@ -314,8 +326,6 @@ historical reasons only; there&#8217;s usually no reason to use <code class="doc
 <div class="newline"></div><span class="go">array(...)</span>
 <div class="newline"></div></pre></div>
 </div>
-</li>
-</ul>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
@@ -348,9 +358,12 @@ will give the log of Gamma to a higher numerical precision.</li>
 </div>
 <div class="section" id="linear-algebra-operations-scipy-linalg">
 <span id="scipy-linalg"></span><h2><a class="toc-backref" href="#id28">1.5.3. Linear algebra operations: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/linalg.html#module-scipy.linalg" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></code></a></a><a class="headerlink" href="#linear-algebra-operations-scipy-linalg" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/linalg.html#module-scipy.linalg" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></code></a> module provides standard linear algebra
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/linalg.html#module-scipy.linalg" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.linalg</span></code></a> module provides standard linear algebra
 operations, relying on an underlying efficient implementation (BLAS,
 LAPACK).</p>
+</div>
 <ul>
 <li><p class="first">The <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.det.html#scipy.linalg.det" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.linalg.det()</span></code></a> function computes the determinant of a
 square matrix:</p>
@@ -458,11 +471,14 @@ interpolation example.</p>
 <h2><a class="toc-backref" href="#id30">1.5.5. Optimization and fit: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></code></a></a><a class="headerlink" href="#optimization-and-fit-scipy-optimize" title="Permalink to this headline">¶</a></h2>
 <p>Optimization is the problem of finding a numerical solution to a
 minimization or equality.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
 <p>The <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html#module-scipy.optimize" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></code></a> module provides algorithms for function
 minimization (scalar or multi-dimensional), curve fitting and root
 finding.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">optimize</span>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">optimize</span>
 <div class="newline"></div></pre></div>
+</div>
 </div>
 <div class="section" id="curve-fitting">
 <h3>1.5.5.1. Curve fitting<a class="headerlink" href="#curve-fitting" title="Permalink to this headline">¶</a></h3>
@@ -472,7 +488,7 @@ finding.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y_data</span> <span class="o">=</span> <span class="mf">2.9</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Now if we know that the data lies on a sine wave, but not the amplitudes
+<p>If we know that the data lies on a sine wave, but not the amplitudes
 or the period, we can find those by least squares curve fitting. First we
 have to define the test function to fit, here a sine with unknown
 amplitude and period:</p>
@@ -993,8 +1009,8 @@ should be preferred, as it uses more efficient underlying implementations.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="sphx_glr_intro_scipy_auto_examples_solutions_plot_periodicity_finder.py"><img alt="periodicity_finding" src="../_images/sphx_glr_plot_periodicity_finder_001.png" style="width: 400.0px; height: 300.0px;" /></a></td>
-<td><a class="reference external" href="sphx_glr_intro_scipy_auto_examples_solutions_plot_image_blur.py"><img alt="image_blur" src="../_images/sphx_glr_plot_image_blur_001.png" style="width: 400.0px; height: 300.0px;" /></a></td>
+<tr class="row-even"><td><a class="reference external" href="scipy/auto_examples/solutions/plot_periodicity_finder.html"><img alt="periodicity_finding" src="../_images/sphx_glr_plot_periodicity_finder_001.png" style="width: 400.0px; height: 300.0px;" /></a></td>
+<td><a class="reference external" href="scipy/auto_examples/solutions/plot_image_blur.html"><img alt="image_blur" src="../_images/sphx_glr_plot_image_blur_002.png" style="width: 400.0px; height: 300.0px;" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -1472,7 +1488,7 @@ invited to try these exercises.</p>
 </div>
 <div style='clear:both'></div><div class="section" id="solutions-of-the-exercises-for-scipy">
 <h3>1.5.12.19. Solutions of the exercises for scipy<a class="headerlink" href="#solutions-of-the-exercises-for-scipy" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="Discover the periods in ../../data/populations.txt "><div class="figure" id="id22">
+<div class="sphx-glr-thumbcontainer" tooltip="Discover the periods in evolution of animal populations (:download:`../../data/populations.txt`..."><div class="figure" id="id22">
 <img alt="../_images/sphx_glr_plot_periodicity_finder_thumb.png" src="../_images/sphx_glr_plot_periodicity_finder_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="scipy/auto_examples/solutions/plot_periodicity_finder.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-periodicity-finder-py"><span class="std std-ref">Crude periodicity finding</span></a></span></p>
 </div>
@@ -1484,7 +1500,7 @@ invited to try these exercises.</p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip=""><div class="figure" id="id24">
+<div class="sphx-glr-thumbcontainer" tooltip="Blur an an image (:download:`../../../../data/elephant.png`) using a Gaussian kernel."><div class="figure" id="id24">
 <img alt="../_images/sphx_glr_plot_image_blur_thumb.png" src="../_images/sphx_glr_plot_image_blur_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="scipy/auto_examples/solutions/plot_image_blur.html#sphx-glr-intro-scipy-auto-examples-solutions-plot-image-blur-py"><span class="std std-ref">Simple image blur by convolution with a Gaussian kernel</span></a></span></p>
 </div>
