@@ -789,6 +789,8 @@ value. The parameters are specified with ranges given to
 <h2><a class="toc-backref" href="#id16">2.7.3. Practical guide to optimization with scipy</a><a class="headerlink" href="#practical-guide-to-optimization-with-scipy" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="choosing-a-method">
 <h3><a class="toc-backref" href="#id17">2.7.3.1. Choosing a method</a><a class="headerlink" href="#choosing-a-method" title="Permalink to this headline">¶</a></h3>
+<p>All methods are exposed as the <code class="docutils literal"><span class="pre">method</span></code> argument of
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.minimize()</span></code></a>.</p>
 <a class="reference internal image-reference" href="../../_images/sphx_glr_plot_compare_optimizers_001.png"><img alt="../../_images/sphx_glr_plot_compare_optimizers_001.png" class="align-center" src="../../_images/sphx_glr_plot_compare_optimizers_001.png" style="width: 95%;" /></a>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -796,20 +798,17 @@ value. The parameters are specified with ranges given to
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">Without knowledge of the gradient:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
-<li>In general, prefer BFGS (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_bfgs.html#scipy.optimize.fmin_bfgs" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_bfgs()</span></code></a>) or L-BFGS
-(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_l_bfgs_b.html#scipy.optimize.fmin_l_bfgs_b" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></code></a>), even if you have to approximate
+<li>In general, prefer <strong>BFGS</strong> or <strong>L-BFGS</strong>, even if you have to approximate
 numerically gradients</li>
-<li>On well-conditioned problems, Powell
-(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_powell.html#scipy.optimize.fmin_powell" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_powell()</span></code></a>) and Nelder-Mead
-(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy.optimize.fmin" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></code></a>), both gradient-free methods, work well in
+<li>On well-conditioned problems, <strong>Powell</strong>
+and <strong>Nelder-Mead</strong>, both gradient-free methods, work well in
 high dimension, but they collapse for ill-conditioned problems.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">With knowledge of the gradient:</th></tr>
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
-<li>BFGS (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_bfgs.html#scipy.optimize.fmin_bfgs" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_bfgs()</span></code></a>) or L-BFGS
-(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_l_bfgs_b.html#scipy.optimize.fmin_l_bfgs_b" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></code></a>).</li>
+<li><strong>BFGS</strong> or <strong>L-BFGS</strong>.</li>
 <li>Computational overhead of BFGS is larger than that L-BFGS, itself
 larger than that of conjugate gradient. On the other side, BFGS usually
 needs less function evaluations than CG. Thus conjugate gradient method
@@ -820,14 +819,13 @@ is better than BFGS at optimizing computationally cheap functions.</li>
 <tr class="field-odd field"><th class="field-name" colspan="2">With the Hessian:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
 <li>If you can compute the Hessian, prefer the Newton method
-(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_ncg.html#scipy.optimize.fmin_ncg" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_ncg()</span></code></a>).</li>
+(<strong>Newton-CG</strong> or <strong>TCG</strong>).</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">If you have noisy measurements:</th></tr>
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li>Use Nelder-Mead (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy.optimize.fmin" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></code></a>) or Powell
-(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_powell.html#scipy.optimize.fmin_powell" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_powell()</span></code></a>).</li>
+<li>Use <strong>Nelder-Mead</strong> or <strong>Powell</strong>.</li>
 </ul>
 </td>
 </tr>

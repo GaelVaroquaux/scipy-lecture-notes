@@ -594,12 +594,9 @@ for the minimum.</p>
 A possible issue with this approach is that, if the function has local minima,
 the algorithm may find these local minima instead of the
 global minimum depending on the initial point x0:</p>
-<div class="sidebar">
-<p class="first sidebar-title">disp=0</p>
-<p class="last">Turns off return of extra information</p>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_bfgs</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<div class="newline"></div><span class="go">array([ 3.83746663])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;L-BFGS-B&quot;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="o">.</span><span class="n">x</span>
+<div class="newline"></div><span class="go">array([ 3.83746709])</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>If we don&#8217;t know the neighborhood of the global minimum to choose the
@@ -627,11 +624,23 @@ SciPy 0.16.0.</p>
 </div>
 <p><strong>Constraints</strong>:
 We can constrain the variable to the interval
-<code class="docutils literal"><span class="pre">(0,</span> <span class="pre">10)</span></code> using <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fminbound.html#scipy.optimize.fminbound" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fminbound()</span></code></a>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xmin_local</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">fminbound</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">xmin_local</span>    
-<div class="newline"></div><span class="go">3.8374671...</span>
+<code class="docutils literal"><span class="pre">(0,</span> <span class="pre">10)</span></code> using the &#8220;bounds&#8221; argument:</p>
+<div class="sidebar">
+<p class="first sidebar-title">A list of bounds</p>
+<p class="last">As <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html#scipy.optimize.minimize" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">minimize()</span></code></a> works in general with x
+multidimensionsal, the &#8220;bounds&#8221; argument is a list of bound on each
+dimension.</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<div class="newline"></div><span class="gp">... </span>                        <span class="n">bounds</span><span class="o">=</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">))</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span><span class="o">.</span><span class="n">x</span>    
+<div class="newline"></div><span class="go">array([ 0.])</span>
 <div class="newline"></div></pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">What has happened? Why are we finding 0, which is not a mimimum of our
+function.</p>
 </div>
 <div class="topic">
 <p class="topic-title first"><strong>Minimizing functions of several variables</strong></p>
