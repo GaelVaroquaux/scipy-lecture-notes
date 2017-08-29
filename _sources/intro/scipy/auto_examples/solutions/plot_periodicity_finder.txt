@@ -11,17 +11,6 @@ Discover the periods in evolution of animal populations
 (:download:`../../data/populations.txt`)
 
 
-
-.. code-block:: python
-
-    import numpy as np
-
-
-
-
-
-
-
 Load the data
 ###########################################################
 
@@ -30,6 +19,7 @@ Load the data
 .. code-block:: python
 
 
+    import numpy as np
     data = np.loadtxt('../../../../data/populations.txt')
     years = data[:, 0]
     populations = data[:, 1:]
@@ -99,7 +89,7 @@ plot), but for this crude a method, there's not enough data to say
 much more.
 
 
-**Total running time of the script:** ( 0 minutes  0.144 seconds)
+**Total running time of the script:** ( 0 minutes  0.136 seconds)
 
 
 

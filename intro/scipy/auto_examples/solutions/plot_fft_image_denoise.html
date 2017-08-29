@@ -174,29 +174,47 @@ $(function () {
             
   <div class="section" id="image-denoising-by-fft">
 <span id="sphx-glr-intro-scipy-auto-examples-solutions-plot-fft-image-denoise-py"></span><h1>1.5.12.19.4. Image denoising by FFT<a class="headerlink" href="#image-denoising-by-fft" title="Permalink to this headline">¶</a></h1>
-<p>Image denoising by implementing a blur with an FFT.</p>
+<p>Denoise an image (<a class="reference download internal" href="../../../../_downloads/moonlanding.png" download=""><code class="xref download docutils literal"><span class="pre">../../../../data/moonlanding.png</span></code></a>) by
+implementing a blur with an FFT.</p>
 <p>Implements, via FFT, the following convolution:</p>
 <div class="math">
 <p><img src="../../../../_images/math/90481892d2e0e489ba9eb7e9dfc72c7e2ebb46d2.png" alt="f_1(t) = \int dt'\, K(t-t') f_0(t')"/></p>
 </div><div class="math">
 <p><img src="../../../../_images/math/9c29db8906bc4cb851b96c5f69b65059b95630d5.png" alt="\tilde{f}_1(\omega) = \tilde{K}(\omega) \tilde{f}_0(\omega)"/></p>
-</div><img alt="../../../../_images/sphx_glr_plot_fft_image_denoise_001.png" class="align-center" src="../../../../_images/sphx_glr_plot_fft_image_denoise_001.png" />
+</div><div class="section" id="read-and-plot-the-image">
+<h2>1.5.12.19.4.1. Read and plot the image<a class="headerlink" href="#read-and-plot-the-image" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<div class="newline"></div><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">fftpack</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div>
-<div class="newline"></div>
-<div class="newline"></div><span class="k">def</span> <span class="nf">plot_spectrum</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
-<div class="newline"></div>    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F</span><span class="p">)))</span>
-<div class="newline"></div>
-<div class="newline"></div>
-<div class="newline"></div><span class="c1"># read image</span>
 <div class="newline"></div><span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;../../../../data/moonlanding.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="c1"># Compute the 2d FFT of the input image</span>
-<div class="newline"></div><span class="n">F</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original image&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img alt="../../../../_images/sphx_glr_plot_fft_image_denoise_001.png" class="align-center" src="../../../../_images/sphx_glr_plot_fft_image_denoise_001.png" />
+</div>
+<div class="section" id="compute-the-2d-fft-of-the-input-image">
+<h2>1.5.12.19.4.2. Compute the 2d FFT of the input image<a class="headerlink" href="#compute-the-2d-fft-of-the-input-image" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">fftpack</span>
+<div class="newline"></div><span class="n">im_fft</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="c1"># In the lines following, we&#39;ll make a copy of the original spectrum and</span>
+<div class="newline"></div><span class="c1"># Show the results</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">def</span> <span class="nf">plot_spectrum</span><span class="p">(</span><span class="n">im_fft</span><span class="p">):</span>
+<div class="newline"></div>    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">im_fft</span><span class="p">)))</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">im_fft</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier transform&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img alt="../../../../_images/sphx_glr_plot_fft_image_denoise_002.png" class="align-center" src="../../../../_images/sphx_glr_plot_fft_image_denoise_002.png" />
+</div>
+<div class="section" id="filter-in-fft">
+<h2>1.5.12.19.4.3. Filter in FFT<a class="headerlink" href="#filter-in-fft" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># In the lines following, we&#39;ll make a copy of the original spectrum and</span>
 <div class="newline"></div><span class="c1"># truncate coefficients.</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Define the fraction of coefficients (in each direction) we keep</span>
@@ -204,43 +222,55 @@ $(function () {
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Call ff a copy of the original transform. Numpy arrays have a copy</span>
 <div class="newline"></div><span class="c1"># method for this purpose.</span>
-<div class="newline"></div><span class="n">ff</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="newline"></div><span class="n">im_fft2</span> <span class="o">=</span> <span class="n">im_fft</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Set r and c to be the number of rows and columns of the array.</span>
-<div class="newline"></div><span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ff</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">im_fft2</span><span class="o">.</span><span class="n">shape</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="c1"># Set to zero all rows with indices between r*keep_fraction and # r*(1-keep_fraction):</span>
-<div class="newline"></div><span class="n">ff</span><span class="p">[</span><span class="n">r</span><span class="o">*</span><span class="n">keep_fraction</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">keep_fraction</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="newline"></div><span class="c1"># Set to zero all rows with indices between r*keep_fraction and</span>
+<div class="newline"></div><span class="c1"># r*(1-keep_fraction):</span>
+<div class="newline"></div><span class="n">im_fft2</span><span class="p">[</span><span class="n">r</span><span class="o">*</span><span class="n">keep_fraction</span><span class="p">:</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">keep_fraction</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Similarly with the columns:</span>
-<div class="newline"></div><span class="n">ff</span><span class="p">[:,</span> <span class="n">c</span><span class="o">*</span><span class="n">keep_fraction</span><span class="p">:</span><span class="n">c</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">keep_fraction</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="newline"></div><span class="n">im_fft2</span><span class="p">[:,</span> <span class="n">c</span><span class="o">*</span><span class="n">keep_fraction</span><span class="p">:</span><span class="n">c</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">keep_fraction</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="c1"># Reconstruct the denoised image from the filtered spectrum, keep only the</span>
-<div class="newline"></div><span class="c1"># real part for display.</span>
-<div class="newline"></div><span class="n">im_new</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="c1"># Show the results</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original image&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier transform&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">im_fft2</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Filtered Spectrum&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plot_spectrum</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reconstructed Image&#39;</span><span class="p">)</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_new</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img alt="../../../../_images/sphx_glr_plot_fft_image_denoise_003.png" class="align-center" src="../../../../_images/sphx_glr_plot_fft_image_denoise_003.png" />
+</div>
+<div class="section" id="reconstruct-the-final-image">
+<h2>1.5.12.19.4.4. Reconstruct the final image<a class="headerlink" href="#reconstruct-the-final-image" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Reconstruct the denoised image from the filtered spectrum, keep only the</span>
+<div class="newline"></div><span class="c1"># real part for display.</span>
+<div class="newline"></div><span class="n">im_new</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">im_fft2</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="c1"># Adjust the spacing between subplots for readability</span>
-<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_new</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Reconstructed Image&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<img alt="../../../../_images/sphx_glr_plot_fft_image_denoise_004.png" class="align-center" src="../../../../_images/sphx_glr_plot_fft_image_denoise_004.png" />
+</div>
+<div class="section" id="easier-and-better-scipy-ndimage-gaussian-filter">
+<h2>1.5.12.19.4.5. Easier and better: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.gaussian_filter.html#scipy.ndimage.gaussian_filter" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.ndimage.gaussian_filter()</span></code></a><a class="headerlink" href="#easier-and-better-scipy-ndimage-gaussian-filter" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Implementing filtering directly with FFTs is tricky and time consuming.
+We can use the Gaussian filter from <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/ndimage.html#module-scipy.ndimage" title="(in SciPy v0.19.1)"><code class="xref py py-mod docutils literal"><span class="pre">scipy.ndimage</span></code></a></div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+<div class="newline"></div><span class="n">im_blur</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_blur</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Blurred image&#39;</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.300 seconds)</p>
+<img alt="../../../../_images/sphx_glr_plot_fft_image_denoise_005.png" class="align-center" src="../../../../_images/sphx_glr_plot_fft_image_denoise_005.png" />
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.525 seconds)</p>
 <div class="sphx-glr-footer container">
 <div class="sphx-glr-download container">
 <a class="reference download internal" href="../../../../_downloads/plot_fft_image_denoise.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_fft_image_denoise.py</span></code></a></div>
@@ -250,6 +280,7 @@ $(function () {
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
+</div>
 
 
           </div>
@@ -257,7 +288,19 @@ $(function () {
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-	<div class="sidebartoc"></div>
+	<div class="sidebartoc">
+  <h3><a href="../../../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.5.12.19.4. Image denoising by FFT</a><ul>
+<li><a class="reference internal" href="#read-and-plot-the-image">1.5.12.19.4.1. Read and plot the image</a></li>
+<li><a class="reference internal" href="#compute-the-2d-fft-of-the-input-image">1.5.12.19.4.2. Compute the 2d FFT of the input image</a></li>
+<li><a class="reference internal" href="#filter-in-fft">1.5.12.19.4.3. Filter in FFT</a></li>
+<li><a class="reference internal" href="#reconstruct-the-final-image">1.5.12.19.4.4. Reconstruct the final image</a></li>
+<li><a class="reference internal" href="#easier-and-better-scipy-ndimage-gaussian-filter">1.5.12.19.4.5. Easier and better: <code class="docutils literal"><span class="pre">scipy.ndimage.gaussian_filter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
 
 
 

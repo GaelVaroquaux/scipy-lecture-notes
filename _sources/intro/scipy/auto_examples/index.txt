@@ -397,7 +397,7 @@ Solutions of the exercises for scipy
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="">
+    <div class="sphx-glr-thumbcontainer" tooltip="We have the min and max temperatures in Alaska for each months of the year. We would like to fi...">
 
 .. only:: html
 
@@ -437,7 +437,7 @@ Solutions of the exercises for scipy
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Image denoising by implementing a blur with an FFT.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Denoise an image (:download:`../../../../data/moonlanding.png`) by implementing a blur with an ...">
 
 .. only:: html
 
