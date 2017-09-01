@@ -182,7 +182,7 @@ div.related li.edit_on_github:hover span.tooltip {
     border-radius: 6px;
 }
 
-@media (max-width: 840px) {
+@media only screen and (min-resolution: 140dpi) {
   li.edit_on_github a {
       display: none;
   }
@@ -960,11 +960,13 @@ ul.horizontal img {
     max-width: 100% ;
 }
 
-div.max-height pre {
+/* Disable as it prevents "font boosting", used by chrome to set font
+ * size on small devices such as phones */
+/*div.max-height pre {
     overflow-y: scroll;
     overflow-x: scroll;
     max-height: 30em;
-}
+}*/
 
 /************* For sphinx-gallery ************/
 p.sphx-glr-script-out {
