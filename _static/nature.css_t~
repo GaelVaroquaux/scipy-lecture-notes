@@ -45,8 +45,8 @@ body {
   }
 }
 
-@media	only screen and (-webkit-min-device-pixel-ratio: 1.5),
-	only screen and (-o-min-device-pixel-ratio: 15/10),
+@media	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 17/10),
 	only screen and (min-resolution: 180dpi)
 {
   /* Even higher DPI devices */
