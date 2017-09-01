@@ -45,6 +45,16 @@ body {
   }
 }
 
+@media	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (-o-min-device-pixel-ratio: 15/10),
+	only screen and (min-resolution: 180dpi)
+{
+  /* Even higher DPI devices */
+  body {
+    font-size: 180%;
+  }
+}
+
 
 div.body {
   color: #333332;
