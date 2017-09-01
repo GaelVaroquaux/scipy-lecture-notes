@@ -34,7 +34,7 @@ body {
   font-family: sans-serif;
 }
 
-/* For mobile device */
+/**** For mobile device: increase font size on small devices ****/
 @media	only screen and (-webkit-min-device-pixel-ratio: 1.5),
 	only screen and (-o-min-device-pixel-ratio: 15/10),
 	only screen and (min-resolution: 140dpi)
@@ -45,9 +45,9 @@ body {
   }
 }
 
-@media	only screen and (-webkit-min-device-pixel-ratio: 2),
+@media	only screen and (-webkit-min-device-pixel-ratio: 1.9),
 	only screen and (-o-min-device-pixel-ratio: 17/10),
-	only screen and (min-resolution: 180dpi)
+	only screen and (min-resolution: 160dpi)
 {
   /* Even higher DPI devices */
   body {
@@ -55,6 +55,17 @@ body {
   }
 }
 
+@media	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 18/10),
+	only screen and (min-resolution: 170dpi)
+{
+  /* Even higher DPI devices */
+  body {
+    font-size: 200%;
+  }
+}
+
+/**** End font sizes ****/
 
 div.body {
   color: #333332;
