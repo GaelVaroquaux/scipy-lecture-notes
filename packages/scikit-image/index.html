@@ -261,7 +261,7 @@ for Ubuntu/Debian.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="o">.</span><span class="n">shape</span>
 <div class="newline"></div><span class="go">(512, 512)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">restoration</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_camera</span> <span class="o">=</span> <span class="n">restoration</span><span class="o">.</span><span class="n">denoise_bilateral</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_camera</span> <span class="o">=</span> <span class="n">restoration</span><span class="o">.</span><span class="n">denoise_bilateral</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">filtered_camera</span><span class="p">)</span>   
 <div class="newline"></div><span class="go">&lt;type &#39;numpy.ndarray&#39;&gt;</span>
 <div class="newline"></div></pre></div>
@@ -704,7 +704,7 @@ background segmentation.</li>
 <p>Example: compute the size and perimeter of the two segmented regions:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">regionprops</span><span class="p">(</span><span class="n">labels_rw</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">prop</span><span class="o">.</span><span class="n">area</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">]</span>
-<div class="newline"></div><span class="go">[770.0, 1168.0]</span>
+<div class="newline"></div><span class="go">[770, 1168]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">prop</span><span class="o">.</span><span class="n">perimeter</span> <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">properties</span><span class="p">]</span> 
 <div class="newline"></div><span class="go">[100.91..., 126.81...]</span>
 <div class="newline"></div></pre></div>

@@ -551,19 +551,19 @@ the location of the minimum that it has found:</p>
 comprising all information on the convergence</p>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
-<div class="newline"></div><span class="go">      fun: -7.94582337561528</span>
-<div class="newline"></div><span class="go"> hess_inv: array([[ 0.08585641]])</span>
-<div class="newline"></div><span class="go">      jac: array([ -1.19209290e-07])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> 
+<div class="newline"></div><span class="go">      fun: -7.9458233756...</span>
+<div class="newline"></div><span class="go"> hess_inv: array([[ 0.0858...]])</span>
+<div class="newline"></div><span class="go">      jac: array([ -1.19209...e-06])</span>
 <div class="newline"></div><span class="go">  message: &#39;Optimization terminated successfully.&#39;</span>
-<div class="newline"></div><span class="go">     nfev: 24</span>
+<div class="newline"></div><span class="go">     nfev: 18</span>
 <div class="newline"></div><span class="go">      nit: 5</span>
-<div class="newline"></div><span class="go">     njev: 8</span>
+<div class="newline"></div><span class="go">     njev: 6</span>
 <div class="newline"></div><span class="go">   status: 0</span>
 <div class="newline"></div><span class="go">  success: True</span>
-<div class="newline"></div><span class="go">        x: array([-1.30644003])</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">x</span> <span class="c1"># The coordinate of the minimum</span>
-<div class="newline"></div><span class="go">array([-1.30644003])</span>
+<div class="newline"></div><span class="go">        x: array([-1.30644...])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">x</span> <span class="c1"># The coordinate of the minimum  </span>
+<div class="newline"></div><span class="go">array([-1.30644...])</span>
 <div class="newline"></div></pre></div>
 </div>
 <div class="line-block">
@@ -573,11 +573,11 @@ comprising all information on the convergence</p>
 As the function is a smooth function, gradient-descent based methods are
 good options. The <a class="reference external" href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">lBFGS algorithm</a> is a good choice
 in general:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;L-BFGS-B&quot;</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;L-BFGS-B&quot;</span><span class="p">)</span>  
 <div class="newline"></div><span class="go">      fun: array([-7.94582338])</span>
 <div class="newline"></div><span class="go"> hess_inv: &lt;1x1 LbfgsInvHessProduct with dtype=float64&gt;</span>
 <div class="newline"></div><span class="go">      jac: array([ -1.42108547e-06])</span>
-<div class="newline"></div><span class="go">  message: &#39;CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL&#39;</span>
+<div class="newline"></div><span class="go">  message: ...&#39;CONVERGENCE: NORM_OF_PROJECTED_GRADIENT_&lt;=_PGTOL&#39;</span>
 <div class="newline"></div><span class="go">     nfev: 12</span>
 <div class="newline"></div><span class="go">      nit: 5</span>
 <div class="newline"></div><span class="go">   status: 0</span>
@@ -1324,8 +1324,8 @@ structuring element centered on the pixel of interest.</p>
 <div class="newline"></div></pre></div>
 </div>
 </div>
-<div class="section" id="connect-components-and-measurements-on-images">
-<h3>1.5.10.4. Connect components and measurements on images<a class="headerlink" href="#connect-components-and-measurements-on-images" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="connected-components-and-measurements-on-images">
+<h3>1.5.10.4. Connected components and measurements on images<a class="headerlink" href="#connected-components-and-measurements-on-images" title="Permalink to this headline">¶</a></h3>
 <p>Let us first generate a nice synthetic binary image.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mf">50.</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mf">50.</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mf">50.</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
@@ -1334,25 +1334,25 @@ structuring element centered on the pixel of interest.</p>
 </div>
 <a class="reference external image-reference" href="scipy/auto_examples/plot_connect_measurements.html"><img alt="../_images/sphx_glr_plot_connect_measurements_001.png" class="align-center" src="../_images/sphx_glr_plot_connect_measurements_001.png" style="width: 420.0px; height: 210.0px;" /></a>
 <a class="reference external image-reference" href="scipy/auto_examples/plot_connect_measurements.html"><img alt="../_images/sphx_glr_plot_connect_measurements_002.png" class="align-right" src="../_images/sphx_glr_plot_connect_measurements_002.png" style="width: 210.0px; height: 210.0px;" /></a>
-<p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.label.html#scipy.ndimage.label" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.ndimage.label()</span></code></a> assigns a different label to each connect
+<p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.label.html#scipy.ndimage.label" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.ndimage.label()</span></code></a> assigns a different label to each connected
 component:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span><span class="p">,</span> <span class="n">nb</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">nb</span>
 <div class="newline"></div><span class="go">8</span>
 <div class="newline"></div></pre></div>
 </div>
-<div style="clear: both"></div><p>Now compute measurements on each connect component:</p>
+<div style="clear: both"></div><p>Now compute measurements on each connected component:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span>   <span class="c1"># The number of pixels in each connect component</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">areas</span>   <span class="c1"># The number of pixels in each connected component</span>
 <div class="newline"></div><span class="go">array([ 190.,   45.,  424.,  278.,  459.,  190.,  549.,  424.])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">labels</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span>  <span class="c1"># The maximum signal in each connect component</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span>  <span class="c1"># The maximum signal in each connected component</span>
 <div class="newline"></div><span class="go">array([  1.80238238,   1.13527605,   5.51954079,   2.49611818,</span>
 <div class="newline"></div><span class="go">         6.71673619,   1.80238238,  16.76547217,   5.51954079])</span>
 <div class="newline"></div></pre></div>
 </div>
 <a class="reference external image-reference" href="scipy/auto_examples/plot_connect_measurements.html"><img alt="../_images/sphx_glr_plot_connect_measurements_003.png" class="align-right" src="../_images/sphx_glr_plot_connect_measurements_003.png" style="width: 210.0px; height: 210.0px;" /></a>
-<p>Extract the 4th connect component, and crop the array around it:</p>
+<p>Extract the 4th connected component, and crop the array around it:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span> 
 <div class="newline"></div><span class="go">[(slice(30L, 48L, None), slice(30L, 48L, None))]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">sl</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">labels</span><span class="o">==</span><span class="mi">4</span><span class="p">)</span>
@@ -1420,7 +1420,7 @@ invited to try these exercises.</p>
 </div>
 <div class="sphx-glr-thumbcontainer" tooltip=""><div class="figure" id="id9">
 <img alt="../_images/sphx_glr_plot_t_test_thumb.png" src="../_images/sphx_glr_plot_t_test_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="scipy/auto_examples/plot_t_test.html#sphx-glr-intro-scipy-auto-examples-plot-t-test-py"><span class="std std-ref">Comparing 2 set of samples from Gaussians</span></a></span></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="scipy/auto_examples/plot_t_test.html#sphx-glr-intro-scipy-auto-examples-plot-t-test-py"><span class="std std-ref">Comparing 2 sets of samples from Gaussians</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1466,9 +1466,9 @@ invited to try these exercises.</p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Extracting and labeling connect components in a 2D array "><div class="figure" id="id17">
+<div class="sphx-glr-thumbcontainer" tooltip="Extracting and labeling connected components in a 2D array "><div class="figure" id="id17">
 <img alt="../_images/sphx_glr_plot_connect_measurements_thumb.png" src="../_images/sphx_glr_plot_connect_measurements_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="scipy/auto_examples/plot_connect_measurements.html#sphx-glr-intro-scipy-auto-examples-plot-connect-measurements-py"><span class="std std-ref">Demo connect components</span></a></span></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="scipy/auto_examples/plot_connect_measurements.html#sphx-glr-intro-scipy-auto-examples-plot-connect-measurements-py"><span class="std std-ref">Demo connected components</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -1581,7 +1581,7 @@ lectures</li>
 <li><a class="reference internal" href="#geometrical-transformations-on-images">1.5.10.1. Geometrical transformations on images</a></li>
 <li><a class="reference internal" href="#image-filtering">1.5.10.2. Image filtering</a></li>
 <li><a class="reference internal" href="#mathematical-morphology">1.5.10.3. Mathematical morphology</a></li>
-<li><a class="reference internal" href="#connect-components-and-measurements-on-images">1.5.10.4. Connect components and measurements on images</a></li>
+<li><a class="reference internal" href="#connected-components-and-measurements-on-images">1.5.10.4. Connected components and measurements on images</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#summary-exercises-on-scientific-computing">1.5.11. Summary exercises on scientific computing</a><ul>

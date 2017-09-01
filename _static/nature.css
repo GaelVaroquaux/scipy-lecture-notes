@@ -34,6 +34,18 @@ body {
   font-family: sans-serif;
 }
 
+/* For mobile device */
+@media	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (-o-min-device-pixel-ratio: 15/10),
+	only screen and (min-resolution: 140dpi)
+{
+  /* High DPI devices */
+  body {
+    font-size: 150%;
+  }
+}
+
+
 div.body {
   color: #333332;
   padding: 0 10px 30px 10px;

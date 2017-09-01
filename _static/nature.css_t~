@@ -34,6 +34,20 @@ body {
   font-family: sans-serif;
 }
 
+/* For mobile device */
+@media	only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (-o-min-device-pixel-ratio: 15/10),
+	only screen and (min-resolution: 140dpi)
+{
+  /* High DPI devices */
+  div.related {
+    font-size: 120%;
+    padding-top: 1pt;
+    padding-bottom: 1pt;
+  }
+}
+
+
 div.body {
   color: #333332;
   padding: 0 10px 30px 10px;
@@ -788,7 +802,7 @@ div.tip .first {
 
 
 div.tip {
-    font-size: 95% ;
+    font-size: 90% ;
     margin: 0px;
     padding: 0px;
     margin-left: -2ex;

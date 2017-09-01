@@ -411,7 +411,7 @@ the solvers, as well as <em>matrix-free</em> solutions</li>
 <div class="newline"></div><span class="gp">...</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">LinearOperator</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">matvec</span><span class="o">=</span><span class="n">mv</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span>
-<div class="newline"></div><span class="go">&lt;2x2 LinearOperator with unspecified dtype&gt;</span>
+<div class="newline"></div><span class="go">&lt;2x2 _CustomLinearOperator with dtype=float64&gt;</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="o">.</span><span class="n">matvec</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 <div class="newline"></div><span class="go">array([ 2.,  3.])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>

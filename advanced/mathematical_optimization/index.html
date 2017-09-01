@@ -382,8 +382,22 @@ optimization.</p>
 <h2><a class="toc-backref" href="#id10">2.7.2. A review of the different optimizers</a><a class="headerlink" href="#a-review-of-the-different-optimizers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="getting-started-1d-optimization">
 <h3><a class="toc-backref" href="#id11">2.7.2.1. Getting started: 1D optimization</a><a class="headerlink" href="#getting-started-1d-optimization" title="Permalink to this headline">¶</a></h3>
-<p>Use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brent.html#scipy.optimize.brent" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.brent()</span></code></a> to minimize 1D functions.
-It combines a bracketing strategy with a parabolic approximation.</p>
+<p>Let&#8217;s get started by finding the minimum of the scalar function
+<img class="math" src="../../_images/math/c8b2b4fa34dbb68f7c75a530d0fc24e3c4a6c6f1.png" alt="f(x)=\exp[(x-0.7)^2]"/>. <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize_scalar.html#scipy.optimize.minimize_scalar" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.minimize_scalar()</span></code></a> uses
+Brent&#8217;s method to find the minimum of a function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">optimize</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">0.7</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize_scalar</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">success</span> <span class="c1"># check if solver was successful</span>
+<div class="newline"></div><span class="go">True</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x_min</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x_min</span> 
+<div class="newline"></div><span class="go">0.699999999...</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x_min</span> <span class="o">-</span> <span class="mf">0.7</span> 
+<div class="newline"></div><span class="go">-2.160590595323697e-10</span>
+<div class="newline"></div></pre></div>
+</div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="33%" />
@@ -403,25 +417,14 @@ optimizer avoided the local minimum is a matter of luck.</td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">optimize</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="o">.</span><span class="mi">7</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x_min</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">brent</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>  <span class="c1"># It actually converges in 9 iterations!</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x_min</span> 
-<div class="newline"></div><span class="go">0.699999999...</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x_min</span> <span class="o">-</span> <span class="o">.</span><span class="mi">7</span> 
-<div class="newline"></div><span class="go">-2.1605...e-10</span>
-<div class="newline"></div></pre></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can use different solvers using the parameter <code class="docutils literal"><span class="pre">method</span></code>.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Brent&#8217;s method can also be used for optimization <em>constrained to an
-interval</em> using <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fminbound.html#scipy.optimize.fminbound" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fminbound()</span></code></a></p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In scipy 0.11, <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize_scalar.html#scipy.optimize.minimize_scalar" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.minimize_scalar()</span></code></a> gives a generic
-interface to 1D scalar minimization</p>
+<p class="last"><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize_scalar.html#scipy.optimize.minimize_scalar" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.minimize_scalar()</span></code></a> can also be used for optimization
+constrained to an interval using the parameter <code class="docutils literal"><span class="pre">bounds</span></code>.</p>
 </div>
 </div>
 <div class="section" id="gradient-based-methods">
@@ -526,26 +529,26 @@ simple conjugate gradient method to minimize a function is
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_cg.html#scipy.optimize.fmin_cg" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_cg()</span></code></a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>   <span class="c1"># The rosenbrock function</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_cg</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>    
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_cg</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>    
 <div class="newline"></div><span class="go">Optimization terminated successfully.</span>
-<div class="newline"></div><span class="go">        Current function value: 0.000000</span>
-<div class="newline"></div><span class="go">        Iterations: 13</span>
-<div class="newline"></div><span class="go">        Function evaluations: 120</span>
-<div class="newline"></div><span class="go">        Gradient evaluations: 30</span>
-<div class="newline"></div><span class="go">array([ 0.99998968,  0.99997855])</span>
+<div class="newline"></div><span class="go">         Current function value: 0.000000</span>
+<div class="newline"></div><span class="go">         Iterations: 8</span>
+<div class="newline"></div><span class="go">         Function evaluations: 64</span>
+<div class="newline"></div><span class="go">         Gradient evaluations: 16</span>
+<div class="newline"></div><span class="go">array([ 0.9999...,  0.9999...])</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>These methods need the gradient of the function. They can compute it, but
 will perform better if you can pass them the gradient:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fprime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="o">*.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_cg</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">fprime</span><span class="o">=</span><span class="n">fprime</span><span class="p">)</span>    
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_cg</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">fprime</span><span class="o">=</span><span class="n">fprime</span><span class="p">)</span>    
 <div class="newline"></div><span class="go">Optimization terminated successfully.</span>
 <div class="newline"></div><span class="go">        Current function value: 0.000000</span>
-<div class="newline"></div><span class="go">        Iterations: 13</span>
-<div class="newline"></div><span class="go">        Function evaluations: 30</span>
-<div class="newline"></div><span class="go">        Gradient evaluations: 30</span>
-<div class="newline"></div><span class="go">array([ 0.99999199,  0.99998336])</span>
+<div class="newline"></div><span class="go">        Iterations: 8</span>
+<div class="newline"></div><span class="go">        Function evaluations: 16</span>
+<div class="newline"></div><span class="go">        Gradient evaluations: 16</span>
+<div class="newline"></div><span class="go">array([ 1.00000012,  1.00000009])</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>Note that the function has only been evaluated 30 times, compared to 120
@@ -669,13 +672,13 @@ curvature is better than that given by the Hessian.</p>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fprime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="o">-</span><span class="mi">2</span><span class="o">*.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_bfgs</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">fprime</span><span class="o">=</span><span class="n">fprime</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_bfgs</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">fprime</span><span class="o">=</span><span class="n">fprime</span><span class="p">)</span>    
 <div class="newline"></div><span class="go">Optimization terminated successfully.</span>
 <div class="newline"></div><span class="go">         Current function value: 0.000000</span>
-<div class="newline"></div><span class="go">         Iterations: 16</span>
-<div class="newline"></div><span class="go">         Function evaluations: 24</span>
-<div class="newline"></div><span class="go">         Gradient evaluations: 24</span>
-<div class="newline"></div><span class="go">array([ 1.00000017,  1.00000026])</span>
+<div class="newline"></div><span class="go">         Iterations: 8</span>
+<div class="newline"></div><span class="go">         Function evaluations: 9</span>
+<div class="newline"></div><span class="go">         Gradient evaluations: 9</span>
+<div class="newline"></div><span class="go">array([ 1.00000...,  1.0000...])</span>
 <div class="newline"></div></pre></div>
 </div>
 <p><strong>L-BFGS:</strong> Limited-memory BFGS Sits between BFGS and conjugate gradient:
@@ -917,7 +920,7 @@ if we compute the norm ourselves and use a good generic optimizer
 <div class="newline"></div><span class="go">         Iterations: 11</span>
 <div class="newline"></div><span class="go">         Function evaluations: 144</span>
 <div class="newline"></div><span class="go">         Gradient evaluations: 12</span>
-<div class="newline"></div><span class="go">array([ -7.4...-09,   1.1...e-01,   2.2...e-01,</span>
+<div class="newline"></div><span class="go">array([ -7.38...-09,   1.1...e-01,   2.2...e-01,</span>
 <div class="newline"></div><span class="go">         3.3...e-01,   4.4...e-01,   5.5...e-01,</span>
 <div class="newline"></div><span class="go">         6.6...e-01,   7.7...e-01,   8.8...e-01,</span>
 <div class="newline"></div><span class="go">         1.0...e+00])</span>
@@ -996,9 +999,9 @@ equality and inequality constraints:</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">constraint</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_1d</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_slsqp</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">ieqcons</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">,</span> <span class="p">])</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_slsqp</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">ieqcons</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">,</span> <span class="p">])</span> 
 <div class="newline"></div><span class="go">Optimization terminated successfully.    (Exit mode 0)</span>
-<div class="newline"></div><span class="go">            Current function value: 2.47487373504</span>
+<div class="newline"></div><span class="go">            Current function value: 2.4748737350...</span>
 <div class="newline"></div><span class="go">            Iterations: 5</span>
 <div class="newline"></div><span class="go">            Function evaluations: 20</span>
 <div class="newline"></div><span class="go">            Gradient evaluations: 5</span>

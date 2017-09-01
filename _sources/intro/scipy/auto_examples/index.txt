@@ -268,7 +268,7 @@ Full code examples for the scipy chapter
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Extracting and labeling connect components in a 2D array ">
+    <div class="sphx-glr-thumbcontainer" tooltip="Extracting and labeling connected components in a 2D array ">
 
 .. only:: html
 
