@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.5.12.16. Optimization of a two-parameter function &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../../index.html" />
-    <link rel="up" title="1.5. Scipy : high-level scientific computing" href="../../scipy.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="1.5.12.17. Plot filtering on images" href="plot_image_filters.html" />
     <link rel="prev" title="1.5.12.15. Minima and roots of a function" href="plot_optimize_example2.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -189,7 +186,7 @@ $(function () {
 <div class="newline"></div></pre></div>
 </div>
 <div class="section" id="a-2d-image-plot-of-the-function">
-<h2>1.5.12.16.1. A 2D image plot of the function<a class="headerlink" href="#a-2d-image-plot-of-the-function" title="Permalink to this headline">¶</a></h2>
+<h2>A 2D image plot of the function<a class="headerlink" href="#a-2d-image-plot-of-the-function" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>Simple visualization in 2D</div></blockquote>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -201,7 +198,7 @@ $(function () {
 <img alt="../../../_images/sphx_glr_plot_2d_minimization_001.png" class="align-center" src="../../../_images/sphx_glr_plot_2d_minimization_001.png" />
 </div>
 <div class="section" id="a-3d-surface-plot-of-the-function">
-<h2>1.5.12.16.2. A 3D surface plot of the function<a class="headerlink" href="#a-3d-surface-plot-of-the-function" title="Permalink to this headline">¶</a></h2>
+<h2>A 3D surface plot of the function<a class="headerlink" href="#a-3d-surface-plot-of-the-function" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 <div class="newline"></div><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <div class="newline"></div><span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
@@ -217,7 +214,7 @@ $(function () {
 <img alt="../../../_images/sphx_glr_plot_2d_minimization_002.png" class="align-center" src="../../../_images/sphx_glr_plot_2d_minimization_002.png" />
 </div>
 <div class="section" id="find-the-minima">
-<h2>1.5.12.16.3. Find the minima<a class="headerlink" href="#find-the-minima" title="Permalink to this headline">¶</a></h2>
+<h2>Find the minima<a class="headerlink" href="#find-the-minima" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">x_min</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">sixhump</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
@@ -233,14 +230,14 @@ $(function () {
 <div class="newline"></div></pre></div>
 </div>
 <img alt="../../../_images/sphx_glr_plot_2d_minimization_003.png" class="align-center" src="../../../_images/sphx_glr_plot_2d_minimization_003.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.522 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.297 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_2d_minimization.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_2d_minimization.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_2d_minimization.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_2d_minimization.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -255,9 +252,9 @@ $(function () {
   <h3><a href="../../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1.5.12.16. Optimization of a two-parameter function</a><ul>
-<li><a class="reference internal" href="#a-2d-image-plot-of-the-function">1.5.12.16.1. A 2D image plot of the function</a></li>
-<li><a class="reference internal" href="#a-3d-surface-plot-of-the-function">1.5.12.16.2. A 3D surface plot of the function</a></li>
-<li><a class="reference internal" href="#find-the-minima">1.5.12.16.3. Find the minima</a></li>
+<li><a class="reference internal" href="#a-2d-image-plot-of-the-function">A 2D image plot of the function</a></li>
+<li><a class="reference internal" href="#a-3d-surface-plot-of-the-function">A 3D surface plot of the function</a></li>
+<li><a class="reference internal" href="#find-the-minima">Find the minima</a></li>
 </ul>
 </li>
 </ul>
@@ -320,8 +317,8 @@ $(function () {
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

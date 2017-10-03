@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.2.5. Reusing code: scripts and modules &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="1.2. The Python language" href="python_language.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.2.6. Input and Output" href="io.html" />
     <link rel="prev" title="1.2.4. Defining functions" href="functions.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -179,7 +176,7 @@ sets of instructions we need to change track and write the code in text
 files (using a text editor), that we will call either <em>scripts</em> or
 <em>modules</em>. Use your favorite text editor (provided it offers syntax
 highlighting for Python), or the editor that comes with the Scientific
-Python Suite you may be using (e.g., Scite with Python(x,y)).</p>
+Python Suite you may be using.</p>
 <div class="section" id="scripts">
 <h2>1.2.5.1. Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
@@ -218,7 +215,7 @@ example,</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>The script has been executed. Moreover the variables defined in the
-script (such as <code class="docutils literal"><span class="pre">message</span></code>) are now available inside the interpreter&#8217;s
+script (such as <code class="docutils literal"><span class="pre">message</span></code>) are now available inside the interpreter’s
 namespace.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
@@ -250,8 +247,8 @@ directory as the test.py file, we can execute this in a console:</p>
 </div>
 <div class="last admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Don&#8217;t implement option parsing yourself. Use modules such as
-<code class="docutils literal"><span class="pre">optparse</span></code>, <code class="docutils literal"><span class="pre">argparse</span></code> or <code class="docutils literal"><span class="pre">docopt</span></code>.</p>
+<p class="last">Don’t implement option parsing yourself. Use modules such as
+<a class="reference external" href="https://docs.python.org/2.7/library/optparse.html#module-optparse" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">optparse</span></code></a>, <a class="reference external" href="https://docs.python.org/2.7/library/argparse.html#module-argparse" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">argparse</span></code></a> or :mod`docopt`.</p>
 </div>
 </div>
 </div>
@@ -289,7 +286,7 @@ directory as the test.py file, we can execute this in a console:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="o">*</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>This is called the <em>star import</em> and please, <strong>Use it with caution</strong></p>
+<p>This is called the <em>star import</em> and please, <strong>Do not use it</strong></p>
 <ul class="last simple">
 <li>Makes the code harder to read and understand: where do symbols come
 from?</li>
@@ -314,14 +311,6 @@ all the scientific computing tools we are going to use are modules:</p>
 <div class="newline"></div></pre></div>
 </div>
 </div>
-<p>In Python(x,y), Ipython(x,y) executes the following imports at startup:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pylab</span> <span class="k">import</span> <span class="o">*</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">scipy</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>and it is not necessary to re-import these modules.</p>
 </div>
 <div class="section" id="creating-modules">
 <h2>1.2.5.3. Creating modules<a class="headerlink" href="#creating-modules" title="Permalink to this headline">¶</a></h2>
@@ -369,8 +358,8 @@ The syntax is as follows.</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>Importing the module gives access to its objects, using the
-<code class="docutils literal"><span class="pre">module.object</span></code> syntax. Don&#8217;t forget to put the module&#8217;s name before the
-object&#8217;s name, otherwise Python won&#8217;t recognize the instruction.</p>
+<code class="docutils literal"><span class="pre">module.object</span></code> syntax. Don’t forget to put the module’s name before the
+object’s name, otherwise Python won’t recognize the instruction.</p>
 <p>Introspection</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">demo</span><span class="err">?</span>
 <div class="newline"></div><span class="go">Type:               module</span>
@@ -404,15 +393,8 @@ object&#8217;s name, otherwise Python won&#8217;t recognize the instruction.</p>
 <div class="newline"></div>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [8]: </span><span class="n">demo</span><span class="o">.</span>
-<div class="newline"></div><span class="go">demo.__builtins__      demo.__init__          demo.__str__</span>
-<div class="newline"></div><span class="go">demo.__class__         demo.__name__          demo.__subclasshook__</span>
-<div class="newline"></div><span class="go">demo.__delattr__       demo.__new__           demo.c</span>
-<div class="newline"></div><span class="go">demo.__dict__          demo.__package__       demo.d</span>
-<div class="newline"></div><span class="go">demo.__doc__           demo.__reduce__        demo.print_a</span>
-<div class="newline"></div><span class="go">demo.__file__          demo.__reduce_ex__     demo.print_b</span>
-<div class="newline"></div><span class="go">demo.__format__        demo.__repr__          demo.py</span>
-<div class="newline"></div><span class="go">demo.__getattribute__  demo.__setattr__       demo.pyc</span>
-<div class="newline"></div><span class="go">demo.__hash__          demo.__sizeof__</span>
+<div class="newline"></div><span class="go">demo.c        demo.print_a  demo.py</span>
+<div class="newline"></div><span class="go">demo.d        demo.print_b  demo.pyc</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>Importing objects from modules into the main namespace</p>
@@ -450,7 +432,7 @@ old session, you will get the old one.</div></blockquote>
 </div>
 </div>
 <div class="section" id="main-and-module-loading">
-<h2>1.2.5.4. &#8216;__main__&#8217; and module loading<a class="headerlink" href="#main-and-module-loading" title="Permalink to this headline">¶</a></h2>
+<h2>1.2.5.4. ‘__main__’ and module loading<a class="headerlink" href="#main-and-module-loading" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Sometimes we want code to be executed when a module is
@@ -471,7 +453,7 @@ module is being run directly.</p>
 <div class="newline"></div><span class="c1"># print_b() runs on import</span>
 <div class="newline"></div><span class="n">print_b</span><span class="p">()</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="newline"></div><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 <div class="newline"></div>    <span class="c1"># print_a() is only executed when the module is run directly.</span>
 <div class="newline"></div>    <span class="n">print_a</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
@@ -506,7 +488,7 @@ your functions in the different scripts!).</li>
 </ul>
 </div>
 <div class="section" id="how-modules-are-found-and-imported">
-<h3>1.2.5.5.1. How modules are found and imported<a class="headerlink" href="#how-modules-are-found-and-imported" title="Permalink to this headline">¶</a></h3>
+<h3>How modules are found and imported<a class="headerlink" href="#how-modules-are-found-and-imported" title="Permalink to this headline">¶</a></h3>
 <p>When the <code class="docutils literal"><span class="pre">import</span> <span class="pre">mymodule</span></code> statement is executed, the module <code class="docutils literal"><span class="pre">mymodule</span></code>
 is searched in a given list of directories. This list includes a list
 of installation-dependent default path (e.g., <code class="docutils literal"><span class="pre">/usr/lib/python</span></code>) as
@@ -601,7 +583,7 @@ imported.</p>
 <p>From Ipython:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">scipy</span>
 <div class="newline"></div>
-<div class="newline"></div><span class="gp">In [2]: </span><span class="n">scipy</span><span class="o">.</span><span class="n">__file__</span>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">scipy</span><span class="o">.</span><span class="vm">__file__</span>
 <div class="newline"></div><span class="gr">Out[2]: </span><span class="s1">&#39;/usr/lib/python2.6/dist-packages/scipy/__init__.pyc&#39;</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">scipy.version</span>
@@ -664,11 +646,10 @@ other languages.</p>
 </div>
 </li>
 <li><p class="first"><strong>Indentation depth</strong>: Inside your text editor, you may choose to
-indent with any positive number of spaces (1, 2, 3, 4, ...). However,
+indent with any positive number of spaces (1, 2, 3, 4, …). However,
 it is considered good practice to <strong>indent with 4 spaces</strong>. You may
 configure your editor to map the <code class="docutils literal"><span class="pre">Tab</span></code> key to a 4-space
-indentation. In Python(x,y), the editor is already
-configured this way.</p>
+indentation.</p>
 </li>
 <li><p class="first"><strong>Style guidelines</strong></p>
 <p><strong>Long lines</strong>: you should not write very long lines that span over more
@@ -686,7 +667,7 @@ operators, etc.:</p>
 <div class="newline"></div></pre></div>
 </div>
 <p>A certain number of rules
-for writing &#8220;beautiful&#8221; code (and more importantly using the same
+for writing “beautiful” code (and more importantly using the same
 conventions as anybody else!) are given in the <a class="reference external" href="https://www.python.org/dev/peps/pep-0008">Style Guide for Python
 Code</a>.</p>
 </li>
@@ -717,9 +698,9 @@ the intro part. But be sure to come back and finish this chapter later.</p>
 <li><a class="reference internal" href="#scripts">1.2.5.1. Scripts</a></li>
 <li><a class="reference internal" href="#importing-objects-from-modules">1.2.5.2. Importing objects from modules</a></li>
 <li><a class="reference internal" href="#creating-modules">1.2.5.3. Creating modules</a></li>
-<li><a class="reference internal" href="#main-and-module-loading">1.2.5.4. &#8216;__main__&#8217; and module loading</a></li>
+<li><a class="reference internal" href="#main-and-module-loading">1.2.5.4. ‘__main__’ and module loading</a></li>
 <li><a class="reference internal" href="#scripts-or-modules-how-to-organize-your-code">1.2.5.5. Scripts or modules? How to organize your code</a><ul>
-<li><a class="reference internal" href="#how-modules-are-found-and-imported">1.2.5.5.1. How modules are found and imported</a></li>
+<li><a class="reference internal" href="#how-modules-are-found-and-imported">How modules are found and imported</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#packages">1.2.5.6. Packages</a></li>
@@ -786,8 +767,8 @@ the intro part. But be sure to come back and finish this chapter later.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

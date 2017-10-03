@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>2.5.2.2.7. Block Compressed Row Format (BSR) &#8212; Scipy lecture notes</title>
-    
+    <title>Block Compressed Row Format (BSR) &#8212; Scipy lecture notes</title>
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2.5.2. Storage Schemes" href="storage_schemes.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.5.3. Linear System Solvers" href="solvers.html" />
-    <link rel="prev" title="2.5.2.2.6. Compressed Sparse Column Format (CSC)" href="csc_matrix.html" />
+    <link rel="prev" title="Compressed Sparse Column Format (CSC)" href="csc_matrix.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -139,7 +136,7 @@ $(function () {
           <a href="solvers.html" title="2.5.3. Linear System Solvers"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="csc_matrix.html" title="2.5.2.2.6. Compressed Sparse Column Format (CSC)"
+          <a href="csc_matrix.html" title="Compressed Sparse Column Format (CSC)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >2. Advanced topics</a> &#187;</li>
@@ -174,28 +171,27 @@ $(function () {
           <div class="body" role="main">
             
   <div class="section" id="block-compressed-row-format-bsr">
-<h1>2.5.2.2.7. Block Compressed Row Format (BSR)<a class="headerlink" href="#block-compressed-row-format-bsr" title="Permalink to this headline">¶</a></h1>
+<h1>Block Compressed Row Format (BSR)<a class="headerlink" href="#block-compressed-row-format-bsr" title="Permalink to this headline">¶</a></h1>
 <ul>
 <li><p class="first">basically a CSR with dense sub-matrices of fixed shape instead of scalar
 items</p>
 <blockquote>
-<div><ul>
-<li><p class="first">block size <cite>(R, C)</cite> must evenly divide the shape of the matrix
-<cite>(M, N)</cite></p>
-</li>
+<div><ul class="simple">
+<li>block size <cite>(R, C)</cite> must evenly divide the shape of the matrix
+<cite>(M, N)</cite></li>
 <li><dl class="first docutils">
 <dt>three NumPy arrays: <cite>indices</cite>, <cite>indptr</cite>, <cite>data</cite></dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li><cite>indices</cite> is array of column indices for each block</li>
 <li><cite>data</cite> is array of corresponding nonzero values of shape <cite>(nnz, R, C)</cite></li>
-<li>...</li>
+<li>…</li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>subclass of <code class="xref py py-class docutils literal"><span class="pre">_cs_matrix</span></code> (common CSR/CSC functionality)</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>subclass of <code class="xref py py-class docutils literal"><span class="pre">_data_matrix</span></code> (sparse matrix classes with
 <cite>.data</cite> attribute)</li>
 </ul>
@@ -233,9 +229,9 @@ sparse matrices with dense sub-matrices</p>
 </li>
 </ul>
 <div class="section" id="examples">
-<h2>2.5.2.2.7.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first">create empty BSR matrix with (1, 1) block size (like CSR...):</p>
+<li><p class="first">create empty BSR matrix with (1, 1) block size (like CSR…):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">bsr_matrix</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mtx</span>  
 <div class="newline"></div><span class="go">&lt;3x4 sparse matrix of type &#39;&lt;... &#39;numpy.int8&#39;&gt;&#39;</span>
@@ -262,7 +258,7 @@ sparse matrices with dense sub-matrices</p>
 <li>a bug?</li>
 </ul>
 </li>
-<li><p class="first">create using <cite>(data, ij)</cite> tuple with (1, 1) block size (like CSR...):</p>
+<li><p class="first">create using <cite>(data, ij)</cite> tuple with (1, 1) block size (like CSR…):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
@@ -340,8 +336,8 @@ sparse matrices with dense sub-matrices</p>
 	<div class="sidebartoc">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">2.5.2.2.7. Block Compressed Row Format (BSR)</a><ul>
-<li><a class="reference internal" href="#examples">2.5.2.2.7.1. Examples</a></li>
+<li><a class="reference internal" href="#">Block Compressed Row Format (BSR)</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -376,7 +372,7 @@ sparse matrices with dense sub-matrices</p>
           <a href="solvers.html" title="2.5.3. Linear System Solvers"
              >next</a></li>
         <li class="right" >
-          <a href="csc_matrix.html" title="2.5.2.2.6. Compressed Sparse Column Format (CSC)"
+          <a href="csc_matrix.html" title="Compressed Sparse Column Format (CSC)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >2. Advanced topics</a> &#187;</li>
@@ -405,8 +401,8 @@ sparse matrices with dense sub-matrices</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

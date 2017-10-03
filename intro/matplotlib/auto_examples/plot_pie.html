@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>1.4.7.1.1. Pie chart &#8212; Scipy lecture notes</title>
-    
+    <title>Pie chart &#8212; Scipy lecture notes</title>
     <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../../index.html" />
-    <link rel="up" title="1.4.7.1. Code samples for Matplotlib" href="index.html" />
-    <link rel="next" title="1.4.7.1.2. Plotting a scatter of points" href="plot_scatter.html" />
-    <link rel="prev" title="1.4.7.1. Code samples for Matplotlib" href="index.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Plotting a scatter of points" href="plot_scatter.html" />
+    <link rel="prev" title="1.4. Matplotlib: plotting" href="../index.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -136,15 +133,14 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_scatter.html" title="1.4.7.1.2. Plotting a scatter of points"
+          <a href="plot_scatter.html" title="Plotting a scatter of points"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="1.4.7.1. Code samples for Matplotlib"
+          <a href="../index.html" title="1.4. Matplotlib: plotting"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >1. Getting started with Python for science</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="../index.html" >1.4. Matplotlib: plotting</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" accesskey="U">1.4.7.1. Code samples for Matplotlib</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../index.html" accesskey="U">1.4. Matplotlib: plotting</a> &#187;</li>
      
     <!-- Insert a menu in the navigation bar -->
     <li class="left">
@@ -174,14 +170,14 @@ $(function () {
           <div class="body" role="main">
             
   <div class="section" id="pie-chart">
-<span id="sphx-glr-intro-matplotlib-auto-examples-plot-pie-py"></span><h1>1.4.7.1.1. Pie chart<a class="headerlink" href="#pie-chart" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-intro-matplotlib-auto-examples-plot-pie-py"></span><h1>Pie chart<a class="headerlink" href="#pie-chart" title="Permalink to this headline">¶</a></h1>
 <p>A simple pie chart example with matplotlib.</p>
 <img alt="../../../_images/sphx_glr_plot_pie_001.png" class="align-center" src="../../../_images/sphx_glr_plot_pie_001.png" />
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
-<div class="newline"></div><span class="n">Z</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ones.html#numpy.ones" title="View documentation for numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<div class="newline"></div><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <div class="newline"></div><span class="n">Z</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">2</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">])</span>
@@ -194,14 +190,14 @@ $(function () {
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.053 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.047 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_pie.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_pie.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_pie.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_pie.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
 
@@ -239,15 +235,14 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_scatter.html" title="1.4.7.1.2. Plotting a scatter of points"
+          <a href="plot_scatter.html" title="Plotting a scatter of points"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="1.4.7.1. Code samples for Matplotlib"
+          <a href="../index.html" title="1.4. Matplotlib: plotting"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >1. Getting started with Python for science</a> &#187;</li>
           <li class="nav-item nav-item-2"><a href="../index.html" >1.4. Matplotlib: plotting</a> &#187;</li>
-          <li class="nav-item nav-item-3"><a href="index.html" >1.4.7.1. Code samples for Matplotlib</a> &#187;</li>
      
     <!-- Insert a menu in the navigation bar -->
     <li class="left">
@@ -271,8 +266,8 @@ $(function () {
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

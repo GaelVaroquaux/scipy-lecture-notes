@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>2.3. Debugging code &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2. Advanced topics" href="../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.4. Optimizing code" href="../optimizing/index.html" />
     <link rel="prev" title="2.2. Advanced NumPy" href="../advanced_numpy/index.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -183,8 +180,8 @@ that we will employ are tailored to its needs.</p>
 <ul class="simple">
 <li>Numpy</li>
 <li>IPython</li>
-<li>nosetests (<a class="reference external" href="http://readthedocs.org/docs/nose/en/latest/">http://readthedocs.org/docs/nose/en/latest/</a>)</li>
-<li>pyflakes (<a class="reference external" href="http://pypi.python.org/pypi/pyflakes">http://pypi.python.org/pypi/pyflakes</a>)</li>
+<li><a class="reference external" href="http://readthedocs.org/docs/nose/en/latest/">nosetests</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/pyflakes">pyflakes</a></li>
 <li>gdb for the C-debugging part.</li>
 </ul>
 </div>
@@ -212,7 +209,7 @@ that we will employ are tailored to its needs.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Brian Kernighan</p>
 <p class="last"><em>“Everyone knows that debugging is twice as hard as writing a
-program in the first place. So if you&#8217;re as clever as you can be
+program in the first place. So if you’re as clever as you can be
 when you write it, how will you ever debug it?”</em></p>
 </div>
 <ul class="simple">
@@ -222,10 +219,10 @@ when you write it, how will you ever debug it?”</em></p>
 <li>What is the simplest thing that could possibly work?</li>
 </ul>
 </li>
-<li>Don&#8217;t Repeat Yourself (DRY).<ul>
+<li>Don’t Repeat Yourself (DRY).<ul>
 <li>Every piece of knowledge must have a single, unambiguous,
 authoritative representation within a system.</li>
-<li>Constants, algorithms, etc...</li>
+<li>Constants, algorithms, etc…</li>
 </ul>
 </li>
 <li>Try to limit interdependencies of your code. (Loose Coupling)</li>
@@ -255,16 +252,16 @@ catches, flake8 detects violations of the recommendation in <a class="reference 
 <p>Integrating pyflakes (or flake8) in your editor or IDE is highly
 recommended, it <strong>does yield productivity gains</strong>.</p>
 <div class="section" id="running-pyflakes-on-the-current-edited-file">
-<h4>2.3.1.2.1. Running pyflakes on the current edited file<a class="headerlink" href="#running-pyflakes-on-the-current-edited-file" title="Permalink to this headline">¶</a></h4>
+<h4>Running pyflakes on the current edited file<a class="headerlink" href="#running-pyflakes-on-the-current-edited-file" title="Permalink to this headline">¶</a></h4>
 <p>You can bind a key to run pyflakes in the current buffer.</p>
 <ul>
 <li><p class="first"><strong>In kate</strong>
-Menu: &#8216;settings -&gt; configure kate</p>
+Menu: ‘settings -&gt; configure kate</p>
 <blockquote>
 <div><ul>
-<li><p class="first">In plugins enable &#8216;external tools&#8217;</p>
+<li><p class="first">In plugins enable ‘external tools’</p>
 </li>
-<li><p class="first">In external Tools&#8217;, add <cite>pyflakes</cite>:</p>
+<li><p class="first">In external Tools’, add <cite>pyflakes</cite>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">kdialog</span> <span class="o">--</span><span class="n">title</span> <span class="s2">&quot;pyflakes </span><span class="si">%f</span><span class="s2">ilename&quot;</span> <span class="o">--</span><span class="n">msgbox</span> <span class="s2">&quot;$(pyflakes </span><span class="si">%f</span><span class="s2">ilename)&quot;</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -315,7 +312,7 @@ In your <cite>.emacs</cite> (binds F5 to <cite>pyflakes</cite>):</p>
 </ul>
 </div>
 <div class="section" id="a-type-as-go-spell-checker-like-integration">
-<h4>2.3.1.2.2. A type-as-go spell-checker like integration<a class="headerlink" href="#a-type-as-go-spell-checker-like-integration" title="Permalink to this headline">¶</a></h4>
+<h4>A type-as-go spell-checker like integration<a class="headerlink" href="#a-type-as-go-spell-checker-like-integration" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p class="first"><strong>In vim</strong></p>
 <ul>
@@ -422,8 +419,8 @@ inspect runtime, it is often more efficient to use the debugger.</p>
 <li>Call the debugger inside the module</li>
 </ol>
 <div class="section" id="postmortem">
-<h4>2.3.3.1.1. Postmortem<a class="headerlink" href="#postmortem" title="Permalink to this headline">¶</a></h4>
-<p><strong>Situation</strong>: You&#8217;re working in IPython and you get a traceback.</p>
+<h4>Postmortem<a class="headerlink" href="#postmortem" title="Permalink to this headline">¶</a></h4>
+<p><strong>Situation</strong>: You’re working in IPython and you get a traceback.</p>
 <p>Here we debug the file <a class="reference download internal" href="../../_downloads/index_error.py" download=""><code class="xref download docutils literal"><span class="pre">index_error.py</span></code></a>. When running it, an
 <code class="xref py py-class docutils literal"><span class="pre">IndexError</span></code> is raised. Type <code class="docutils literal"><span class="pre">%debug</span></code> and drop into the debugger.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="n">index_error</span><span class="o">.</span><span class="n">py</span>
@@ -502,7 +499,7 @@ you can call the script with <code class="docutils literal"><span class="pre">py
 </div>
 </div>
 <div class="section" id="step-by-step-execution">
-<h4>2.3.3.1.2. Step-by-step execution<a class="headerlink" href="#step-by-step-execution" title="Permalink to this headline">¶</a></h4>
+<h4>Step-by-step execution<a class="headerlink" href="#step-by-step-execution" title="Permalink to this headline">¶</a></h4>
 <p><strong>Situation</strong>: You believe a bug exists in a module but are not sure where.</p>
 <p>For instance we are trying to debug <a class="reference download internal" href="../../_downloads/wiener_filtering.py" download=""><code class="xref download docutils literal"><span class="pre">wiener_filtering.py</span></code></a>.
 Indeed the code runs, but the filtering does not work well.</p>
@@ -620,12 +617,12 @@ post-mortem debugging on them, and find our problem more quickly:</p>
 </div>
 </div>
 <div class="section" id="other-ways-of-starting-a-debugger">
-<h4>2.3.3.1.3. Other ways of starting a debugger<a class="headerlink" href="#other-ways-of-starting-a-debugger" title="Permalink to this headline">¶</a></h4>
+<h4>Other ways of starting a debugger<a class="headerlink" href="#other-ways-of-starting-a-debugger" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p class="first"><strong>Raising an exception as a poor man break point</strong></p>
 <p>If you find it tedious to note the line number to set a break point,
 you can simply raise an exception at the point that you want to
-inspect and use IPython&#8217;s <code class="docutils literal"><span class="pre">%debug</span></code>. Note that in this case you cannot
+inspect and use IPython’s <code class="docutils literal"><span class="pre">%debug</span></code>. Note that in this case you cannot
 step or continue the execution.</p>
 </li>
 <li><p class="first"><strong>Debugging test failures using nosetests</strong></p>
@@ -707,7 +704,7 @@ name: <strong>use different names than your local variable when typing code
 in the debugger</strong>.</p>
 </div>
 <div class="section" id="getting-help-when-in-the-debugger">
-<h4>2.3.3.2.1. Getting help when in the debugger<a class="headerlink" href="#getting-help-when-in-the-debugger" title="Permalink to this headline">¶</a></h4>
+<h4>Getting help when in the debugger<a class="headerlink" href="#getting-help-when-in-the-debugger" title="Permalink to this headline">¶</a></h4>
 <p>Type <code class="docutils literal"><span class="pre">h</span></code> or <code class="docutils literal"><span class="pre">help</span></code> to access the interactive help:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="go">ipdb&gt; help</span>
 <div class="newline"></div>
@@ -763,7 +760,7 @@ script in gdb as follows</p>
 </div>
 <p>We get a segfault, and gdb captures it for post-mortem debugging in the C
 level stack (not the Python call stack). We can debug the C call stack
-using gdb&#8217;s commands:</p>
+using gdb’s commands:</p>
 <div class="highlight-console"><div class="highlight"><pre><span></span><span class="go">(gdb) up</span>
 <div class="newline"></div><span class="gp">#</span><span class="m">1</span>  0x004af4f5 in _copy_from_same_shape <span class="o">(</span><span class="nv">dest</span><span class="o">=</span>&lt;value optimized out&gt;,
 <div class="newline"></div><span class="go">    src=&lt;value optimized out&gt;, myfunc=0x496780 &lt;_strided_byte_copy&gt;,</span>
@@ -833,7 +830,7 @@ the source of this file.</p>
 <p class="topic-title first"><strong>Wrap up exercise</strong></p>
 <p>The following script is well documented and hopefully legible. It
 seeks to answer a problem of actual interest for numerical computing,
-but it does not work... Can you debug it?</p>
+but it does not work… Can you debug it?</p>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/to_debug.py" download=""><code class="xref download docutils literal"><span class="pre">to_debug.py</span></code></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <div class="newline"></div><span class="sd">A script to compare different root-finding algorithms.</span>
@@ -856,7 +853,7 @@ but it does not work... Can you debug it?</p>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">FUNCTIONS</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">,</span>  <span class="c1"># Dilating map</span>
 <div class="newline"></div>             <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">,</span> <span class="c1"># Contracting map</span>
-<div class="newline"></div>             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="c1"># Almost null gradient at the root</span>
+<div class="newline"></div>             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="c1"># Almost null gradient at the root</span>
 <div class="newline"></div>             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="c1"># Non monotonous function</span>
 <div class="newline"></div>             <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="c1"># Fonction with several local maxima</span>
 <div class="newline"></div>            <span class="p">)</span>
@@ -891,12 +888,12 @@ but it does not work... Can you debug it?</p>
 <div class="newline"></div>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benching 1D root-finder optimizers from scipy.optimize:&quot;</span><span class="p">)</span>
 <div class="newline"></div>    <span class="k">for</span> <span class="n">optimizer</span> <span class="ow">in</span> <span class="n">OPTIMIZERS</span><span class="p">:</span>
 <div class="newline"></div>        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">% 20s</span><span class="s1">: </span><span class="si">% 8i</span><span class="s1"> total function calls&#39;</span> <span class="o">%</span> <span class="p">(</span>
-<div class="newline"></div>                    <span class="n">optimizer</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> 
+<div class="newline"></div>                    <span class="n">optimizer</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> 
 <div class="newline"></div>                    <span class="n">bench_optimizer</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">)</span>
 <div class="newline"></div>                <span class="p">))</span>
 <div class="newline"></div>
 <div class="newline"></div>
-<div class="newline"></div><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<div class="newline"></div><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 <div class="newline"></div>    <span class="n">compare_optimizers</span><span class="p">(</span><span class="n">OPTIMIZERS</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -918,8 +915,8 @@ but it does not work... Can you debug it?</p>
 <li><a class="reference internal" href="#avoiding-bugs">2.3.1. Avoiding bugs</a><ul>
 <li><a class="reference internal" href="#coding-best-practices-to-avoid-getting-in-trouble">2.3.1.1. Coding best practices to avoid getting in trouble</a></li>
 <li><a class="reference internal" href="#pyflakes-fast-static-analysis">2.3.1.2. pyflakes: fast static analysis</a><ul>
-<li><a class="reference internal" href="#running-pyflakes-on-the-current-edited-file">2.3.1.2.1. Running pyflakes on the current edited file</a></li>
-<li><a class="reference internal" href="#a-type-as-go-spell-checker-like-integration">2.3.1.2.2. A type-as-go spell-checker like integration</a></li>
+<li><a class="reference internal" href="#running-pyflakes-on-the-current-edited-file">Running pyflakes on the current edited file</a></li>
+<li><a class="reference internal" href="#a-type-as-go-spell-checker-like-integration">A type-as-go spell-checker like integration</a></li>
 </ul>
 </li>
 </ul>
@@ -927,13 +924,13 @@ but it does not work... Can you debug it?</p>
 <li><a class="reference internal" href="#debugging-workflow">2.3.2. Debugging workflow</a></li>
 <li><a class="reference internal" href="#using-the-python-debugger">2.3.3. Using the Python debugger</a><ul>
 <li><a class="reference internal" href="#invoking-the-debugger">2.3.3.1. Invoking the debugger</a><ul>
-<li><a class="reference internal" href="#postmortem">2.3.3.1.1. Postmortem</a></li>
-<li><a class="reference internal" href="#step-by-step-execution">2.3.3.1.2. Step-by-step execution</a></li>
-<li><a class="reference internal" href="#other-ways-of-starting-a-debugger">2.3.3.1.3. Other ways of starting a debugger</a></li>
+<li><a class="reference internal" href="#postmortem">Postmortem</a></li>
+<li><a class="reference internal" href="#step-by-step-execution">Step-by-step execution</a></li>
+<li><a class="reference internal" href="#other-ways-of-starting-a-debugger">Other ways of starting a debugger</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#debugger-commands-and-interaction">2.3.3.2. Debugger commands and interaction</a><ul>
-<li><a class="reference internal" href="#getting-help-when-in-the-debugger">2.3.3.2.1. Getting help when in the debugger</a></li>
+<li><a class="reference internal" href="#getting-help-when-in-the-debugger">Getting help when in the debugger</a></li>
 </ul>
 </li>
 </ul>
@@ -1000,8 +997,8 @@ but it does not work... Can you debug it?</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

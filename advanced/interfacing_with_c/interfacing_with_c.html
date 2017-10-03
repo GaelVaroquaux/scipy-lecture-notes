@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>2.8. Interfacing with C &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2. Advanced topics" href="../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3. Packages and applications" href="../../packages/index.html" />
-    <link rel="prev" title="2.7. Mathematical optimization: finding minima of functions" href="../mathematical_optimization/index.html" />
+    <link rel="prev" title="2.7.4.12. Gradient descent" href="../mathematical_optimization/auto_examples/plot_gradient_descent.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -139,7 +136,7 @@ $(function () {
           <a href="../../packages/index.html" title="3. Packages and applications"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="../mathematical_optimization/index.html" title="2.7. Mathematical optimization: finding minima of functions"
+          <a href="../mathematical_optimization/auto_examples/plot_gradient_descent.html" title="2.7.4.12. Gradient descent"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">2. Advanced topics</a> &#187;</li>
@@ -316,13 +313,34 @@ math library available to Python:</p>
 <div class="newline"></div>     <span class="p">{</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
 <div class="newline"></div><span class="p">};</span>
 <div class="newline"></div>
+<div class="newline"></div><span class="cp">#if PY_MAJOR_VERSION &gt;= 3</span>
 <div class="newline"></div><span class="cm">/* module initialization */</span>
-<div class="newline"></div><span class="n">PyMODINIT_FUNC</span>
+<div class="newline"></div><span class="cm">/* Python version 3*/</span>
+<div class="newline"></div><span class="k">static</span> <span class="k">struct</span> <span class="n">PyModuleDef</span> <span class="n">cModPyDem</span> <span class="o">=</span>
+<div class="newline"></div><span class="p">{</span>
+<div class="newline"></div>    <span class="n">PyModuleDef_HEAD_INIT</span><span class="p">,</span>
+<div class="newline"></div>    <span class="s">&quot;cos_module&quot;</span><span class="p">,</span> <span class="s">&quot;Some documentation&quot;</span><span class="p">,</span>
+<div class="newline"></div>    <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<div class="newline"></div>    <span class="n">CosMethods</span>
+<div class="newline"></div><span class="p">};</span>
 <div class="newline"></div>
+<div class="newline"></div><span class="n">PyMODINIT_FUNC</span>
+<div class="newline"></div><span class="nf">PyInit_cos_module</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<div class="newline"></div><span class="p">{</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="n">PyModule_Create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cModPyDem</span><span class="p">);</span>
+<div class="newline"></div><span class="p">}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="cp">#else</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="cm">/* module initialization */</span>
+<div class="newline"></div><span class="cm">/* Python version 2 */</span>
+<div class="newline"></div><span class="n">PyMODINIT_FUNC</span>
 <div class="newline"></div><span class="nf">initcos_module</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <div class="newline"></div><span class="p">{</span>
-<div class="newline"></div>     <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">Py_InitModule</span><span class="p">(</span><span class="s">&quot;cos_module&quot;</span><span class="p">,</span> <span class="n">CosMethods</span><span class="p">);</span>
+<div class="newline"></div>    <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">Py_InitModule</span><span class="p">(</span><span class="s">&quot;cos_module&quot;</span><span class="p">,</span> <span class="n">CosMethods</span><span class="p">);</span>
 <div class="newline"></div><span class="p">}</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="cp">#endif</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>As you can see, there is much boilerplate, both to «massage» the arguments and
@@ -363,6 +381,12 @@ from a <code class="docutils literal"><span class="pre">setup.py</span></code>, 
 <li><code class="docutils literal"><span class="pre">--inplace</span></code> will output the compiled extension module into the current directory</li>
 </ul>
 <p>The file <code class="docutils literal"><span class="pre">cos_module.so</span></code> contains the compiled extension, which we can now load in the IPython interpreter:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In Python 3, the filename for compiled modules includes metadata on the Python
+interpreter (see <a class="reference external" href="https://www.python.org/dev/peps/pep-3149/">PEP 3149</a>) and is thus
+longer. The import statement is not affected by this.</p>
+</div>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="kn">import</span> <span class="nn">cos_module</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="gp">In [2]: </span><span class="n">cos_module</span><span class="err">?</span>
@@ -384,7 +408,7 @@ from a <code class="docutils literal"><span class="pre">setup.py</span></code>, 
 <div class="newline"></div><span class="gr">Out[7]: </span><span class="o">-</span><span class="mf">1.0</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Now let&#8217;s see how robust this is:</p>
+<p>Now let’s see how robust this is:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [10]: </span><span class="n">cos_module</span><span class="o">.</span><span class="n">cos_func</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="go">---------------------------------------------------------------------------</span>
 <div class="newline"></div><span class="go">TypeError                                 Traceback (most recent call last)</span>
@@ -635,7 +659,7 @@ and there are functions to convert from C arrays to Numpy arrays and back.</p>
 <p>For more information, consult the corresponding section in the <a class="reference external" href="http://www.scipy.org/Cookbook/Ctypes">Numpy Cookbook</a> and the API documentation for
 <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.ctypes.html">numpy.ndarray.ctypes</a>
 and <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/routines.ctypeslib.html">numpy.ctypeslib</a>.</p>
-<p>For the following example, let&#8217;s consider a C function in a library that takes
+<p>For the following example, let’s consider a C function in a library that takes
 an input and an output array, computes the cosine of the input array and
 stores the result in the output array.</p>
 <p>The library consists of the following header file (although this is not
@@ -656,7 +680,7 @@ strictly needed for this example, we list it for completeness):</p>
 <div class="newline"></div><span class="p">}</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>And since the library is pure C, we can&#8217;t use <code class="docutils literal"><span class="pre">distutils</span></code> to compile it, but
+<p>And since the library is pure C, we can’t use <code class="docutils literal"><span class="pre">distutils</span></code> to compile it, but
 must use a combination of <code class="docutils literal"><span class="pre">make</span></code> and <code class="docutils literal"><span class="pre">gcc</span></code>:</p>
 <div class="highlight-make"><div class="highlight"><pre><span></span><span class="nf">m.PHONY </span><span class="o">:</span> <span class="n">clean</span>
 <div class="newline"></div>
@@ -711,7 +735,7 @@ must use a combination of <code class="docutils literal"><span class="pre">make<
 <li>Note the inherent limitation of contiguous single dimensional Numpy arrays,
 since the C functions requires this kind of buffer.</li>
 <li>Also note that the output array must be preallocated, for example with
-<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="(in NumPy v1.13)"><code class="xref py py-func docutils literal"><span class="pre">numpy.zeros()</span></code></a> and the function will write into it&#8217;s buffer.</li>
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="(in NumPy v1.13)"><code class="xref py py-func docutils literal"><span class="pre">numpy.zeros()</span></code></a> and the function will write into it’s buffer.</li>
 <li>Although the original signature of the <code class="docutils literal"><span class="pre">cos_doubles</span></code> function is <code class="docutils literal"><span class="pre">ARRAY,</span>
 <span class="pre">ARRAY,</span> <span class="pre">int</span></code> the final <code class="docutils literal"><span class="pre">cos_doubles_func</span></code> takes only two Numpy arrays as
 arguments.</li>
@@ -759,7 +783,7 @@ the wrapping process, may be a bit tricky to understand.</p>
 </ul>
 <div class="section" id="id8">
 <h3>2.8.4.1. Example<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>Let&#8217;s imagine that our <code class="docutils literal"><span class="pre">cos</span></code> function lives in a <code class="docutils literal"><span class="pre">cos_module</span></code> which has
+<p>Let’s imagine that our <code class="docutils literal"><span class="pre">cos</span></code> function lives in a <code class="docutils literal"><span class="pre">cos_module</span></code> which has
 been written in <code class="docutils literal"><span class="pre">c</span></code> and consists of the source file <code class="docutils literal"><span class="pre">cos_module.c</span></code>:</p>
 <div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;math.h&gt;</span><span class="cp"></span>
 <div class="newline"></div>
@@ -939,7 +963,7 @@ Numpy-C-API example.</li>
 <li>Since the type maps only support the signature <code class="docutils literal"><span class="pre">ARRAY,</span> <span class="pre">SIZE</span></code> we need to
 wrap the <code class="docutils literal"><span class="pre">cos_doubles</span></code> as <code class="docutils literal"><span class="pre">cos_doubles_func</span></code> which takes two arrays
 including sizes as input.</li>
-<li>As opposed to the simple SWIG example, we don&#8217;t include the <code class="docutils literal"><span class="pre">cos_doubles.h</span></code>
+<li>As opposed to the simple SWIG example, we don’t include the <code class="docutils literal"><span class="pre">cos_doubles.h</span></code>
 header, There is nothing there that we wish to expose to Python since we
 expose the functionality through <code class="docutils literal"><span class="pre">cos_doubles_func</span></code>.</li>
 </ul>
@@ -1282,7 +1306,7 @@ Python code is unique.</p>
 <div class="section" id="further-reading-and-references">
 <h2><a class="toc-backref" href="#id24">2.8.7. Further Reading and References</a><a class="headerlink" href="#further-reading-and-references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://gael-varoquaux.info/blog/?p=157">Gaël Varoquaux&#8217;s blog post about avoiding data copies</a> provides some insight on how to
+<li><a class="reference external" href="http://gael-varoquaux.info/blog/?p=157">Gaël Varoquaux’s blog post about avoiding data copies</a> provides some insight on how to
 handle memory management cleverly. If you ever run into issues with large
 datasets, this is a reference to come back to for some inspiration.</li>
 </ul>
@@ -1439,7 +1463,7 @@ you, thus making it more like the Numpy-C-API example.</li>
           <a href="../../packages/index.html" title="3. Packages and applications"
              >next</a></li>
         <li class="right" >
-          <a href="../mathematical_optimization/index.html" title="2.7. Mathematical optimization: finding minima of functions"
+          <a href="../mathematical_optimization/auto_examples/plot_gradient_descent.html" title="2.7.4.12. Gradient descent"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >2. Advanced topics</a> &#187;</li>
@@ -1466,8 +1490,8 @@ you, thus making it more like the Numpy-C-API example.</li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

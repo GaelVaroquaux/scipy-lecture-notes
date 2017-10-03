@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.2.1. First steps &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="1.2. The Python language" href="python_language.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.2.2. Basic types" href="basic_types.html" />
     <link rel="prev" title="1.2. The Python language" href="python_language.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -176,15 +173,15 @@ $(function () {
 <h1>1.2.1. First steps<a class="headerlink" href="#first-steps" title="Permalink to this headline">¶</a></h1>
 <p>Start the <strong>Ipython</strong> shell (an enhanced interactive Python shell):</p>
 <ul class="simple">
-<li>by typing &#8220;ipython&#8221; from a Linux/Mac terminal, or from the Windows cmd shell,</li>
+<li>by typing “ipython” from a Linux/Mac terminal, or from the Windows cmd shell,</li>
 <li><strong>or</strong> by starting the program from a menu, e.g. in the <a class="reference external" href="http://www.pythonxy.com/">Python(x,y)</a> or
 <a class="reference external" href="http://store.enthought.com/">EPD</a> menu if you have installed one of these scientific-Python suites.</li>
 </ul>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">If you don&#8217;t have Ipython installed on your computer, other Python
+<p class="last">If you don’t have Ipython installed on your computer, other Python
 shells are available, such as the plain Python shell started by
-typing &#8220;python&#8221; in a terminal, or the Idle interpreter. However, we
+typing “python” in a terminal, or the Idle interpreter. However, we
 advise to use the Ipython shell because of its enhanced features,
 especially for interactive scientific computing.</p>
 </div>
@@ -195,7 +192,7 @@ especially for interactive scientific computing.</p>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">The message &#8220;Hello, world!&#8221; is then displayed. You just executed your
+<p class="last">The message “Hello, world!” is then displayed. You just executed your
 first Python instruction, congratulations!</p>
 </div>
 <p>To get yourself started, type the following stack of instructions</p>
@@ -228,7 +225,7 @@ conversely, one should write:</p>
 one point in time it can be equal to a value of a certain type, and a
 second point in time, it can be equal to a value of a different
 type. <cite>b</cite> was first equal to an integer, but it became equal to a
-string when it was assigned the value <cite>&#8216;hello&#8217;</cite>. Operations on
+string when it was assigned the value <cite>‘hello’</cite>. Operations on
 integers (<code class="docutils literal"><span class="pre">b=2*a</span></code>) are coded natively in Python, and so are some
 operations on strings such as additions and multiplications, which
 amount respectively to concatenation and repetition.</p>
@@ -301,8 +298,8 @@ amount respectively to concatenation and repetition.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

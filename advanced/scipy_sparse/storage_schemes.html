@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>2.5.2. Storage Schemes &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2.5. Sparse Matrices in SciPy" href="index.html" />
-    <link rel="next" title="2.5.2.2.1. Diagonal Format (DIA)" href="dia_matrix.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Diagonal Format (DIA)" href="dia_matrix.html" />
     <link rel="prev" title="2.5.1. Introduction" href="introduction.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -136,7 +133,7 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="dia_matrix.html" title="2.5.2.2.1. Diagonal Format (DIA)"
+          <a href="dia_matrix.html" title="Diagonal Format (DIA)"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="introduction.html" title="2.5.1. Introduction"
@@ -202,12 +199,11 @@ $(function () {
 </li>
 <li><dl class="first docutils">
 <dt><strong>warning</strong> for NumPy users:</dt>
-<dd><ul class="first last">
-<li><p class="first">the multiplication with &#8216;*&#8217; is the <em>matrix multiplication</em> (dot product)</p>
-</li>
+<dd><ul class="first last simple">
+<li>the multiplication with ‘*’ is the <em>matrix multiplication</em> (dot product)</li>
 <li><dl class="first docutils">
 <dt>not part of NumPy!</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>passing a sparse matrix object to NumPy functions expecting
 ndarray/matrix does not work</li>
 </ul>
@@ -221,34 +217,30 @@ ndarray/matrix does not work</li>
 </ul>
 <div class="section" id="common-methods">
 <h2>2.5.2.1. Common Methods<a class="headerlink" href="#common-methods" title="Permalink to this headline">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>all scipy.sparse classes are subclasses of <code class="xref py py-class docutils literal"><span class="pre">spmatrix</span></code></dt>
 <dd><ul class="first last">
 <li><dl class="first docutils">
 <dt>default implementation of arithmetic operations</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>always converts to CSR</li>
 <li>subclasses override for efficiency</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p class="first">shape, data type set/get</p>
-</li>
-<li><p class="first">nonzero indices</p>
-</li>
-<li><p class="first">format conversion, interaction with NumPy (<cite>toarray()</cite>, <cite>todense()</cite>)</p>
-</li>
-<li><p class="first">...</p>
-</li>
+<li>shape, data type set/get</li>
+<li>nonzero indices</li>
+<li>format conversion, interaction with NumPy (<cite>toarray()</cite>, <cite>todense()</cite>)</li>
+<li>…</li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>attributes:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li><cite>mtx.A</cite> - same as mtx.toarray()</li>
 <li><cite>mtx.T</cite> - transpose (same as mtx.transpose())</li>
 <li><cite>mtx.H</cite> - Hermitian (conjugate) transpose</li>
@@ -260,40 +252,39 @@ ndarray/matrix does not work</li>
 </dd>
 </dl>
 </li>
-<li><p class="first">data usually stored in NumPy arrays</p>
-</li>
+<li>data usually stored in NumPy arrays</li>
 </ul>
 </div>
 <div class="section" id="sparse-matrix-classes">
 <h2>2.5.2.2. Sparse Matrix Classes<a class="headerlink" href="#sparse-matrix-classes" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dia_matrix.html">2.5.2.2.1. Diagonal Format (DIA)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dia_matrix.html#examples">2.5.2.2.1.1. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dia_matrix.html">Diagonal Format (DIA)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dia_matrix.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lil_matrix.html">2.5.2.2.2. List of Lists Format (LIL)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lil_matrix.html#examples">2.5.2.2.2.1. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lil_matrix.html">List of Lists Format (LIL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lil_matrix.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dok_matrix.html">2.5.2.2.3. Dictionary of Keys Format (DOK)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dok_matrix.html#examples">2.5.2.2.3.1. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dok_matrix.html">Dictionary of Keys Format (DOK)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dok_matrix.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="coo_matrix.html">2.5.2.2.4. Coordinate Format (COO)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="coo_matrix.html#examples">2.5.2.2.4.1. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coo_matrix.html">Coordinate Format (COO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coo_matrix.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="csr_matrix.html">2.5.2.2.5. Compressed Sparse Row Format (CSR)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="csr_matrix.html#examples">2.5.2.2.5.1. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csr_matrix.html">Compressed Sparse Row Format (CSR)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="csr_matrix.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="csc_matrix.html">2.5.2.2.6. Compressed Sparse Column Format (CSC)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="csc_matrix.html#examples">2.5.2.2.6.1. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="csc_matrix.html">Compressed Sparse Column Format (CSC)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="csc_matrix.html#examples">Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="bsr_matrix.html">2.5.2.2.7. Block Compressed Row Format (BSR)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bsr_matrix.html#examples">2.5.2.2.7.1. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bsr_matrix.html">Block Compressed Row Format (BSR)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bsr_matrix.html#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -301,7 +292,7 @@ ndarray/matrix does not work</li>
 </div>
 <div class="section" id="summary">
 <h2>2.5.2.3. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils" id="id1">
+<table border="1" class="colwidths-given docutils" id="id1">
 <caption><span class="caption-text">Summary of storage schemes.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="10%" />
@@ -438,7 +429,7 @@ ndarray/matrix does not work</li>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="dia_matrix.html" title="2.5.2.2.1. Diagonal Format (DIA)"
+          <a href="dia_matrix.html" title="Diagonal Format (DIA)"
              >next</a></li>
         <li class="right" >
           <a href="introduction.html" title="2.5.1. Introduction"
@@ -469,8 +460,8 @@ ndarray/matrix does not work</li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

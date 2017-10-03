@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>2.5.3. Linear System Solvers &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2.5. Sparse Matrices in SciPy" href="index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2.5.4. Other Interesting Packages" href="other_packages.html" />
-    <link rel="prev" title="2.5.2.2.7. Block Compressed Row Format (BSR)" href="bsr_matrix.html" />
+    <link rel="prev" title="Block Compressed Row Format (BSR)" href="bsr_matrix.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -139,7 +136,7 @@ $(function () {
           <a href="other_packages.html" title="2.5.4. Other Interesting Packages"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="bsr_matrix.html" title="2.5.2.2.7. Block Compressed Row Format (BSR)"
+          <a href="bsr_matrix.html" title="Block Compressed Row Format (BSR)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >2. Advanced topics</a> &#187;</li>
@@ -202,10 +199,10 @@ $(function () {
 </ul>
 <div class="section" id="sparse-direct-solvers">
 <h2>2.5.3.1. Sparse Direct Solvers<a class="headerlink" href="#sparse-direct-solvers" title="Permalink to this headline">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>default solver: SuperLU 4.0</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>included in SciPy</li>
 <li>real and complex systems</li>
 <li>both single and double precision</li>
@@ -215,7 +212,7 @@ $(function () {
 </li>
 <li><dl class="first docutils">
 <dt>optional: umfpack</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>real and complex systems</li>
 <li>double precision only</li>
 <li>recommended for performance</li>
@@ -227,7 +224,7 @@ $(function () {
 </li>
 </ul>
 <div class="section" id="examples">
-<h3>2.5.3.1.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">import the whole module, and see its docstring:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="k">import</span> <span class="n">dsolve</span>
@@ -330,16 +327,16 @@ follows:</p>
 <div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
-<li><a class="reference download internal" href="../../_downloads/direct_solve1.py" download=""><code class="xref download docutils literal"><span class="pre">examples/direct_solve.py</span></code></a></li>
+<li><a class="reference download internal" href="../../_downloads/direct_solve.py" download=""><code class="xref download docutils literal"><span class="pre">examples/direct_solve.py</span></code></a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="iterative-solvers">
 <h2>2.5.3.2. Iterative Solvers<a class="headerlink" href="#iterative-solvers" title="Permalink to this headline">¶</a></h2>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
 <dt>the <code class="xref py py-mod docutils literal"><span class="pre">isolve</span></code> module contains the following solvers:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li><code class="docutils literal"><span class="pre">bicg</span></code> (BIConjugate Gradient)</li>
 <li><code class="docutils literal"><span class="pre">bicgstab</span></code> (BIConjugate Gradient STABilized)</li>
 <li><code class="docutils literal"><span class="pre">cg</span></code> (Conjugate Gradient) - symmetric positive definite matrices
@@ -354,38 +351,38 @@ only</li>
 </li>
 </ul>
 <div class="section" id="common-parameters">
-<h3>2.5.3.2.1. Common Parameters<a class="headerlink" href="#common-parameters" title="Permalink to this headline">¶</a></h3>
+<h3>Common Parameters<a class="headerlink" href="#common-parameters" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">mandatory:</p>
 <dl class="docutils">
-<dt>A</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">{sparse matrix, dense matrix, LinearOperator}</span><dd><p class="first last">The N-by-N matrix of the linear system.</p>
+<dt>A <span class="classifier-delimiter">:</span> <span class="classifier">{sparse matrix, dense matrix, LinearOperator}</span></dt>
+<dd><p class="first last">The N-by-N matrix of the linear system.</p>
 </dd>
-<dt>b</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">{array, matrix}</span><dd><p class="first last">Right hand side of the linear system. Has shape (N,) or (N,1).</p>
+<dt>b <span class="classifier-delimiter">:</span> <span class="classifier">{array, matrix}</span></dt>
+<dd><p class="first last">Right hand side of the linear system. Has shape (N,) or (N,1).</p>
 </dd>
 </dl>
 </li>
 <li><p class="first">optional:</p>
 <dl class="docutils">
-<dt>x0</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">{array, matrix}</span><dd><p class="first last">Starting guess for the solution.</p>
+<dt>x0 <span class="classifier-delimiter">:</span> <span class="classifier">{array, matrix}</span></dt>
+<dd><p class="first last">Starting guess for the solution.</p>
 </dd>
-<dt>tol</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd><p class="first last">Relative tolerance to achieve before terminating.</p>
+<dt>tol <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Relative tolerance to achieve before terminating.</p>
 </dd>
-<dt>maxiter</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">integer</span><dd><p class="first last">Maximum number of iterations.  Iteration will stop after maxiter
+<dt>maxiter <span class="classifier-delimiter">:</span> <span class="classifier">integer</span></dt>
+<dd><p class="first last">Maximum number of iterations.  Iteration will stop after maxiter
 steps even if the specified tolerance has not been achieved.</p>
 </dd>
-<dt>M</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">{sparse matrix, dense matrix, LinearOperator}</span><dd><p class="first last">Preconditioner for A.  The preconditioner should approximate the
+<dt>M <span class="classifier-delimiter">:</span> <span class="classifier">{sparse matrix, dense matrix, LinearOperator}</span></dt>
+<dd><p class="first last">Preconditioner for A.  The preconditioner should approximate the
 inverse of A.  Effective preconditioning dramatically improves the
 rate of convergence, which implies that fewer iterations are needed
 to reach a given error tolerance.</p>
 </dd>
-<dt>callback</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">function</span><dd><p class="first last">User-supplied function to call after each iteration.  It is called
+<dt>callback <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd><p class="first last">User-supplied function to call after each iteration.  It is called
 as callback(xk), where xk is the current solution vector.</p>
 </dd>
 </dl>
@@ -393,7 +390,7 @@ as callback(xk), where xk is the current solution vector.</p>
 </ul>
 </div>
 <div class="section" id="linearoperator-class">
-<h3>2.5.3.2.2. LinearOperator Class<a class="headerlink" href="#linearoperator-class" title="Permalink to this headline">¶</a></h3>
+<h3>LinearOperator Class<a class="headerlink" href="#linearoperator-class" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.sparse.linalg.interface</span> <span class="kn">import</span> <span class="n">LinearOperator</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -420,15 +417,13 @@ the solvers, as well as <em>matrix-free</em> solutions</li>
 </div>
 </div>
 <div class="section" id="a-few-notes-on-preconditioning">
-<h3>2.5.3.2.3. A Few Notes on Preconditioning<a class="headerlink" href="#a-few-notes-on-preconditioning" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">problem specific</p>
-</li>
-<li><p class="first">often hard to develop</p>
-</li>
+<h3>A Few Notes on Preconditioning<a class="headerlink" href="#a-few-notes-on-preconditioning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>problem specific</li>
+<li>often hard to develop</li>
 <li><dl class="first docutils">
 <dt>if not sure, try ILU</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>available in <code class="xref py py-mod docutils literal"><span class="pre">dsolve</span></code> as <code class="xref py py-func docutils literal"><span class="pre">spilu()</span></code></li>
 </ul>
 </dd>
@@ -440,7 +435,7 @@ the solvers, as well as <em>matrix-free</em> solutions</li>
 <div class="section" id="eigenvalue-problem-solvers">
 <h2>2.5.3.3. Eigenvalue Problem Solvers<a class="headerlink" href="#eigenvalue-problem-solvers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-eigen-module">
-<h3>2.5.3.3.1. The <code class="xref py py-mod docutils literal"><span class="pre">eigen</span></code> module<a class="headerlink" href="#the-eigen-module" title="Permalink to this headline">¶</a></h3>
+<h3>The <code class="xref py py-mod docutils literal"><span class="pre">eigen</span></code> module<a class="headerlink" href="#the-eigen-module" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first"><code class="docutils literal"><span class="pre">arpack</span></code>
 * a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems</p>
@@ -478,7 +473,7 @@ Gradient Method)
 <div class="newline"></div><span class="n">M</span> <span class="o">=</span> <span class="n">ml</span><span class="o">.</span><span class="n">aspreconditioner</span><span class="p">()</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># compute eigenvalues and eigenvectors with LOBPCG</span>
-<div class="newline"></div><span class="n">W</span><span class="p">,</span><span class="n">V</span> <span class="o">=</span> <span class="n">lobpcg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">largest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="newline"></div><span class="n">W</span><span class="p">,</span><span class="n">V</span> <span class="o">=</span> <span class="n">lobpcg</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="n">M</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">largest</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1">#plot the eigenvectors</span>
@@ -496,12 +491,12 @@ Gradient Method)
 <div class="newline"></div></pre></div>
 </div>
 <ul class="simple">
-<li><a class="reference download internal" href="../../_downloads/pyamg_with_lobpcg1.py" download=""><code class="xref download docutils literal"><span class="pre">examples/pyamg_with_lobpcg.py</span></code></a></li>
+<li><a class="reference download internal" href="../../_downloads/pyamg_with_lobpcg.py" download=""><code class="xref download docutils literal"><span class="pre">examples/pyamg_with_lobpcg.py</span></code></a></li>
 </ul>
 </li>
 <li><p class="first">example by Nils Wagner:</p>
 <ul class="simple">
-<li><a class="reference download internal" href="../../_downloads/lobpcg_sakurai1.py" download=""><code class="xref download docutils literal"><span class="pre">examples/lobpcg_sakurai.py</span></code></a></li>
+<li><a class="reference download internal" href="../../_downloads/lobpcg_sakurai.py" download=""><code class="xref download docutils literal"><span class="pre">examples/lobpcg_sakurai.py</span></code></a></li>
 </ul>
 </li>
 <li><p class="first">output:</p>
@@ -536,17 +531,17 @@ Gradient Method)
   <ul>
 <li><a class="reference internal" href="#">2.5.3. Linear System Solvers</a><ul>
 <li><a class="reference internal" href="#sparse-direct-solvers">2.5.3.1. Sparse Direct Solvers</a><ul>
-<li><a class="reference internal" href="#examples">2.5.3.1.1. Examples</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#iterative-solvers">2.5.3.2. Iterative Solvers</a><ul>
-<li><a class="reference internal" href="#common-parameters">2.5.3.2.1. Common Parameters</a></li>
-<li><a class="reference internal" href="#linearoperator-class">2.5.3.2.2. LinearOperator Class</a></li>
-<li><a class="reference internal" href="#a-few-notes-on-preconditioning">2.5.3.2.3. A Few Notes on Preconditioning</a></li>
+<li><a class="reference internal" href="#common-parameters">Common Parameters</a></li>
+<li><a class="reference internal" href="#linearoperator-class">LinearOperator Class</a></li>
+<li><a class="reference internal" href="#a-few-notes-on-preconditioning">A Few Notes on Preconditioning</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#eigenvalue-problem-solvers">2.5.3.3. Eigenvalue Problem Solvers</a><ul>
-<li><a class="reference internal" href="#the-eigen-module">2.5.3.3.1. The <code class="docutils literal"><span class="pre">eigen</span></code> module</a></li>
+<li><a class="reference internal" href="#the-eigen-module">The <code class="docutils literal"><span class="pre">eigen</span></code> module</a></li>
 </ul>
 </li>
 </ul>
@@ -583,7 +578,7 @@ Gradient Method)
           <a href="other_packages.html" title="2.5.4. Other Interesting Packages"
              >next</a></li>
         <li class="right" >
-          <a href="bsr_matrix.html" title="2.5.2.2.7. Block Compressed Row Format (BSR)"
+          <a href="bsr_matrix.html" title="Block Compressed Row Format (BSR)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >2. Advanced topics</a> &#187;</li>
@@ -611,8 +606,8 @@ Gradient Method)
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

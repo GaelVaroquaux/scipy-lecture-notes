@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>3.1.6.7. Visualizing factors influencing wages &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../../index.html" />
-    <link rel="up" title="3.1. Statistics in Python" href="../index.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="3.1.6.8. Air fares before and after 9/11" href="plot_airfare.html" />
     <link rel="prev" title="3.1.6.6. Test for an education/gender interaction in wages" href="plot_wage_education_gender.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -180,7 +177,7 @@ experience and eduction.</p>
 that combines visualization and statistical fits to show trends in
 data.</p>
 <p>Note that importing seaborn changes the matplotlib style to have an
-&#8220;excel-like&#8221; feeling. This changes affect other matplotlib figures. To
+“excel-like” feeling. This changes affect other matplotlib figures. To
 restore defaults once this example is run, we would need to call
 plt.rcdefaults().</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Standard library imports</span>
@@ -222,23 +219,23 @@ plt.rcdefaults().</p>
 <div class="newline"></div><span class="c1"># Log-transform the wages, because they typically are increased with</span>
 <div class="newline"></div><span class="c1"># multiplicative factors</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<div class="newline"></div><span class="n">data</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.log10.html#numpy.log10" title="View documentation for numpy.log10"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">])</span>
+<div class="newline"></div><span class="n">data</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">])</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>Plot scatter matrices highlighting different aspects</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span>
-<div class="newline"></div><a href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="View documentation for seaborn.pairplot"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
+<div class="newline"></div><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
 <div class="newline"></div>                      <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="View documentation for seaborn.pairplot"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
+<div class="newline"></div><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
 <div class="newline"></div>                      <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;SEX&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Effect of gender: 1=Female, 0=Male&#39;</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="View documentation for seaborn.pairplot"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
+<div class="newline"></div><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
 <div class="newline"></div>                      <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;RACE&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Effect of race: 1=Other, 2=Hispanic, 3=White&#39;</span><span class="p">)</span>
 <div class="newline"></div>
-<div class="newline"></div><a href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="View documentation for seaborn.pairplot"><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span></a><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
+<div class="newline"></div><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
 <div class="newline"></div>                      <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;UNION&#39;</span><span class="p">)</span>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Effect of union: 1=Union member, 0=Not union member&#39;</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
@@ -246,28 +243,28 @@ plt.rcdefaults().</p>
 <ul class="sphx-glr-horizontal">
 <li><a class="first reference internal image-reference" href="../../../_images/sphx_glr_plot_wage_data_001.png"><img alt="../../../_images/sphx_glr_plot_wage_data_001.png" src="../../../_images/sphx_glr_plot_wage_data_001.png" style="width: 352.5px; height: 352.5px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../../_images/sphx_glr_plot_wage_data_002.png"><img alt="../../../_images/sphx_glr_plot_wage_data_002.png" src="../../../_images/sphx_glr_plot_wage_data_002.png" style="width: 379.76px; height: 352.5px;" /></a>
+<li><a class="first reference internal image-reference" href="../../../_images/sphx_glr_plot_wage_data_002.png"><img alt="../../../_images/sphx_glr_plot_wage_data_002.png" src="../../../_images/sphx_glr_plot_wage_data_002.png" style="width: 379.28999999999996px; height: 352.5px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../../_images/sphx_glr_plot_wage_data_003.png"><img alt="../../../_images/sphx_glr_plot_wage_data_003.png" src="../../../_images/sphx_glr_plot_wage_data_003.png" style="width: 379.76px; height: 352.5px;" /></a>
+<li><a class="first reference internal image-reference" href="../../../_images/sphx_glr_plot_wage_data_003.png"><img alt="../../../_images/sphx_glr_plot_wage_data_003.png" src="../../../_images/sphx_glr_plot_wage_data_003.png" style="width: 379.28999999999996px; height: 352.5px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../../_images/sphx_glr_plot_wage_data_004.png"><img alt="../../../_images/sphx_glr_plot_wage_data_004.png" src="../../../_images/sphx_glr_plot_wage_data_004.png" style="width: 379.76px; height: 352.5px;" /></a>
+<li><a class="first reference internal image-reference" href="../../../_images/sphx_glr_plot_wage_data_004.png"><img alt="../../../_images/sphx_glr_plot_wage_data_004.png" src="../../../_images/sphx_glr_plot_wage_data_004.png" style="width: 379.28999999999996px; height: 352.5px;" /></a>
 </li>
 </ul>
 <p>Plot a simple regression</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><a href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="View documentation for seaborn.lmplot"><span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span></a><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
 <img alt="../../../_images/sphx_glr_plot_wage_data_005.png" class="align-center" src="../../../_images/sphx_glr_plot_wage_data_005.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  8.973 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  8.266 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_wage_data1.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_wage_data.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_wage_data1.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_wage_data.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
 
@@ -336,8 +333,8 @@ plt.rcdefaults().</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

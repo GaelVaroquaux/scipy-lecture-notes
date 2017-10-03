@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.3.1. The NumPy array object &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="1.3. NumPy: creating and manipulating numerical data" href="index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.3.2. Numerical operations on arrays" href="operations.html" />
     <link rel="prev" title="1.3. NumPy: creating and manipulating numerical data" href="index.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -189,7 +186,7 @@ $(function () {
 <div class="section" id="what-are-numpy-and-numpy-arrays">
 <h2><a class="toc-backref" href="#id1">1.3.1.1. What are NumPy and NumPy arrays?</a><a class="headerlink" href="#what-are-numpy-and-numpy-arrays" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="numpy-arrays">
-<h3>1.3.1.1.1. NumPy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h3>
+<h3>NumPy arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">¶</a></h3>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -228,7 +225,7 @@ $(function () {
 <li>signal recorded by a measurement device, e.g. sound wave</li>
 <li>pixels of an image, grey-level or colour</li>
 <li>3-D data measured at different X-Y-Z positions, e.g. MRI scan</li>
-<li>...</li>
+<li>…</li>
 </ul>
 </div>
 <p><strong>Why it is useful:</strong> Memory-efficient container that provides fast numerical
@@ -246,7 +243,7 @@ operations.</p>
 </div>
 </div>
 <div class="section" id="numpy-reference-documentation">
-<h3>1.3.1.1.2. NumPy Reference documentation<a class="headerlink" href="#numpy-reference-documentation" title="Permalink to this headline">¶</a></h3>
+<h3>NumPy Reference documentation<a class="headerlink" href="#numpy-reference-documentation" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">On the web: <a class="reference external" href="http://docs.scipy.org/">http://docs.scipy.org/</a></p>
 </li>
@@ -279,7 +276,7 @@ operations.</p>
 </ul>
 </div>
 <div class="section" id="import-conventions">
-<h3>1.3.1.1.3. Import conventions<a class="headerlink" href="#import-conventions" title="Permalink to this headline">¶</a></h3>
+<h3>Import conventions<a class="headerlink" href="#import-conventions" title="Permalink to this headline">¶</a></h3>
 <p>The recommended convention to import numpy is:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <div class="newline"></div></pre></div>
@@ -289,7 +286,7 @@ operations.</p>
 <div class="section" id="creating-arrays">
 <h2><a class="toc-backref" href="#id2">1.3.1.2. Creating arrays</a><a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="manual-construction-of-arrays">
-<h3>1.3.1.2.1. Manual construction of arrays<a class="headerlink" href="#manual-construction-of-arrays" title="Permalink to this headline">¶</a></h3>
+<h3>Manual construction of arrays<a class="headerlink" href="#manual-construction-of-arrays" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first"><strong>1-D</strong>:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
@@ -304,7 +301,7 @@ operations.</p>
 <div class="newline"></div></pre></div>
 </div>
 </li>
-<li><p class="first"><strong>2-D, 3-D, ...</strong>:</p>
+<li><p class="first"><strong>2-D, 3-D, …</strong>:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>    <span class="c1"># 2 x 3 array</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
 <div class="newline"></div><span class="go">array([[0, 1, 2],</span>
@@ -342,10 +339,10 @@ the arrays?</li>
 </div>
 </div>
 <div class="section" id="functions-for-creating-arrays">
-<h3>1.3.1.2.2. Functions for creating arrays<a class="headerlink" href="#functions-for-creating-arrays" title="Permalink to this headline">¶</a></h3>
+<h3>Functions for creating arrays<a class="headerlink" href="#functions-for-creating-arrays" title="Permalink to this headline">¶</a></h3>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">In practice, we rarely enter items one by one...</p>
+<p class="last">In practice, we rarely enter items one by one…</p>
 </div>
 <ul>
 <li><p class="first">Evenly spaced:</p>
@@ -524,8 +521,9 @@ the notebook and not in a new window.</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># line plot    </span>
 <div class="newline"></div></pre></div>
 </div>
-<ul>
-<li><p class="first"><strong>1D plotting</strong>:</p>
+<ul class="simple">
+<li><strong>1D plotting</strong>:</li>
+</ul>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># line plot    </span>
@@ -534,20 +532,19 @@ the notebook and not in a new window.</p>
 <div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;]</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>[<a class="reference external" href="../../plot_directive/pyplots/numpy_intro_1.py">source code</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_1.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_1.pdf">pdf</a>]</p>
-<img alt="../../_images/numpy_intro_1.png" src="../../_images/numpy_intro_1.png" />
-</li>
-<li><p class="first"><strong>2D arrays</strong> (such as images):</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span><span class="p">)</span>    
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>    
-<div class="newline"></div><span class="go">&lt;matplotlib.colorbar.Colorbar instance at ...&gt;</span>
+<a class="reference external image-reference" href="auto_examples/plot_basic1dplot.html"><img alt="../../_images/sphx_glr_plot_basic1dplot_001.png" class="align-center" src="../../_images/sphx_glr_plot_basic1dplot_001.png" style="width: 40%;" /></a>
+<ul class="simple">
+<li><strong>2D arrays</strong> (such as images):</li>
+</ul>
+<div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># line plot    </span>
+<div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>  <span class="c1"># dot plot    </span>
+<div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;]</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>[<a class="reference external" href="../../plot_directive/pyplots/numpy_intro_2.py">source code</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_2.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_2.pdf">pdf</a>]</p>
-<img alt="../../_images/numpy_intro_2.png" src="../../_images/numpy_intro_2.png" />
-</li>
-</ul>
+<a class="reference external image-reference" href="auto_examples/plot_basic2dplot.html"><img alt="../../_images/sphx_glr_plot_basic2dplot_001.png" class="align-center" src="../../_images/sphx_glr_plot_basic2dplot_001.png" style="width: 50%;" /></a>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">More in the: <a class="reference internal" href="../matplotlib/index.html#matplotlib"><span class="std std-ref">matplotlib chapter</span></a></p>
@@ -631,7 +628,7 @@ taking all elements in the unspecified dimensions.</li>
 <div class="newline"></div><span class="go">array([3, 4, 5, 6, 7, 8, 9])</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>A small illustrated summary of NumPy indexing and slicing...</p>
+<p>A small illustrated summary of NumPy indexing and slicing…</p>
 <a class="reference internal image-reference" href="../../_images/numpy_indexing.png"><img alt="../../_images/numpy_indexing.png" class="align-center" src="../../_images/numpy_indexing.png" style="width: 70%;" /></a>
 <p>You can also combine assignment and slicing:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -730,12 +727,12 @@ give you false positives.</p>
 <div class="newline"></div><span class="go">False</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>This behavior can be surprising at first sight... but it allows to save both
+<p>This behavior can be surprising at first sight… but it allows to save both
 memory and time.</p>
 <div class="green topic">
 <p class="topic-title first">Worked example: Prime number sieve</p>
 <img alt="../../_images/prime-sieve.png" src="../../_images/prime-sieve.png" />
-<p>Compute prime numbers in 0&#8211;99, with a sieve</p>
+<p>Compute prime numbers in 0–99, with a sieve</p>
 <ul class="simple">
 <li>Construct a shape (100,) boolean array <code class="docutils literal"><span class="pre">is_prime</span></code>,
 filled with True in the beginning:</li>
@@ -785,7 +782,7 @@ integer arrays (<strong>masks</strong>). This method is called <em>fancy indexin
 It creates <strong>copies not views</strong>.</p>
 </div>
 <div class="section" id="using-boolean-masks">
-<h3>1.3.1.7.1. Using boolean masks<a class="headerlink" href="#using-boolean-masks" title="Permalink to this headline">¶</a></h3>
+<h3>Using boolean masks<a class="headerlink" href="#using-boolean-masks" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
@@ -807,7 +804,7 @@ It creates <strong>copies not views</strong>.</p>
 </div>
 </div>
 <div class="section" id="indexing-with-an-array-of-integers">
-<h3>1.3.1.7.2. Indexing with an array of integers<a class="headerlink" href="#indexing-with-an-array-of-integers" title="Permalink to this headline">¶</a></h3>
+<h3>Indexing with an array of integers<a class="headerlink" href="#indexing-with-an-array-of-integers" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <div class="newline"></div><span class="go">array([ 0, 10, 20, 30, 40, 50, 60, 70, 80, 90])</span>
@@ -867,14 +864,14 @@ the diagram above to zero.</li>
   <ul>
 <li><a class="reference internal" href="#">1.3.1. The NumPy array object</a><ul>
 <li><a class="reference internal" href="#what-are-numpy-and-numpy-arrays">1.3.1.1. What are NumPy and NumPy arrays?</a><ul>
-<li><a class="reference internal" href="#numpy-arrays">1.3.1.1.1. NumPy arrays</a></li>
-<li><a class="reference internal" href="#numpy-reference-documentation">1.3.1.1.2. NumPy Reference documentation</a></li>
-<li><a class="reference internal" href="#import-conventions">1.3.1.1.3. Import conventions</a></li>
+<li><a class="reference internal" href="#numpy-arrays">NumPy arrays</a></li>
+<li><a class="reference internal" href="#numpy-reference-documentation">NumPy Reference documentation</a></li>
+<li><a class="reference internal" href="#import-conventions">Import conventions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#creating-arrays">1.3.1.2. Creating arrays</a><ul>
-<li><a class="reference internal" href="#manual-construction-of-arrays">1.3.1.2.1. Manual construction of arrays</a></li>
-<li><a class="reference internal" href="#functions-for-creating-arrays">1.3.1.2.2. Functions for creating arrays</a></li>
+<li><a class="reference internal" href="#manual-construction-of-arrays">Manual construction of arrays</a></li>
+<li><a class="reference internal" href="#functions-for-creating-arrays">Functions for creating arrays</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#basic-data-types">1.3.1.3. Basic data types</a></li>
@@ -882,8 +879,8 @@ the diagram above to zero.</li>
 <li><a class="reference internal" href="#indexing-and-slicing">1.3.1.5. Indexing and slicing</a></li>
 <li><a class="reference internal" href="#copies-and-views">1.3.1.6. Copies and views</a></li>
 <li><a class="reference internal" href="#fancy-indexing">1.3.1.7. Fancy indexing</a><ul>
-<li><a class="reference internal" href="#using-boolean-masks">1.3.1.7.1. Using boolean masks</a></li>
-<li><a class="reference internal" href="#indexing-with-an-array-of-integers">1.3.1.7.2. Indexing with an array of integers</a></li>
+<li><a class="reference internal" href="#using-boolean-masks">Using boolean masks</a></li>
+<li><a class="reference internal" href="#indexing-with-an-array-of-integers">Indexing with an array of integers</a></li>
 </ul>
 </li>
 </ul>
@@ -948,8 +945,8 @@ the diagram above to zero.</li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

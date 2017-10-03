@@ -8,7 +8,6 @@ of the support vector machine GUI.
 
 import numpy as np
 from matplotlib import pyplot as plt
-import matplotlib
 
 from sklearn import svm
 
@@ -20,11 +19,11 @@ def linear_model(rseed=42, n_samples=30):
     np.random.seed(rseed)
 
     data = np.random.normal(0, 10, (n_samples, 2))
-    data[:n_samples / 2] -= 15
-    data[n_samples / 2:] += 15
+    data[:n_samples // 2] -= 15
+    data[n_samples // 2:] += 15
 
     labels = np.ones(n_samples)
-    labels[:n_samples / 2] = -1
+    labels[:n_samples // 2] = -1
 
     return data, labels
 
@@ -33,7 +32,7 @@ X, y = linear_model()
 clf = svm.SVC(kernel='linear')
 clf.fit(X, y)
 
-plt.figure()
+plt.figure(figsize=(6, 4))
 ax = plt.subplot(111, xticks=[], yticks=[])
 ax.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.bone)
 
@@ -79,7 +78,7 @@ X, y = nonlinear_model()
 clf = svm.SVC(kernel='rbf', gamma=0.001, coef0=0, degree=3)
 clf.fit(X, y)
 
-plt.figure()
+plt.figure(figsize=(6, 4))
 ax = plt.subplot(1, 1, 1, xticks=[], yticks=[])
 ax.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.bone, zorder=2)
 

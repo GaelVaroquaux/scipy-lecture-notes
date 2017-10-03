@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.1. Python scientific computing ecosystem &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../index.html" />
-    <link rel="up" title="1. Getting started with Python for science" href="index.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1.2. The Python language" href="language/python_language.html" />
     <link rel="prev" title="1. Getting started with Python for science" href="index.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -178,7 +175,7 @@ Valentin Haenel</em></p>
 <div class="section" id="why-python">
 <h2>1.1.1. Why Python?<a class="headerlink" href="#why-python" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="the-scientist-s-needs">
-<h3>1.1.1.1. The scientist&#8217;s needs<a class="headerlink" href="#the-scientist-s-needs" title="Permalink to this headline">¶</a></h3>
+<h3>1.1.1.1. The scientist’s needs<a class="headerlink" href="#the-scientist-s-needs" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Get data (simulation, experiment control),</li>
 <li>Manipulate and process data,</li>
@@ -187,12 +184,12 @@ figures, for reports or publications.</li>
 </ul>
 </div>
 <div class="section" id="python-s-strengths">
-<h3>1.1.1.2. Python&#8217;s strengths<a class="headerlink" href="#python-s-strengths" title="Permalink to this headline">¶</a></h3>
+<h3>1.1.1.2. Python’s strengths<a class="headerlink" href="#python-s-strengths" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>Batteries included</strong> Rich collection of already existing <strong>bricks</strong>
 of classic numerical methods, plotting or data processing tools. We
-don&#8217;t want to re-program the plotting of a curve, a Fourier transform
-or a fitting algorithm. Don&#8217;t reinvent the wheel!</li>
+don’t want to re-program the plotting of a curve, a Fourier transform
+or a fitting algorithm. Don’t reinvent the wheel!</li>
 <li><strong>Easy to learn</strong> Most scientists are not payed as programmers, neither
 have they been trained so. They need to be able to draw a curve, smooth
 a signal, do a Fourier transform in a few minutes.</li>
@@ -212,13 +209,13 @@ Learning Python avoids learning a new software for each new problem.</li>
 <div class="section" id="how-does-python-compare-to-other-solutions">
 <h3>1.1.1.3. How does Python compare to other solutions?<a class="headerlink" href="#how-does-python-compare-to-other-solutions" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="compiled-languages-c-c-fortran">
-<h4>1.1.1.3.1. Compiled languages: C, C++, Fortran...<a class="headerlink" href="#compiled-languages-c-c-fortran" title="Permalink to this headline">¶</a></h4>
+<h4>Compiled languages: C, C++, Fortran…<a class="headerlink" href="#compiled-languages-c-c-fortran" title="Permalink to this headline">¶</a></h4>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Pros:</th><td class="field-body"><ul class="first simple">
-<li>Very fast. For heavy computations, it&#8217;s difficult to outperform these
+<li>Very fast. For heavy computations, it’s difficult to outperform these
 languages.</li>
 </ul>
 </td>
@@ -234,7 +231,7 @@ are <strong>difficult languages</strong> for non programmers.</li>
 </table>
 </div>
 <div class="section" id="matlab-scripting-language">
-<h4>1.1.1.3.2. Matlab scripting language<a class="headerlink" href="#matlab-scripting-language" title="Permalink to this headline">¶</a></h4>
+<h4>Matlab scripting language<a class="headerlink" href="#matlab-scripting-language" title="Permalink to this headline">¶</a></h4>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -259,7 +256,7 @@ editor, etc.</li>
 </table>
 </div>
 <div class="section" id="julia">
-<h4>1.1.1.3.3. Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h4>
+<h4>Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h4>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -280,7 +277,7 @@ editor, etc.</li>
 </table>
 </div>
 <div class="section" id="other-scripting-languages-scilab-octave-r-idl-etc">
-<h4>1.1.1.3.4. Other scripting languages: Scilab, Octave, R, IDL, etc.<a class="headerlink" href="#other-scripting-languages-scilab-octave-r-idl-etc" title="Permalink to this headline">¶</a></h4>
+<h4>Other scripting languages: Scilab, Octave, R, IDL, etc.<a class="headerlink" href="#other-scripting-languages-scilab-octave-r-idl-etc" title="Permalink to this headline">¶</a></h4>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -304,7 +301,7 @@ a single type of usage, such as plotting.</li>
 </table>
 </div>
 <div class="section" id="python">
-<h4>1.1.1.3.5. Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
+<h4>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h4>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -312,7 +309,7 @@ a single type of usage, such as plotting.</li>
 <tr class="field-odd field"><th class="field-name">Pros:</th><td class="field-body"><ul class="first simple">
 <li>Very rich scientific computing libraries</li>
 <li>Well thought out language, allowing to write very readable and well
-structured code: we &#8220;code what we think&#8221;.</li>
+structured code: we “code what we think”.</li>
 <li>Many libraries beyond scientific computing (web server,
 serial port access, etc.)</li>
 <li>Free and open-source software, widely spread, with a vibrant community.</li>
@@ -350,7 +347,7 @@ data collections (lists, dictionaries), etc.</li>
 <li>Modules of the standard library: string processing, file
 management, simple network protocols.</li>
 <li>A large number of specialized modules or applications written in
-Python: web framework, etc. ... and scientific
+Python: web framework, etc. … and scientific
 computing.</li>
 <li>Development tools (automatic testing, documentation generation)</li>
 </ul>
@@ -378,7 +375,7 @@ Optimization, regression, interpolation, etc <a class="reference external" href=
 <p class="last"><a class="reference internal" href="scipy.html#scipy"><span class="std std-ref">chapter on scipy</span></a></p>
 </div>
 </li>
-<li><p class="first"><strong>Matplotlib</strong> : 2-D visualization, &#8220;publication-ready&#8221; plots
+<li><p class="first"><strong>Matplotlib</strong> : 2-D visualization, “publication-ready” plots
 <a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -396,7 +393,7 @@ Optimization, regression, interpolation, etc <a class="reference external" href=
 <li><strong>Jupyter</strong>, <strong>notebooks</strong> in the browser <a class="reference external" href="http://jupyter.org/">http://jupyter.org/</a></li>
 </ul>
 <p><div style="clear: both"></div></p>
-<a class="reference internal image-reference" href="../_images/example_surface_from_irregular_data.jpg"><img alt="../_images/example_surface_from_irregular_data.jpg" class="align-right" src="../_images/example_surface_from_irregular_data.jpg" style="width: 240.0px; height: 190.8px;" /></a>
+<a class="reference internal image-reference" href="../_images/example_surface_from_irregular_data.jpg"><img alt="../_images/example_surface_from_irregular_data.jpg" class="align-right" src="../_images/example_surface_from_irregular_data.jpg" style="width: 240.0px; height: 190.79999999999998px;" /></a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -426,16 +423,11 @@ that comes readily with optimized versions of scientific modules.</p>
 packaged, and it is recommended to use your package manager.</p>
 <p><strong>Other systems</strong></p>
 <p>There are several fully-featured Scientific Python distributions:</p>
-<table class="hlist"><tr><td><ul class="simple">
+<ul class="horizontal simple">
 <li><a class="reference external" href="https://www.continuum.io/downloads">Anaconda</a></li>
-</ul>
-</td><td><ul class="simple">
 <li><a class="reference external" href="https://store.enthought.com/downloads">EPD</a></li>
-</ul>
-</td><td><ul class="simple">
 <li><a class="reference external" href="https://winpython.github.io">WinPython</a></li>
 </ul>
-</td></tr></table>
 <div class="topic">
 <p class="topic-title first"><strong>Python 3 or Python 2?</strong></p>
 <p>In 2008, Python 3 was released. It is a major evolution of the
@@ -454,12 +446,12 @@ this makes it harder for beginners to find their way, it makes it
 possible for Python to be used for programs, in web servers, or
 embedded devices.</p>
 <div class="section" id="interactive-work">
-<h3>1.1.4.1. Interactive work<a class="headerlink" href="#interactive-work" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>1.1.4.1. Interactive work<a class="headerlink" href="#interactive-work" title="Permalink to this headline">¶</a></h3>
 <p>We recommend an interactive work with the <a class="reference external" href="http://ipython.org">IPython</a> console, or its offspring, the <a class="reference external" href="http://jupyter.readthedocs.io/en/latest/content-quickstart.html">Jupyter notebook</a>. They
 are handy to explore and understand algorithms.</p>
 <div class="sidebar">
 <p class="first sidebar-title">Under the notebook</p>
-<p class="last">To execute code, press &#8220;shift enter&#8221;</p>
+<p class="last">To execute code, press “shift enter”</p>
 </div>
 <p>Start <cite>ipython</cite>:</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [1]: </span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
@@ -499,9 +491,9 @@ will get you far. Here are several good easy-to-use editors:</p>
 <blockquote>
 <div><ul class="simple">
 <li><a class="reference external" href="https://pythonhosted.org/spyder/">Spyder</a>: integrates an IPython
-console, a debugger, a profiler...</li>
+console, a debugger, a profiler…</li>
 <li><a class="reference external" href="https://www.jetbrains.com/pycharm">PyCharm</a>: integrates an IPython
-console, notebooks, a debugger... (freely available,
+console, notebooks, a debugger… (freely available,
 but commercial)</li>
 <li><a class="reference external" href="https://atom.io">Atom</a></li>
 </ul>
@@ -673,14 +665,14 @@ function.</li>
   <ul>
 <li><a class="reference internal" href="#">1.1. Python scientific computing ecosystem</a><ul>
 <li><a class="reference internal" href="#why-python">1.1.1. Why Python?</a><ul>
-<li><a class="reference internal" href="#the-scientist-s-needs">1.1.1.1. The scientist&#8217;s needs</a></li>
-<li><a class="reference internal" href="#python-s-strengths">1.1.1.2. Python&#8217;s strengths</a></li>
+<li><a class="reference internal" href="#the-scientist-s-needs">1.1.1.1. The scientist’s needs</a></li>
+<li><a class="reference internal" href="#python-s-strengths">1.1.1.2. Python’s strengths</a></li>
 <li><a class="reference internal" href="#how-does-python-compare-to-other-solutions">1.1.1.3. How does Python compare to other solutions?</a><ul>
-<li><a class="reference internal" href="#compiled-languages-c-c-fortran">1.1.1.3.1. Compiled languages: C, C++, Fortran...</a></li>
-<li><a class="reference internal" href="#matlab-scripting-language">1.1.1.3.2. Matlab scripting language</a></li>
-<li><a class="reference internal" href="#julia">1.1.1.3.3. Julia</a></li>
-<li><a class="reference internal" href="#other-scripting-languages-scilab-octave-r-idl-etc">1.1.1.3.4. Other scripting languages: Scilab, Octave, R, IDL, etc.</a></li>
-<li><a class="reference internal" href="#python">1.1.1.3.5. Python</a></li>
+<li><a class="reference internal" href="#compiled-languages-c-c-fortran">Compiled languages: C, C++, Fortran…</a></li>
+<li><a class="reference internal" href="#matlab-scripting-language">Matlab scripting language</a></li>
+<li><a class="reference internal" href="#julia">Julia</a></li>
+<li><a class="reference internal" href="#other-scripting-languages-scilab-octave-r-idl-etc">Other scripting languages: Scilab, Octave, R, IDL, etc.</a></li>
+<li><a class="reference internal" href="#python">Python</a></li>
 </ul>
 </li>
 </ul>
@@ -754,8 +746,8 @@ function.</li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

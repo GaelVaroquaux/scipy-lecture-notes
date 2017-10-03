@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>1.5.12.19.2. Curve fitting: temperature as a function of month of the year &#8212; Scipy lecture notes</title>
-    
+    <title>Curve fitting: temperature as a function of month of the year &#8212; Scipy lecture notes</title>
     <link rel="stylesheet" href="../../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../../../index.html" />
-    <link rel="up" title="1.5. Scipy : high-level scientific computing" href="../../../scipy.html" />
-    <link rel="next" title="1.5.12.19.3. Simple image blur by convolution with a Gaussian kernel" href="plot_image_blur.html" />
-    <link rel="prev" title="1.5.12.19.1. Crude periodicity finding" href="plot_periodicity_finder.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Simple image blur by convolution with a Gaussian kernel" href="plot_image_blur.html" />
+    <link rel="prev" title="Crude periodicity finding" href="plot_periodicity_finder.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -136,10 +133,10 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_image_blur.html" title="1.5.12.19.3. Simple image blur by convolution with a Gaussian kernel"
+          <a href="plot_image_blur.html" title="Simple image blur by convolution with a Gaussian kernel"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="plot_periodicity_finder.html" title="1.5.12.19.1. Crude periodicity finding"
+          <a href="plot_periodicity_finder.html" title="Crude periodicity finding"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../index.html" >1. Getting started with Python for science</a> &#187;</li>
@@ -173,12 +170,12 @@ $(function () {
           <div class="body" role="main">
             
   <div class="section" id="curve-fitting-temperature-as-a-function-of-month-of-the-year">
-<span id="sphx-glr-intro-scipy-auto-examples-solutions-plot-curvefit-temperature-data-py"></span><h1>1.5.12.19.2. Curve fitting: temperature as a function of month of the year<a class="headerlink" href="#curve-fitting-temperature-as-a-function-of-month-of-the-year" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-intro-scipy-auto-examples-solutions-plot-curvefit-temperature-data-py"></span><h1>Curve fitting: temperature as a function of month of the year<a class="headerlink" href="#curve-fitting-temperature-as-a-function-of-month-of-the-year" title="Permalink to this headline">¶</a></h1>
 <p>We have the min and max temperatures in Alaska for each months of the
 year. We would like to find a function to describe this yearly evolution.</p>
 <p>For this, we will fit a periodic function.</p>
 <div class="section" id="the-data">
-<h2>1.5.12.19.2.1. The data<a class="headerlink" href="#the-data" title="Permalink to this headline">¶</a></h2>
+<h2>The data<a class="headerlink" href="#the-data" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">temp_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">17</span><span class="p">,</span>  <span class="mi">19</span><span class="p">,</span>  <span class="mi">21</span><span class="p">,</span>  <span class="mi">28</span><span class="p">,</span>  <span class="mi">33</span><span class="p">,</span>  <span class="mi">38</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span>  <span class="mi">37</span><span class="p">,</span>  <span class="mi">31</span><span class="p">,</span>  <span class="mi">23</span><span class="p">,</span>  <span class="mi">19</span><span class="p">,</span>  <span class="mi">18</span><span class="p">])</span>
@@ -195,7 +192,7 @@ year. We would like to find a function to describe this yearly evolution.</p>
 <img alt="../../../../_images/sphx_glr_plot_curvefit_temperature_data_001.png" class="align-center" src="../../../../_images/sphx_glr_plot_curvefit_temperature_data_001.png" />
 </div>
 <div class="section" id="fitting-it-to-a-periodic-function">
-<h2>1.5.12.19.2.2. Fitting it to a periodic function<a class="headerlink" href="#fitting-it-to-a-periodic-function" title="Permalink to this headline">¶</a></h2>
+<h2>Fitting it to a periodic function<a class="headerlink" href="#fitting-it-to-a-periodic-function" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
 <div class="newline"></div><span class="k">def</span> <span class="nf">yearly_temps</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">avg</span><span class="p">,</span> <span class="n">ampl</span><span class="p">,</span> <span class="n">time_offset</span><span class="p">):</span>
 <div class="newline"></div>    <span class="k">return</span> <span class="p">(</span><span class="n">avg</span>
@@ -209,7 +206,7 @@ year. We would like to find a function to describe this yearly evolution.</p>
 </div>
 </div>
 <div class="section" id="plotting-the-fit">
-<h2>1.5.12.19.2.3. Plotting the fit<a class="headerlink" href="#plotting-the-fit" title="Permalink to this headline">¶</a></h2>
+<h2>Plotting the fit<a class="headerlink" href="#plotting-the-fit" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -224,14 +221,14 @@ year. We would like to find a function to describe this yearly evolution.</p>
 <div class="newline"></div></pre></div>
 </div>
 <img alt="../../../../_images/sphx_glr_plot_curvefit_temperature_data_002.png" class="align-center" src="../../../../_images/sphx_glr_plot_curvefit_temperature_data_002.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.209 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.089 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../../_downloads/plot_curvefit_temperature_data.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_curvefit_temperature_data.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../../_downloads/plot_curvefit_temperature_data.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_curvefit_temperature_data.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -245,10 +242,10 @@ year. We would like to find a function to describe this yearly evolution.</p>
 	<div class="sidebartoc">
   <h3><a href="../../../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1.5.12.19.2. Curve fitting: temperature as a function of month of the year</a><ul>
-<li><a class="reference internal" href="#the-data">1.5.12.19.2.1. The data</a></li>
-<li><a class="reference internal" href="#fitting-it-to-a-periodic-function">1.5.12.19.2.2. Fitting it to a periodic function</a></li>
-<li><a class="reference internal" href="#plotting-the-fit">1.5.12.19.2.3. Plotting the fit</a></li>
+<li><a class="reference internal" href="#">Curve fitting: temperature as a function of month of the year</a><ul>
+<li><a class="reference internal" href="#the-data">The data</a></li>
+<li><a class="reference internal" href="#fitting-it-to-a-periodic-function">Fitting it to a periodic function</a></li>
+<li><a class="reference internal" href="#plotting-the-fit">Plotting the fit</a></li>
 </ul>
 </li>
 </ul>
@@ -280,10 +277,10 @@ year. We would like to find a function to describe this yearly evolution.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="plot_image_blur.html" title="1.5.12.19.3. Simple image blur by convolution with a Gaussian kernel"
+          <a href="plot_image_blur.html" title="Simple image blur by convolution with a Gaussian kernel"
              >next</a></li>
         <li class="right" >
-          <a href="plot_periodicity_finder.html" title="1.5.12.19.1. Crude periodicity finding"
+          <a href="plot_periodicity_finder.html" title="Crude periodicity finding"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../../index.html" >1. Getting started with Python for science</a> &#187;</li>
@@ -311,8 +308,8 @@ year. We would like to find a function to describe this yearly evolution.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

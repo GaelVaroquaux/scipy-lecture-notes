@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>2.5.2.2.1. Diagonal Format (DIA) &#8212; Scipy lecture notes</title>
-    
+    <title>Diagonal Format (DIA) &#8212; Scipy lecture notes</title>
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2.5.2. Storage Schemes" href="storage_schemes.html" />
-    <link rel="next" title="2.5.2.2.2. List of Lists Format (LIL)" href="lil_matrix.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="List of Lists Format (LIL)" href="lil_matrix.html" />
     <link rel="prev" title="2.5.2. Storage Schemes" href="storage_schemes.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -136,7 +133,7 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="lil_matrix.html" title="2.5.2.2.2. List of Lists Format (LIL)"
+          <a href="lil_matrix.html" title="List of Lists Format (LIL)"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="storage_schemes.html" title="2.5.2. Storage Schemes"
@@ -174,13 +171,12 @@ $(function () {
           <div class="body" role="main">
             
   <div class="section" id="diagonal-format-dia">
-<h1>2.5.2.2.1. Diagonal Format (DIA)<a class="headerlink" href="#diagonal-format-dia" title="Permalink to this headline">¶</a></h1>
-<ul>
-<li><p class="first">very simple scheme</p>
-</li>
+<h1>Diagonal Format (DIA)<a class="headerlink" href="#diagonal-format-dia" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>very simple scheme</li>
 <li><dl class="first docutils">
 <dt>diagonals in dense NumPy array of shape <cite>(n_diag, length)</cite></dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>fixed length -&gt; waste space a bit when far from main diagonal</li>
 <li>subclass of <code class="xref py py-class docutils literal"><span class="pre">_data_matrix</span></code> (sparse matrix classes with
 <cite>.data</cite> attribute)</li>
@@ -190,7 +186,7 @@ $(function () {
 </li>
 <li><dl class="first docutils">
 <dt>offset for each diagonal</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>0 is the main diagonal</li>
 <li>negative offset = below</li>
 <li>positive offset = above</li>
@@ -198,11 +194,10 @@ $(function () {
 </dd>
 </dl>
 </li>
-<li><p class="first">fast matrix * vector (sparsetools)</p>
-</li>
+<li>fast matrix * vector (sparsetools)</li>
 <li><dl class="first docutils">
 <dt>fast and easy item-wise operations</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>manipulate data array directly (fast NumPy machinery)</li>
 </ul>
 </dd>
@@ -210,7 +205,7 @@ $(function () {
 </li>
 <li><dl class="first docutils">
 <dt>constructor accepts:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>dense matrix (array)</li>
 <li>sparse matrix</li>
 <li>shape tuple (create empty matrix)</li>
@@ -219,11 +214,10 @@ $(function () {
 </dd>
 </dl>
 </li>
-<li><p class="first">no slicing, no individual item access</p>
-</li>
+<li>no slicing, no individual item access</li>
 <li><dl class="first docutils">
 <dt>use:</dt>
-<dd><ul class="first last simple">
+<dd><ul class="first last">
 <li>rather specialized</li>
 <li>solving PDEs by finite differences</li>
 <li>with an iterative solver</li>
@@ -233,7 +227,7 @@ $(function () {
 </li>
 </ul>
 <div class="section" id="examples">
-<h2>2.5.2.2.1.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">create some DIA matrices:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -323,8 +317,8 @@ $(function () {
 	<div class="sidebartoc">
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">2.5.2.2.1. Diagonal Format (DIA)</a><ul>
-<li><a class="reference internal" href="#examples">2.5.2.2.1.1. Examples</a></li>
+<li><a class="reference internal" href="#">Diagonal Format (DIA)</a><ul>
+<li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -356,7 +350,7 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="lil_matrix.html" title="2.5.2.2.2. List of Lists Format (LIL)"
+          <a href="lil_matrix.html" title="List of Lists Format (LIL)"
              >next</a></li>
         <li class="right" >
           <a href="storage_schemes.html" title="2.5.2. Storage Schemes"
@@ -388,8 +382,8 @@ $(function () {
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

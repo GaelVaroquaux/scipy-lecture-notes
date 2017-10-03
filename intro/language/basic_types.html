@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.2.2. Basic types &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="1.2. The Python language" href="python_language.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.2.3. Control Flow" href="control_flow.html" />
     <link rel="prev" title="1.2.1. First steps" href="first_steps.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -296,7 +293,7 @@ natively implemented</p>
 collections of objects can be stored.</p>
 </div>
 <div class="section" id="lists">
-<h3>1.2.2.2.1. Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
+<h3>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h3>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">A list is an ordered collection of objects, that may have different
@@ -448,32 +445,20 @@ necessary for going through this tutorial.</p>
 <p class="topic-title first"><strong>Discovering methods:</strong></p>
 <p>Reminder: in Ipython: tab-completion (press tab)</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [28]: </span><span class="n">rcolors</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
-<div class="newline"></div><span class="go">rcolors.__add__           rcolors.__iadd__          rcolors.__setattr__</span>
-<div class="newline"></div><span class="go">rcolors.__class__         rcolors.__imul__          rcolors.__setitem__</span>
-<div class="newline"></div><span class="go">rcolors.__contains__      rcolors.__init__          rcolors.__setslice__</span>
-<div class="newline"></div><span class="go">rcolors.__delattr__       rcolors.__iter__          rcolors.__sizeof__</span>
-<div class="newline"></div><span class="go">rcolors.__delitem__       rcolors.__le__            rcolors.__str__</span>
-<div class="newline"></div><span class="go">rcolors.__delslice__      rcolors.__len__           rcolors.__subclasshook__</span>
-<div class="newline"></div><span class="go">rcolors.__doc__           rcolors.__lt__            rcolors.append</span>
-<div class="newline"></div><span class="go">rcolors.__eq__            rcolors.__mul__           rcolors.count</span>
-<div class="newline"></div><span class="go">rcolors.__format__        rcolors.__ne__            rcolors.extend</span>
-<div class="newline"></div><span class="go">rcolors.__ge__            rcolors.__new__           rcolors.index</span>
-<div class="newline"></div><span class="go">rcolors.__getattribute__  rcolors.__reduce__        rcolors.insert</span>
-<div class="newline"></div><span class="go">rcolors.__getitem__       rcolors.__reduce_ex__     rcolors.pop</span>
-<div class="newline"></div><span class="go">rcolors.__getslice__      rcolors.__repr__          rcolors.remove</span>
-<div class="newline"></div><span class="go">rcolors.__gt__            rcolors.__reversed__      rcolors.reverse</span>
-<div class="newline"></div><span class="go">rcolors.__hash__          rcolors.__rmul__          rcolors.sort</span>
+<div class="newline"></div><span class="go">rcolors.append   rcolors.index    rcolors.remove</span>
+<div class="newline"></div><span class="go">rcolors.count    rcolors.insert   rcolors.reverse</span>
+<div class="newline"></div><span class="go">rcolors.extend   rcolors.pop      rcolors.sort</span>
 <div class="newline"></div></pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="strings">
-<h3>1.2.2.2.2. Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
+<h3>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h3>
 <p>Different string syntaxes (simple, double or triple quotes):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello, how are you?&#39;</span>
 <div class="newline"></div><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hi, what&#39;s up&quot;</span>
 <div class="newline"></div><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Hello,                 # tripling the quotes allows the</span>
-<div class="newline"></div><span class="s1">       how are you&#39;&#39;&#39;</span>         <span class="c1"># the string to span more than one line</span>
+<div class="newline"></div><span class="s1">       how are you&#39;&#39;&#39;</span>         <span class="c1"># string to span more than one line</span>
 <div class="newline"></div><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Hi,</span>
 <div class="newline"></div><span class="s2">what&#39;s up?&quot;&quot;&quot;</span>
 <div class="newline"></div></pre></div>
@@ -564,7 +549,7 @@ looking for patterns or formatting. The interested reader is referred to
 </div>
 </div>
 <div class="section" id="dictionaries">
-<h3>1.2.2.2.3. Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
+<h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">A dictionary is basically an efficient table that <strong>maps keys to
@@ -599,7 +584,7 @@ for more information.</p>
 </div>
 </div>
 <div class="section" id="more-container-types">
-<h3>1.2.2.2.4. More container types<a class="headerlink" href="#more-container-types" title="Permalink to this headline">¶</a></h3>
+<h3>More container types<a class="headerlink" href="#more-container-types" title="Permalink to this headline">¶</a></h3>
 <p><strong>Tuples</strong></p>
 <p>Tuples are basically immutable lists. The elements of a tuple are written
 between parentheses, or just separated by commas:</p>
@@ -688,7 +673,7 @@ r.h.s. object</li>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">A very good and detailed explanation of the above issues can
-be found in David M. Beazley&#8217;s article <a class="reference external" href="http://www.informit.com/articles/article.aspx?p=453682">Types and Objects in Python</a>.</p>
+be found in David M. Beazley’s article <a class="reference external" href="http://www.informit.com/articles/article.aspx?p=453682">Types and Objects in Python</a>.</p>
 </div>
 <p><div style="clear: both"></div></p>
 </div>
@@ -706,10 +691,10 @@ be found in David M. Beazley&#8217;s article <a class="reference external" href=
 <li><a class="reference internal" href="#">1.2.2. Basic types</a><ul>
 <li><a class="reference internal" href="#numerical-types">1.2.2.1. Numerical types</a></li>
 <li><a class="reference internal" href="#containers">1.2.2.2. Containers</a><ul>
-<li><a class="reference internal" href="#lists">1.2.2.2.1. Lists</a></li>
-<li><a class="reference internal" href="#strings">1.2.2.2.2. Strings</a></li>
-<li><a class="reference internal" href="#dictionaries">1.2.2.2.3. Dictionaries</a></li>
-<li><a class="reference internal" href="#more-container-types">1.2.2.2.4. More container types</a></li>
+<li><a class="reference internal" href="#lists">Lists</a></li>
+<li><a class="reference internal" href="#strings">Strings</a></li>
+<li><a class="reference internal" href="#dictionaries">Dictionaries</a></li>
+<li><a class="reference internal" href="#more-container-types">More container types</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#assignment-operator">1.2.2.3. Assignment operator</a></li>
@@ -775,8 +760,8 @@ be found in David M. Beazley&#8217;s article <a class="reference external" href=
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>2.6. Image manipulation and processing using Numpy and Scipy &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="2. Advanced topics" href="../index.html" />
-    <link rel="next" title="2.7. Mathematical optimization: finding minima of functions" href="../mathematical_optimization/index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.6.8.1. Displaying a Racoon Face" href="auto_examples/plot_face.html" />
     <link rel="prev" title="2.5.4. Other Interesting Packages" href="../scipy_sparse/other_packages.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -136,7 +133,7 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../mathematical_optimization/index.html" title="2.7. Mathematical optimization: finding minima of functions"
+          <a href="auto_examples/plot_face.html" title="2.6.8.1. Displaying a Racoon Face"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="../scipy_sparse/other_packages.html" title="2.5.4. Other Interesting Packages"
@@ -183,11 +180,11 @@ arrays.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">For more advanced image processing and image-specific routines, see the
-tutorial <a class="reference internal" href="../../packages/scikit-image/index.html#scikit-image"><span class="std std-ref">Scikit-image: image processing</span></a>, dedicated to the <a class="reference external" href="http://scikit-image.org/docs/stable/api/skimage.html#module-skimage" title="(in skimage v0.13.0)"><code class="xref py py-mod docutils literal"><span class="pre">skimage</span></code></a> module.</p>
+tutorial <a class="reference internal" href="../../packages/scikit-image/index.html#scikit-image"><span class="std std-ref">Scikit-image: image processing</span></a>, dedicated to the <a class="reference external" href="http://scikit-image.org/docs/stable/api/skimage.html#module-skimage" title="(in skimage v0.13.1)"><code class="xref py py-mod docutils literal"><span class="pre">skimage</span></code></a> module.</p>
 </div>
 <div class="topic">
 <p class="topic-title first">Image = 2-D numerical array</p>
-<p>(or 3-D: CT, MRI, 2D + time; 4-D, ...)</p>
+<p>(or 3-D: CT, MRI, 2D + time; 4-D, …)</p>
 <p>Here, <strong>image == Numpy array</strong> <code class="docutils literal"><span class="pre">np.array</span></code></p>
 </div>
 <p><strong>Tools used in this tutorial</strong>:</p>
@@ -204,41 +201,43 @@ tutorial <a class="reference internal" href="../../packages/scikit-image/index.h
 <p><strong>Common tasks in image processing</strong>:</p>
 <ul class="simple">
 <li>Input/Output, displaying images</li>
-<li>Basic manipulations: cropping, flipping, rotating, ...</li>
+<li>Basic manipulations: cropping, flipping, rotating, …</li>
 <li>Image filtering: denoising, sharpening</li>
 <li>Image segmentation: labeling pixels corresponding to different objects</li>
 <li>Classification</li>
 <li>Feature extraction</li>
 <li>Registration</li>
-<li>...</li>
+<li>…</li>
 </ul>
 <div class="contents local topic" id="chapters-contents">
 <p class="topic-title first">Chapters contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#opening-and-writing-to-image-files" id="id1">Opening and writing to image files</a></li>
-<li><a class="reference internal" href="#displaying-images" id="id2">Displaying images</a></li>
-<li><a class="reference internal" href="#basic-manipulations" id="id3">Basic manipulations</a><ul>
-<li><a class="reference internal" href="#statistical-information" id="id4">Statistical information</a></li>
-<li><a class="reference internal" href="#geometrical-transformations" id="id5">Geometrical transformations</a></li>
+<li><a class="reference internal" href="#opening-and-writing-to-image-files" id="id25">Opening and writing to image files</a></li>
+<li><a class="reference internal" href="#displaying-images" id="id26">Displaying images</a></li>
+<li><a class="reference internal" href="#basic-manipulations" id="id27">Basic manipulations</a><ul>
+<li><a class="reference internal" href="#statistical-information" id="id28">Statistical information</a></li>
+<li><a class="reference internal" href="#geometrical-transformations" id="id29">Geometrical transformations</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#image-filtering" id="id6">Image filtering</a><ul>
-<li><a class="reference internal" href="#blurring-smoothing" id="id7">Blurring/smoothing</a></li>
-<li><a class="reference internal" href="#sharpening" id="id8">Sharpening</a></li>
-<li><a class="reference internal" href="#denoising" id="id9">Denoising</a></li>
-<li><a class="reference internal" href="#mathematical-morphology" id="id10">Mathematical morphology</a></li>
+<li><a class="reference internal" href="#image-filtering" id="id30">Image filtering</a><ul>
+<li><a class="reference internal" href="#blurring-smoothing" id="id31">Blurring/smoothing</a></li>
+<li><a class="reference internal" href="#sharpening" id="id32">Sharpening</a></li>
+<li><a class="reference internal" href="#denoising" id="id33">Denoising</a></li>
+<li><a class="reference internal" href="#mathematical-morphology" id="id34">Mathematical morphology</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#feature-extraction" id="id11">Feature extraction</a><ul>
-<li><a class="reference internal" href="#edge-detection" id="id12">Edge detection</a></li>
-<li><a class="reference internal" href="#segmentation" id="id13">Segmentation</a></li>
+<li><a class="reference internal" href="#feature-extraction" id="id35">Feature extraction</a><ul>
+<li><a class="reference internal" href="#edge-detection" id="id36">Edge detection</a></li>
+<li><a class="reference internal" href="#segmentation" id="id37">Segmentation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#measuring-objects-properties-ndimage-measurements" id="id14">Measuring objects properties: <code class="docutils literal"><span class="pre">ndimage.measurements</span></code></a></li>
+<li><a class="reference internal" href="#measuring-objects-properties-ndimage-measurements" id="id38">Measuring objects properties: <code class="docutils literal"><span class="pre">ndimage.measurements</span></code></a></li>
+<li><a class="reference internal" href="#full-code-examples" id="id39">Full code examples</a></li>
+<li><a class="reference internal" href="#examples-for-the-image-processing-chapter" id="id40">Examples for the image processing chapter</a></li>
 </ul>
 </div>
 <div class="section" id="opening-and-writing-to-image-files">
-<h2><a class="toc-backref" href="#id1">2.6.1. Opening and writing to image files</a><a class="headerlink" href="#opening-and-writing-to-image-files" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">2.6.1. Opening and writing to image files</a><a class="headerlink" href="#opening-and-writing-to-image-files" title="Permalink to this headline">¶</a></h2>
 <p>Writing an array to a file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">misc</span>
 <div class="newline"></div><span class="n">f</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">()</span>
@@ -289,7 +288,7 @@ bytes).</p>
 </div>
 </div>
 <div class="section" id="displaying-images">
-<h2><a class="toc-backref" href="#id2">2.6.2. Displaying images</a><a class="headerlink" href="#displaying-images" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id26">2.6.2. Displaying images</a><a class="headerlink" href="#displaying-images" title="Permalink to this headline">¶</a></h2>
 <p>Use <code class="docutils literal"><span class="pre">matplotlib</span></code> and <code class="docutils literal"><span class="pre">imshow</span></code> to display an image inside a
 <code class="docutils literal"><span class="pre">matplotlib</span> <span class="pre">figure</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># retrieve a grayscale image</span>
@@ -314,7 +313,7 @@ bytes).</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_display_face.html"><img alt="../../_images/sphx_glr_plot_display_face_001.png" src="../../_images/sphx_glr_plot_display_face_001.png" style="width: 800.0px; height: 288.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_display_face.html#example-plot-display-face-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p>For fine inspection of intensity variations, use
 <code class="docutils literal"><span class="pre">interpolation='nearest'</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">340</span><span class="p">,</span> <span class="mi">510</span><span class="p">:</span><span class="mi">530</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>        
@@ -326,7 +325,7 @@ bytes).</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_interpolation_face.html"><img alt="../../_images/sphx_glr_plot_interpolation_face_001.png" src="../../_images/sphx_glr_plot_interpolation_face_001.png" style="width: 640.0px; height: 320.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_interpolation_face.html#example-plot-interpolation-face-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p>3-D visualization: Mayavi</p>
@@ -335,14 +334,14 @@ bytes).</p>
 <div><ul class="simple">
 <li>Image plane widgets</li>
 <li>Isosurfaces</li>
-<li>...</li>
+<li>…</li>
 </ul>
 </div></blockquote>
 </div>
 <a class="reference internal image-reference" href="../../_images/decorations.png"><img alt="../../_images/decorations.png" class="align-center" src="../../_images/decorations.png" style="width: 390.0px; height: 275.6px;" /></a>
 </div>
 <div class="section" id="basic-manipulations">
-<h2><a class="toc-backref" href="#id3">2.6.3. Basic manipulations</a><a class="headerlink" href="#basic-manipulations" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id27">2.6.3. Basic manipulations</a><a class="headerlink" href="#basic-manipulations" title="Permalink to this headline">¶</a></h2>
 <p>Images are arrays: use the whole <code class="docutils literal"><span class="pre">numpy</span></code> machinery.</p>
 <a class="reference internal image-reference" href="../../_images/axis_convention.png"><img alt="../../_images/axis_convention.png" class="align-center" src="../../_images/axis_convention.png" style="width: 432.25px; height: 221.65px;" /></a>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -367,9 +366,9 @@ bytes).</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_numpy_array.html"><img alt="../../_images/sphx_glr_plot_numpy_array_001.png" src="../../_images/sphx_glr_plot_numpy_array_001.png" style="width: 300.0px; height: 300.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_numpy_array.html#example-plot-numpy-array-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <div class="section" id="statistical-information">
-<h3><a class="toc-backref" href="#id4">2.6.3.1. Statistical information</a><a class="headerlink" href="#statistical-information" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id28">2.6.3.1. Statistical information</a><a class="headerlink" href="#statistical-information" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <div class="newline"></div><span class="go">113.48026784261067</span>
@@ -399,11 +398,11 @@ of the lightest pixels.</li>
 </div>
 </div>
 <div class="section" id="geometrical-transformations">
-<h3><a class="toc-backref" href="#id5">2.6.3.2. Geometrical transformations</a><a class="headerlink" href="#geometrical-transformations" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id29">2.6.3.2. Geometrical transformations</a><a class="headerlink" href="#geometrical-transformations" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span> <span class="o">=</span> <span class="n">face</span><span class="o">.</span><span class="n">shape</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Cropping</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">crop_face</span> <span class="o">=</span> <span class="n">face</span><span class="p">[</span><span class="n">lx</span> <span class="o">/</span> <span class="mi">4</span><span class="p">:</span> <span class="o">-</span> <span class="n">lx</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">ly</span> <span class="o">/</span> <span class="mi">4</span><span class="p">:</span> <span class="o">-</span> <span class="n">ly</span> <span class="o">/</span> <span class="mi">4</span><span class="p">]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">crop_face</span> <span class="o">=</span> <span class="n">face</span><span class="p">[</span><span class="n">lx</span> <span class="o">//</span> <span class="mi">4</span><span class="p">:</span> <span class="o">-</span> <span class="n">lx</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="n">ly</span> <span class="o">//</span> <span class="mi">4</span><span class="p">:</span> <span class="o">-</span> <span class="n">ly</span> <span class="o">//</span> <span class="mi">4</span><span class="p">]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1"># up &lt;-&gt; down flip</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">flip_ud_face</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">face</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="c1"># rotation</span>
@@ -418,7 +417,7 @@ of the lightest pixels.</li>
 </div>
 </div>
 <div class="section" id="image-filtering">
-<h2><a class="toc-backref" href="#id6">2.6.4. Image filtering</a><a class="headerlink" href="#image-filtering" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id30">2.6.4. Image filtering</a><a class="headerlink" href="#image-filtering" title="Permalink to this headline">¶</a></h2>
 <p><strong>Local filters</strong>: replace the value of pixels by a function of the values of
 neighboring pixels.</p>
 <p>Neighbourhood: square (choose size), disk, or more complicated <em>structuring
@@ -427,7 +426,7 @@ element</em>.</p>
 <a class="reference internal image-reference" href="../../_images/kernels.png"><img alt="../../_images/kernels.png" src="../../_images/kernels.png" style="width: 759.6px; height: 248.4px;" /></a>
 </div>
 <div class="section" id="blurring-smoothing">
-<h3><a class="toc-backref" href="#id7">2.6.4.1. Blurring/smoothing</a><a class="headerlink" href="#blurring-smoothing" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">2.6.4.1. Blurring/smoothing</a><a class="headerlink" href="#blurring-smoothing" title="Permalink to this headline">¶</a></h3>
 <p><strong>Gaussian filter</strong> from <code class="docutils literal"><span class="pre">scipy.ndimage</span></code>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">misc</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -442,10 +441,10 @@ element</em>.</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_blur.html"><img alt="../../_images/sphx_glr_plot_blur_001.png" src="../../_images/sphx_glr_plot_blur_001.png" style="width: 810.0px; height: 270.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_blur.html#example-plot-blur-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 </div>
 <div class="section" id="sharpening">
-<h3><a class="toc-backref" href="#id8">2.6.4.2. Sharpening</a><a class="headerlink" href="#sharpening" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id32">2.6.4.2. Sharpening</a><a class="headerlink" href="#sharpening" title="Permalink to this headline">¶</a></h3>
 <p>Sharpen a blurred image:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">misc</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">face</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -462,10 +461,10 @@ Laplacian:</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_sharpen.html"><img alt="../../_images/sphx_glr_plot_sharpen_001.png" src="../../_images/sphx_glr_plot_sharpen_001.png" style="width: 780.0px; height: 260.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_sharpen.html#example-plot-sharpen-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 </div>
 <div class="section" id="denoising">
-<h3><a class="toc-backref" href="#id9">2.6.4.3. Denoising</a><a class="headerlink" href="#denoising" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id33">2.6.4.3. Denoising</a><a class="headerlink" href="#denoising" title="Permalink to this headline">¶</a></h3>
 <p>Noisy face:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">misc</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">face</span><span class="p">(</span><span class="n">gray</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -473,7 +472,7 @@ Laplacian:</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">noisy</span> <span class="o">=</span> <span class="n">f</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>A <strong>Gaussian filter</strong> smoothes the noise out... and the edges as well:</p>
+<p>A <strong>Gaussian filter</strong> smoothes the noise out… and the edges as well:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gauss_denoised</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -485,7 +484,7 @@ Laplacian:</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_face_denoise.html"><img alt="../../_images/sphx_glr_plot_face_denoise_001.png" src="../../_images/sphx_glr_plot_face_denoise_001.png" style="width: 720.0px; height: 168.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_face_denoise.html#example-plot-face-denoise-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p>Median filter: better result for straight boundaries (<strong>low curvature</strong>):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -497,7 +496,7 @@ Laplacian:</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_denoising.html"><img alt="../../_images/sphx_glr_plot_denoising_001.png" src="../../_images/sphx_glr_plot_denoising_001.png" style="width: 800.0px; height: 250.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_denoising.html#example-plot-denoising-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p>Other rank filter: <code class="docutils literal"><span class="pre">ndimage.maximum_filter</span></code>,
 <code class="docutils literal"><span class="pre">ndimage.percentile_filter</span></code></p>
 <p>Other local non-linear filters: Wiener (<code class="docutils literal"><span class="pre">scipy.signal.wiener</span></code>), etc.</p>
@@ -522,7 +521,7 @@ see the <a class="reference internal" href="../../packages/scikit-image/index.ht
 </div>
 </div>
 <div class="section" id="mathematical-morphology">
-<h3><a class="toc-backref" href="#id10">2.6.4.4. Mathematical morphology</a><a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id34">2.6.4.4. Mathematical morphology</a><a class="headerlink" href="#mathematical-morphology" title="Permalink to this headline">¶</a></h3>
 <p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Mathematical_morphology">wikipedia</a>
 for a definition of mathematical morphology.</p>
 <p>Probe an image with a simple shape (a <strong>structuring element</strong>), and
@@ -609,7 +608,7 @@ image.</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_greyscale_dilation.html"><img alt="../../_images/sphx_glr_plot_greyscale_dilation_001.png" src="../../_images/sphx_glr_plot_greyscale_dilation_001.png" style="width: 500.0px; height: 120.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_greyscale_dilation.html#example-plot-greyscale-dilation-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p><strong>Opening</strong>: erosion + dilation:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -651,16 +650,16 @@ image.</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_propagation.html"><img alt="../../_images/sphx_glr_plot_propagation_001.png" src="../../_images/sphx_glr_plot_propagation_001.png" style="width: 380.0px; height: 120.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_propagation.html#example-plot-propagation-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p><strong>Closing</strong>: dilation + erosion</p>
 <p>Many other mathematical morphology operations: hit and miss transform, tophat,
 etc.</p>
 </div>
 </div>
 <div class="section" id="feature-extraction">
-<h2><a class="toc-backref" href="#id11">2.6.5. Feature extraction</a><a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id35">2.6.5. Feature extraction</a><a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="edge-detection">
-<h3><a class="toc-backref" href="#id12">2.6.5.1. Edge detection</a><a class="headerlink" href="#edge-detection" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id36">2.6.5.1. Edge detection</a><a class="headerlink" href="#edge-detection" title="Permalink to this headline">¶</a></h3>
 <p>Synthetic data:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="p">[</span><span class="mi">64</span><span class="p">:</span><span class="o">-</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">:</span><span class="o">-</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -678,10 +677,10 @@ etc.</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_find_edges.html"><img alt="../../_images/sphx_glr_plot_find_edges_001.png" src="../../_images/sphx_glr_plot_find_edges_001.png" style="width: 640.0px; height: 200.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_find_edges.html#example-plot-find-edges-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 </div>
 <div class="section" id="segmentation">
-<h3><a class="toc-backref" href="#id13">2.6.5.2. Segmentation</a><a class="headerlink" href="#segmentation" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id37">2.6.5.2. Segmentation</a><a class="headerlink" href="#segmentation" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>Histogram-based</strong> segmentation (no spatial information)</li>
 </ul>
@@ -706,7 +705,7 @@ etc.</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_histo_segmentation.html"><img alt="../../_images/sphx_glr_plot_histo_segmentation_001.png" src="../../_images/sphx_glr_plot_histo_segmentation_001.png" style="width: 715.0px; height: 260.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_histo_segmentation.html#example-plot-histo-segmentation-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p>Use mathematical morphology to clean up the result:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove small white regions</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">open_img</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">binary_img</span><span class="p">)</span>
@@ -717,7 +716,7 @@ etc.</p>
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_clean_morpho.html"><img alt="../../_images/sphx_glr_plot_clean_morpho_001.png" src="../../_images/sphx_glr_plot_clean_morpho_001.png" style="width: 780.0px; height: 195.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_clean_morpho.html#example-plot-clean-morpho-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercise</strong></p>
 <p>Check that reconstruction operations (erosion + propagation) produce a
@@ -791,7 +790,7 @@ function of the <code class="docutils literal"><span class="pre">scikit-learn</s
 </div>
 </div>
 <div class="section" id="measuring-objects-properties-ndimage-measurements">
-<h2><a class="toc-backref" href="#id14">2.6.6. Measuring objects properties: <code class="docutils literal"><span class="pre">ndimage.measurements</span></code></a><a class="headerlink" href="#measuring-objects-properties-ndimage-measurements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id38">2.6.6. Measuring objects properties: <code class="docutils literal"><span class="pre">ndimage.measurements</span></code></a><a class="headerlink" href="#measuring-objects-properties-ndimage-measurements" title="Permalink to this headline">¶</a></h2>
 <p>Synthetic data:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">l</span> <span class="o">=</span> <span class="mi">256</span>
@@ -816,7 +815,7 @@ function of the <code class="docutils literal"><span class="pre">scikit-learn</s
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_synthetic_data.html"><img alt="../../_images/sphx_glr_plot_synthetic_data_001.png" src="../../_images/sphx_glr_plot_synthetic_data_001.png" style="width: 810.0px; height: 270.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_synthetic_data.html#example-plot-synthetic-data-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p>Compute size, mean_value, etc. of each region:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sizes</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">label_im</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_labels</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">mean_vals</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">label_im</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nb_labels</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
@@ -840,7 +839,7 @@ function of the <code class="docutils literal"><span class="pre">scikit-learn</s
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_measure_data.html"><img alt="../../_images/sphx_glr_plot_measure_data_001.png" src="../../_images/sphx_glr_plot_measure_data_001.png" style="width: 540.0px; height: 270.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_measure_data.html#example-plot-measure-data-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p>Find region of interest enclosing object:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">slice_x</span><span class="p">,</span> <span class="n">slice_y</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">find_objects</span><span class="p">(</span><span class="n">label_im</span><span class="o">==</span><span class="mi">4</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">roi</span> <span class="o">=</span> <span class="n">im</span><span class="p">[</span><span class="n">slice_x</span><span class="p">,</span> <span class="n">slice_y</span><span class="p">]</span>
@@ -869,7 +868,7 @@ function of the <code class="docutils literal"><span class="pre">scikit-learn</s
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_block_mean.html"><img alt="../../_images/sphx_glr_plot_block_mean_001.png" src="../../_images/sphx_glr_plot_block_mean_001.png" style="width: 350.0px; height: 350.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_block_mean.html#example-plot-block-mean-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <p>When regions are regular blocks, it is more efficient to use stride
 tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-manipulation-label"><span class="std std-ref">Example: fake dimensions with strides</span></a>).</p>
 <p>Non-regularly-spaced blocks: radial mean:</p>
@@ -883,7 +882,7 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_radial_mean.html"><img alt="../../_images/sphx_glr_plot_radial_mean_001.png" src="../../_images/sphx_glr_plot_radial_mean_001.png" style="width: 350.0px; height: 350.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_radial_mean.html#example-plot-radial-mean-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
 <ul class="simple">
 <li><strong>Other measures</strong></li>
 </ul>
@@ -899,7 +898,7 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
 <div class="newline"></div><span class="go">&gt;&gt;&gt;</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">granulometry</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">sizes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="n">s</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">... </span>    <span class="k">if</span> <span class="n">sizes</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+<div class="newline"></div><span class="gp">... </span>    <span class="k">if</span> <span class="n">sizes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 <div class="newline"></div><span class="gp">... </span>        <span class="n">sizes</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="n">granulo</span> <span class="o">=</span> <span class="p">[</span><span class="n">ndimage</span><span class="o">.</span><span class="n">binary_opening</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> \
 <div class="newline"></div><span class="gp">... </span>        <span class="n">structure</span><span class="o">=</span><span class="n">disk_structure</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">sizes</span><span class="p">]</span>
@@ -922,7 +921,164 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
 <div class="figure">
 <a class="reference external image-reference" href="auto_examples/plot_granulo.html"><img alt="../../_images/sphx_glr_plot_granulo_001.png" src="../../_images/sphx_glr_plot_granulo_001.png" style="width: 600.0px; height: 220.0px;" /></a>
 </div>
-<p>[<a class="reference internal" href="auto_examples/plot_granulo.html#example-plot-granulo-py"><span class="std std-ref">Python source code</span></a>]</p>
+<p>[<span class="xref std std-ref">Python source code</span>]</p>
+</div>
+<div class="section" id="full-code-examples">
+<h2><a class="toc-backref" href="#id39">2.6.7. Full code examples</a><a class="headerlink" href="#full-code-examples" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="examples-for-the-image-processing-chapter">
+<h2><a class="toc-backref" href="#id40">2.6.8. Examples for the image processing chapter</a><a class="headerlink" href="#examples-for-the-image-processing-chapter" title="Permalink to this headline">¶</a></h2>
+<div class="sphx-glr-thumbcontainer" tooltip="Small example to plot a racoon face. "><div class="figure" id="id1">
+<img alt="../../_images/sphx_glr_plot_face_thumb.png" src="../../_images/sphx_glr_plot_face_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-py"><span class="std std-ref">Displaying a Racoon Face</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="The example demonstrates image interpolation on a Racoon face. "><div class="figure" id="id2">
+<img alt="../../_images/sphx_glr_plot_interpolation_face_thumb.png" src="../../_images/sphx_glr_plot_interpolation_face_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_interpolation_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-interpolation-face-py"><span class="std std-ref">Image interpolation</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to do image manipulation using common numpy arrays tricks."><div class="figure" id="id3">
+<img alt="../../_images/sphx_glr_plot_numpy_array_thumb.png" src="../../_images/sphx_glr_plot_numpy_array_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_numpy_array.html#sphx-glr-advanced-image-processing-auto-examples-plot-numpy-array-py"><span class="std std-ref">Image manipulation and numpy arrays</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to do a radial mean with scikit-image. "><div class="figure" id="id4">
+<img alt="../../_images/sphx_glr_plot_radial_mean_thumb.png" src="../../_images/sphx_glr_plot_radial_mean_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_radial_mean.html#sphx-glr-advanced-image-processing-auto-examples-plot-radial-mean-py"><span class="std std-ref">Radial mean</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="An example showing how to use broad-casting to plot the mean of blocks of an image. "><div class="figure" id="id5">
+<img alt="../../_images/sphx_glr_plot_block_mean_thumb.png" src="../../_images/sphx_glr_plot_block_mean_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_block_mean.html#sphx-glr-advanced-image-processing-auto-examples-plot-block-mean-py"><span class="std std-ref">Plot the block mean of an image</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="An example that displays a racoon face with matplotlib. "><div class="figure" id="id6">
+<img alt="../../_images/sphx_glr_plot_display_face_thumb.png" src="../../_images/sphx_glr_plot_display_face_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_display_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-display-face-py"><span class="std std-ref">Display a Racoon Face</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to sharpen an image in noiseless situation by applying the filter invers..."><div class="figure" id="id7">
+<img alt="../../_images/sphx_glr_plot_sharpen_thumb.png" src="../../_images/sphx_glr_plot_sharpen_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_sharpen.html#sphx-glr-advanced-image-processing-auto-examples-plot-sharpen-py"><span class="std std-ref">Image sharpening</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="An example showing various processes that blur an image. "><div class="figure" id="id8">
+<img alt="../../_images/sphx_glr_plot_blur_thumb.png" src="../../_images/sphx_glr_plot_blur_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_blur.html#sphx-glr-advanced-image-processing-auto-examples-plot-blur-py"><span class="std std-ref">Blurring of images</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="The example generates and displays simple synthetic data. "><div class="figure" id="id9">
+<img alt="../../_images/sphx_glr_plot_synthetic_data_thumb.png" src="../../_images/sphx_glr_plot_synthetic_data_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_synthetic_data.html#sphx-glr-advanced-image-processing-auto-examples-plot-synthetic-data-py"><span class="std std-ref">Synthetic data</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows simple operations of mathematical morphology. "><div class="figure" id="id10">
+<img alt="../../_images/sphx_glr_plot_propagation_thumb.png" src="../../_images/sphx_glr_plot_propagation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_propagation.html#sphx-glr-advanced-image-processing-auto-examples-plot-propagation-py"><span class="std std-ref">Opening, erosion, and propagation</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demoes image denoising on a Racoon face. "><div class="figure" id="id11">
+<img alt="../../_images/sphx_glr_plot_face_denoise_thumb.png" src="../../_images/sphx_glr_plot_face_denoise_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_face_denoise.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-denoise-py"><span class="std std-ref">Image denoising</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to extract the bounding box of the largest object"><div class="figure" id="id12">
+<img alt="../../_images/sphx_glr_plot_find_object_thumb.png" src="../../_images/sphx_glr_plot_find_object_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_find_object.html#sphx-glr-advanced-image-processing-auto-examples-plot-find-object-py"><span class="std std-ref">Find the bounding box of an object</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This examples shows how to measure quantities from various images."><div class="figure" id="id13">
+<img alt="../../_images/sphx_glr_plot_measure_data_thumb.png" src="../../_images/sphx_glr_plot_measure_data_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_measure_data.html#sphx-glr-advanced-image-processing-auto-examples-plot-measure-data-py"><span class="std std-ref">Measurements from images</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This examples demos some simple geometrical transformations on a Racoon face. "><div class="figure" id="id14">
+<img alt="../../_images/sphx_glr_plot_geom_face_thumb.png" src="../../_images/sphx_glr_plot_geom_face_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_geom_face.html#sphx-glr-advanced-image-processing-auto-examples-plot-geom-face-py"><span class="std std-ref">Geometrical transformations</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows the original image, the noisy image, the denoised one (with the median filte..."><div class="figure" id="id15">
+<img alt="../../_images/sphx_glr_plot_denoising_thumb.png" src="../../_images/sphx_glr_plot_denoising_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_denoising.html#sphx-glr-advanced-image-processing-auto-examples-plot-denoising-py"><span class="std std-ref">Denoising an image with the median filter</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example does simple histogram analysis to perform segmentation. "><div class="figure" id="id16">
+<img alt="../../_images/sphx_glr_plot_histo_segmentation_thumb.png" src="../../_images/sphx_glr_plot_histo_segmentation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_histo_segmentation.html#sphx-glr-advanced-image-processing-auto-examples-plot-histo-segmentation-py"><span class="std std-ref">Histogram segmentation</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="The Sobel filter is one of the simplest way of finding edges. "><div class="figure" id="id17">
+<img alt="../../_images/sphx_glr_plot_find_edges_thumb.png" src="../../_images/sphx_glr_plot_find_edges_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_find_edges.html#sphx-glr-advanced-image-processing-auto-examples-plot-find-edges-py"><span class="std std-ref">Finding edges with Sobel filters</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example demoes Total-Variation (TV) denoising on a Racoon face. "><div class="figure" id="id18">
+<img alt="../../_images/sphx_glr_plot_face_tv_denoise_thumb.png" src="../../_images/sphx_glr_plot_face_tv_denoise_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_face_tv_denoise.html#sphx-glr-advanced-image-processing-auto-examples-plot-face-tv-denoise-py"><span class="std std-ref">Total Variation denoising</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates greyscale mathematical morphology. "><div class="figure" id="id19">
+<img alt="../../_images/sphx_glr_plot_greyscale_dilation_thumb.png" src="../../_images/sphx_glr_plot_greyscale_dilation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_greyscale_dilation.html#sphx-glr-advanced-image-processing-auto-examples-plot-greyscale-dilation-py"><span class="std std-ref">Greyscale dilation</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="An example showing how to clean segmentation with mathematical morphology: removing small regio..."><div class="figure" id="id20">
+<img alt="../../_images/sphx_glr_plot_clean_morpho_thumb.png" src="../../_images/sphx_glr_plot_clean_morpho_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_clean_morpho.html#sphx-glr-advanced-image-processing-auto-examples-plot-clean-morpho-py"><span class="std std-ref">Cleaning segmentation with mathematical morphology</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example performs a Gaussian mixture model analysis of the image histogram to find the righ..."><div class="figure" id="id21">
+<img alt="../../_images/sphx_glr_plot_GMM_thumb.png" src="../../_images/sphx_glr_plot_GMM_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_GMM.html#sphx-glr-advanced-image-processing-auto-examples-plot-gmm-py"><span class="std std-ref">Segmentation with Gaussian mixture models</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to do segmentation with watershed. "><div class="figure" id="id22">
+<img alt="../../_images/sphx_glr_plot_watershed_segmentation_thumb.png" src="../../_images/sphx_glr_plot_watershed_segmentation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_watershed_segmentation.html#sphx-glr-advanced-image-processing-auto-examples-plot-watershed-segmentation-py"><span class="std std-ref">Watershed segmentation</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example performs a simple granulometry analysis. "><div class="figure" id="id23">
+<img alt="../../_images/sphx_glr_plot_granulo_thumb.png" src="../../_images/sphx_glr_plot_granulo_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_granulo.html#sphx-glr-advanced-image-processing-auto-examples-plot-granulo-py"><span class="std std-ref">Granulometry</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div class="sphx-glr-thumbcontainer" tooltip="This example uses spectral clustering to do segmentation. "><div class="figure" id="id24">
+<img alt="../../_images/sphx_glr_plot_spectral_clustering_thumb.png" src="../../_images/sphx_glr_plot_spectral_clustering_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/plot_spectral_clustering.html#sphx-glr-advanced-image-processing-auto-examples-plot-spectral-clustering-py"><span class="std std-ref">Segmentation with spectral clustering</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div style='clear:both'></div><div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/auto_examples_python1.zip" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/auto_examples_jupyter1.zip" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -970,6 +1126,10 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
 </ul>
 </li>
 <li><a class="reference internal" href="#measuring-objects-properties-ndimage-measurements">2.6.6. Measuring objects properties: <code class="docutils literal"><span class="pre">ndimage.measurements</span></code></a></li>
+<li><a class="reference internal" href="#full-code-examples">2.6.7. Full code examples</a></li>
+<li><a class="reference internal" href="#examples-for-the-image-processing-chapter">2.6.8. Examples for the image processing chapter</a><ul>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1001,7 +1161,7 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../mathematical_optimization/index.html" title="2.7. Mathematical optimization: finding minima of functions"
+          <a href="auto_examples/plot_face.html" title="2.6.8.1. Displaying a Racoon Face"
              >next</a></li>
         <li class="right" >
           <a href="../scipy_sparse/other_packages.html" title="2.5.4. Other Interesting Packages"
@@ -1031,8 +1191,8 @@ tricks (<a class="reference internal" href="../advanced_numpy/index.html#stride-
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

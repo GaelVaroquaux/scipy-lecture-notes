@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>3.1. Statistics in Python &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="3. Packages and applications" href="../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="3.1.6.1. Boxplots and paired differences" href="auto_examples/plot_paired_boxplots.html" />
     <link rel="prev" title="3. Packages and applications" href="../index.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -222,12 +219,12 @@ experiment, the richness of Python is an invaluable asset.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#hypothesis-testing-comparing-two-groups" id="id13">Hypothesis testing: comparing two groups</a><ul>
-<li><a class="reference internal" href="#student-s-t-test-the-simplest-statistical-test" id="id14">Student&#8217;s t-test: the simplest statistical test</a></li>
+<li><a class="reference internal" href="#student-s-t-test-the-simplest-statistical-test" id="id14">Student’s t-test: the simplest statistical test</a></li>
 <li><a class="reference internal" href="#paired-tests-repeated-measurements-on-the-same-indivuals" id="id15">Paired tests: repeated measurements on the same indivuals</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#linear-models-multiple-factors-and-analysis-of-variance" id="id16">Linear models, multiple factors, and analysis of variance</a><ul>
-<li><a class="reference internal" href="#formulas-to-specify-statistical-models-in-python" id="id17">&#8220;formulas&#8221; to specify statistical models in Python</a></li>
+<li><a class="reference internal" href="#formulas-to-specify-statistical-models-in-python" id="id17">“formulas” to specify statistical models in Python</a></li>
 <li><a class="reference internal" href="#multiple-regression-including-multiple-factors" id="id18">Multiple Regression: including multiple factors</a></li>
 <li><a class="reference internal" href="#post-hoc-hypothesis-testing-analysis-of-variance-anova" id="id19">Post-hoc hypothesis testing: analysis of variance (ANOVA)</a></li>
 </ul>
@@ -239,13 +236,13 @@ experiment, the richness of Python is an invaluable asset.</p>
 </li>
 <li><a class="reference internal" href="#testing-for-interactions" id="id23">Testing for interactions</a></li>
 <li><a class="reference internal" href="#full-code-for-the-figures" id="id24">Full code for the figures</a></li>
-<li><a class="reference internal" href="#solutions-to-this-chapter-s-exercises" id="id25">Solutions to this chapter&#8217;s exercises</a></li>
+<li><a class="reference internal" href="#solutions-to-this-chapter-s-exercises" id="id25">Solutions to this chapter’s exercises</a></li>
 </ul>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p>In this document, the Python inputs are represented with the sign
-&#8220;&gt;&gt;&gt;&#8221;.</p>
+“&gt;&gt;&gt;”.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -284,10 +281,10 @@ has named columns, can contain a mixture of different data types by
 column, and has elaborate selection and pivotal mechanisms.</p>
 </div>
 <div class="section" id="creating-dataframes-reading-data-files-or-converting-arrays">
-<h4>3.1.1.2.1. Creating dataframes: reading data files or converting arrays<a class="headerlink" href="#creating-dataframes-reading-data-files-or-converting-arrays" title="Permalink to this headline">¶</a></h4>
+<h4>Creating dataframes: reading data files or converting arrays<a class="headerlink" href="#creating-dataframes-reading-data-files-or-converting-arrays" title="Permalink to this headline">¶</a></h4>
 <div class="sidebar">
 <p class="first sidebar-title"><strong>Separator</strong></p>
-<p class="last">It is a CSV file, but the separator is &#8221;;&#8221;</p>
+<p class="last">It is a CSV file, but the separator is “;”</p>
 </div>
 <p><strong>Reading from a CSV file:</strong> Using the above CSV file that gives
 observations of brain size and weight and IQ (Willerman et al. 1991), the
@@ -308,14 +305,14 @@ data are a mixture of numerical and categorical values:</p>
 <p class="first admonition-title">Warning</p>
 <p><strong>Missing values</strong></p>
 <p class="last">The weight of the second individual is missing in the CSV file. If we
-don&#8217;t specify the missing value (NA = not available) marker, we will
+don’t specify the missing value (NA = not available) marker, we will
 not be able to do statistical analysis.</p>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p><strong>Creating from arrays</strong>: A <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.20.3)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a> can also be seen
-as a dictionary of 1D &#8216;series&#8217;, eg arrays or lists. If we have 3
+as a dictionary of 1D ‘series’, eg arrays or lists. If we have 3
 <code class="docutils literal"><span class="pre">numpy</span></code> arrays:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -348,8 +345,8 @@ SQL, excel files, or other formats. See the <a class="reference external" href="
 </div>
 </div>
 <div class="section" id="manipulating-data">
-<h4>3.1.1.2.2. Manipulating data<a class="headerlink" href="#manipulating-data" title="Permalink to this headline">¶</a></h4>
-<p><cite>data</cite> is a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.20.3)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>, that resembles R&#8217;s dataframe:</p>
+<h4>Manipulating data<a class="headerlink" href="#manipulating-data" title="Permalink to this headline">¶</a></h4>
+<p><cite>data</cite> is a <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.20.3)"><code class="xref py py-class docutils literal"><span class="pre">pandas.DataFrame</span></code></a>, that resembles R’s dataframe:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>    <span class="c1"># 40 rows and 8 columns</span>
 <div class="newline"></div><span class="go">(40, 8)</span>
 <div class="newline"></div>
@@ -412,8 +409,8 @@ applied.</p>
 <li><p class="first">What is the mean value for VIQ for the full population?</p>
 </li>
 <li><p class="first">How many males/females were included in this study?</p>
-<p><strong>Hint</strong> use &#8216;tab completion&#8217; to find out the methods that can be
-called, instead of &#8216;mean&#8217; in the above example.</p>
+<p><strong>Hint</strong> use ‘tab completion’ to find out the methods that can be
+called, instead of ‘mean’ in the above example.</p>
 </li>
 <li><p class="first">What is the average value of MRI counts expressed in log units, for
 males and females?</p>
@@ -430,7 +427,7 @@ example</span>).</p>
 </div>
 </div>
 <div class="section" id="plotting-data">
-<h4>3.1.1.2.3. Plotting data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h4>
+<h4>Plotting data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h4>
 <p>Pandas comes with some plotting tools (<code class="xref py py-mod docutils literal"><span class="pre">pandas.tools.plotting</span></code>, using
 matplotlib behind the scene) to display statistics of the data in
 dataframes:</p>
@@ -469,16 +466,16 @@ use the <a class="reference external" href="https://docs.scipy.org/doc/scipy/ref
 the <a class="reference internal" href="../../intro/scipy.html#scipy"><span class="std std-ref">scipy</span></a> chapter.</p>
 </div>
 <div class="section" id="student-s-t-test-the-simplest-statistical-test">
-<h3><a class="toc-backref" href="#id14">3.1.2.1. Student&#8217;s t-test: the simplest statistical test</a><a class="headerlink" href="#student-s-t-test-the-simplest-statistical-test" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id14">3.1.2.1. Student’s t-test: the simplest statistical test</a><a class="headerlink" href="#student-s-t-test-the-simplest-statistical-test" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="sample-t-test-testing-the-value-of-a-population-mean">
-<h4>3.1.2.1.1. 1-sample t-test: testing the value of a population mean<a class="headerlink" href="#sample-t-test-testing-the-value-of-a-population-mean" title="Permalink to this headline">¶</a></h4>
+<h4>1-sample t-test: testing the value of a population mean<a class="headerlink" href="#sample-t-test-testing-the-value-of-a-population-mean" title="Permalink to this headline">¶</a></h4>
 <a class="reference internal image-reference" href="../../_images/two_sided.png"><img alt="../../_images/two_sided.png" class="align-right" src="../../_images/two_sided.png" style="width: 228.5px; height: 223.5px;" /></a>
 <p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_1samp.html#scipy.stats.ttest_1samp" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_1samp()</span></code></a> tests if the population mean of data is
 likely to be equal to a given value (technically if observations are
 drawn from a Gaussian distributions of given population mean). It returns
 the <a class="reference external" href="https://en.wikipedia.org/wiki/Student%27s_t-test">T statistic</a>,
 and the <a class="reference external" href="https://en.wikipedia.org/wiki/P-value">p-value</a> (see the
-function&#8217;s help):</p>
+function’s help):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;VIQ&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>   
 <div class="newline"></div><span class="go">Ttest_1sampResult(statistic=30.088099970..., pvalue=1.32891964...e-28)</span>
 <div class="newline"></div></pre></div>
@@ -490,7 +487,7 @@ the IQ (VIQ measure) is not 0.</p>
 </div>
 </div>
 <div class="section" id="sample-t-test-testing-for-difference-across-populations">
-<h4>3.1.2.1.2. 2-sample t-test: testing for difference across populations<a class="headerlink" href="#sample-t-test-testing-for-difference-across-populations" title="Permalink to this headline">¶</a></h4>
+<h4>2-sample t-test: testing for difference across populations<a class="headerlink" href="#sample-t-test-testing-for-difference-across-populations" title="Permalink to this headline">¶</a></h4>
 <p>We have seen above that the mean VIQ in the male and female populations
 were different. To test if this is significant, we do a 2-sample t-test
 with <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html#scipy.stats.ttest_ind" title="(in SciPy v0.19.1)"><code class="xref py py-func docutils literal"><span class="pre">scipy.stats.ttest_ind()</span></code></a>:</p>
@@ -514,7 +511,7 @@ significantly different. We can use a 2 sample test:</p>
 <p>The problem with this approach is that it forgets that there are links
 between observations: FSIQ and PIQ are measured on the same individuals.
 Thus the variance due to inter-subject variability is confounding, and
-can be removed, using a &#8220;paired test&#8221;, or <a class="reference external" href="https://en.wikipedia.org/wiki/Repeated_measures_design">&#8220;repeated measures test&#8221;</a>:</p>
+can be removed, using a “paired test”, or <a class="reference external" href="https://en.wikipedia.org/wiki/Repeated_measures_design">“repeated measures test”</a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;FSIQ&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;PIQ&#39;</span><span class="p">])</span>   
 <div class="newline"></div><span class="go">Ttest_relResult(statistic=1.784201940..., pvalue=0.082172638183...)</span>
 <div class="newline"></div></pre></div>
@@ -559,9 +556,9 @@ that males and females have different VIQ.</p>
 <div class="section" id="linear-models-multiple-factors-and-analysis-of-variance">
 <h2><a class="toc-backref" href="#id16">3.1.3. Linear models, multiple factors, and analysis of variance</a><a class="headerlink" href="#linear-models-multiple-factors-and-analysis-of-variance" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="formulas-to-specify-statistical-models-in-python">
-<h3><a class="toc-backref" href="#id17">3.1.3.1. &#8220;formulas&#8221; to specify statistical models in Python</a><a class="headerlink" href="#formulas-to-specify-statistical-models-in-python" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">3.1.3.1. “formulas” to specify statistical models in Python</a><a class="headerlink" href="#formulas-to-specify-statistical-models-in-python" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="a-simple-linear-regression">
-<h4>3.1.3.1.1. A simple linear regression<a class="headerlink" href="#a-simple-linear-regression" title="Permalink to this headline">¶</a></h4>
+<h4>A simple linear regression<a class="headerlink" href="#a-simple-linear-regression" title="Permalink to this headline">¶</a></h4>
 <a class="reference external image-reference" href="auto_examples/plot_regression.html"><img alt="../../_images/sphx_glr_plot_regression_001.png" class="align-right" src="../../_images/sphx_glr_plot_regression_001.png" style="width: 300.0px; height: 240.0px;" /></a>
 <p>Given two set of observations, <cite>x</cite> and <cite>y</cite>, we want to test the
 hypothesis that <cite>y</cite> is a linear function of <cite>x</cite>. In other terms:</p>
@@ -587,7 +584,7 @@ squares</a> (OLS).</li>
 <div class="newline"></div></pre></div>
 </div>
 <div class="sidebar">
-<p class="first sidebar-title"><strong>&#8220;formulas&#8221; for statistics in Python</strong></p>
+<p class="first sidebar-title"><strong>“formulas” for statistics in Python</strong></p>
 <p class="last"><a class="reference external" href="http://statsmodels.sourceforge.net/stable/example_formulas.html">See the statsmodels documentation</a></p>
 </div>
 <div class="line-block">
@@ -630,7 +627,7 @@ squares</a> (OLS).</li>
 <div class="topic">
 <p class="topic-title first">Terminology:</p>
 <p>Statsmodels uses a statistical terminology: the <cite>y</cite> variable in
-statsmodels is called &#8216;endogenous&#8217; while the <cite>x</cite> variable is called
+statsmodels is called ‘endogenous’ while the <cite>x</cite> variable is called
 exogenous.  This is discussed in more detail <a class="reference external" href="http://statsmodels.sourceforge.net/devel/endog_exog.html">here</a>.</p>
 <p>To simplify, <cite>y</cite> (endogenous) is the value you are trying to predict,
 while <cite>x</cite> (exogenous) represents the features you are using to make
@@ -646,7 +643,7 @@ use tab-completion to find the relevent attribute.</p>
 </div>
 </div>
 <div class="section" id="categorical-variables-comparing-groups-or-multiple-categories">
-<h4>3.1.3.1.2. Categorical variables: comparing groups or multiple categories<a class="headerlink" href="#categorical-variables-comparing-groups-or-multiple-categories" title="Permalink to this headline">¶</a></h4>
+<h4>Categorical variables: comparing groups or multiple categories<a class="headerlink" href="#categorical-variables-comparing-groups-or-multiple-categories" title="Permalink to this headline">¶</a></h4>
 <p>Let us go back the data on brain size:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;examples/brain_size.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
@@ -684,7 +681,7 @@ model:</p>
 </div>
 <div class="topic">
 <p class="topic-title first"><strong>Tips on specifying model</strong></p>
-<p><strong>Forcing categorical</strong>: the &#8216;Gender&#8217; is automatically detected as a
+<p><strong>Forcing categorical</strong>: the ‘Gender’ is automatically detected as a
 categorical variable, and thus each of its different values are
 treated as different entities.</p>
 <p>An integer column can be forced to be treated as categorical using:</p>
@@ -696,7 +693,7 @@ or force the use of an intercept using <cite>+ 1</cite>.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">By default, statsmodels treats a categorical variable with K possible
-values as K-1 &#8216;dummy&#8217; boolean variables (the last level being
+values as K-1 ‘dummy’ boolean variables (the last level being
 absorbed into the intercept term).  This is almost always a good
 default choice - however, it is possible to specify different
 encodings for categorical variables
@@ -708,7 +705,7 @@ encodings for categorical variables
 </div>
 <div class="topic">
 <p class="topic-title first"><strong>Link to t-tests between different FSIQ and PIQ</strong></p>
-<p>To compare different types of IQ, we need to create a &#8220;long-form&#8221;
+<p>To compare different types of IQ, we need to create a “long-form”
 table, listing IQs, where the type of IQ is indicated by a
 categorical variable:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_fisq</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;iq&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;FSIQ&#39;</span><span class="p">],</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;fsiq&#39;</span><span class="p">})</span>
@@ -813,7 +810,7 @@ different between versicolor and virginica, after removing the effect of
 sepal width. This can be formulated as testing the difference between the
 coefficient associated to versicolor and virginica in the linear model
 estimated above (it is an Analysis of Variance, <a class="reference external" href="https://en.wikipedia.org/wiki/Analysis_of_variance">ANOVA</a>). For this, we
-write a <strong>vector of &#8216;contrast&#8217;</strong> on the parameters estimated: we want to
+write a <strong>vector of ‘contrast’</strong> on the parameters estimated: we want to
 test <code class="docutils literal"><span class="pre">&quot;name[T.versicolor]</span> <span class="pre">-</span> <span class="pre">name[T.virginica]&quot;</span></code>, with an <a class="reference external" href="https://en.wikipedia.org/wiki/F-test">F-test</a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">f_test</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>  
 <div class="newline"></div><span class="go">&lt;F test: F=array([[ 3.24533535]]), p=0.07369..., df_denom=146, df_num=1&gt;</span>
@@ -858,7 +855,7 @@ Addison-Wesley</a>).</p>
 <div class="section" id="pairplot-scatter-matrices">
 <h3><a class="toc-backref" href="#id21">3.1.4.1. Pairplot: scatter matrices</a><a class="headerlink" href="#pairplot-scatter-matrices" title="Permalink to this headline">¶</a></h3>
 <p>We can easily have an intuition on the interactions between continuous
-variables using <a class="reference external" href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="(in seaborn v0.8.0)"><code class="xref py py-func docutils literal"><span class="pre">seaborn.pairplot()</span></code></a> to display a scatter matrix:</p>
+variables using <a class="reference external" href="http://seaborn.pydata.org/generated/seaborn.pairplot.html#seaborn.pairplot" title="(in seaborn v0.8.1)"><code class="xref py py-func docutils literal"><span class="pre">seaborn.pairplot()</span></code></a> to display a scatter matrix:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">seaborn</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">seaborn</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCATION&#39;</span><span class="p">],</span>
 <div class="newline"></div><span class="gp">... </span>                 <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">)</span>  
@@ -870,11 +867,11 @@ variables using <a class="reference external" href="http://seaborn.pydata.org/ge
 <div class="newline"></div><span class="gp">... </span>                 <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;SEX&#39;</span><span class="p">)</span>  
 <div class="newline"></div></pre></div>
 </div>
-<a class="reference external image-reference" href="auto_examples/plot_wage_data.html"><img alt="../../_images/sphx_glr_plot_wage_data_002.png" class="align-center" src="../../_images/sphx_glr_plot_wage_data_002.png" style="width: 484.8px; height: 450.0px;" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_wage_data.html"><img alt="../../_images/sphx_glr_plot_wage_data_002.png" class="align-center" src="../../_images/sphx_glr_plot_wage_data_002.png" style="width: 484.2px; height: 450.0px;" /></a>
 <div class="topic">
 <p class="topic-title first"><strong>Look and feel and matplotlib settings</strong></p>
 <p>Seaborn changes the default of matplotlib figures to achieve a more
-&#8220;modern&#8221;, &#8220;excel-like&#8221; look. It does that upon import. You can reset
+“modern”, “excel-like” look. It does that upon import. You can reset
 the default using:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>
@@ -891,7 +888,7 @@ seaborn, see the <a class="reference external" href="http://stanford.edu/~mwasko
 <h3><a class="toc-backref" href="#id22">3.1.4.2. lmplot: plotting a univariate regression</a><a class="headerlink" href="#lmplot-plotting-a-univariate-regression" title="Permalink to this headline">¶</a></h3>
 <a class="reference external image-reference" href="auto_examples/plot_wage_data.html"><img alt="../../_images/sphx_glr_plot_wage_data_005.png" class="align-right" src="../../_images/sphx_glr_plot_wage_data_005.png" style="width: 300.0px; height: 300.0px;" /></a>
 <p>A regression capturing the relation between one variable and another, eg
-wage and eduction, can be plotted using <a class="reference external" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="(in seaborn v0.8.0)"><code class="xref py py-func docutils literal"><span class="pre">seaborn.lmplot()</span></code></a>:</p>
+wage and eduction, can be plotted using <a class="reference external" href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="(in seaborn v0.8.1)"><code class="xref py py-func docutils literal"><span class="pre">seaborn.lmplot()</span></code></a>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;WAGE&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;EDUCATION&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>  
 <div class="newline"></div></pre></div>
 </div>
@@ -907,20 +904,20 @@ regression.</p>
 <p>To compute a regression that is less sentive to outliers, one must
 use a <a class="reference external" href="https://en.wikipedia.org/wiki/Robust_statistics">robust model</a>. This is done in
 seaborn using <code class="docutils literal"><span class="pre">robust=True</span></code> in the plotting functions, or in
-statsmodels by replacing the use of the OLS by a &#8220;Robust Linear
-Model&#8221;, <code class="xref py py-func docutils literal"><span class="pre">statsmodels.formula.api.rlm()</span></code>.</p>
+statsmodels by replacing the use of the OLS by a “Robust Linear
+Model”, <code class="xref py py-func docutils literal"><span class="pre">statsmodels.formula.api.rlm()</span></code>.</p>
 </div>
 </div>
 </div>
 <div class="section" id="testing-for-interactions">
 <h2><a class="toc-backref" href="#id23">3.1.5. Testing for interactions</a><a class="headerlink" href="#testing-for-interactions" title="Permalink to this headline">¶</a></h2>
-<a class="reference external image-reference" href="auto_examples/plot_wage_education_gender.html"><img alt="../../_images/sphx_glr_plot_wage_education_gender_001.png" class="align-center" src="../../_images/sphx_glr_plot_wage_education_gender_001.png" style="width: 418.6px; height: 350.0px;" /></a>
+<a class="reference external image-reference" href="auto_examples/plot_wage_education_gender.html"><img alt="../../_images/sphx_glr_plot_wage_education_gender_001.png" class="align-center" src="../../_images/sphx_glr_plot_wage_education_gender_001.png" style="width: 414.4px; height: 350.0px;" /></a>
 <p>Do wages increase more with education for males than females?</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">The plot above is made of two different fits. We need to formulate a
 single model that tests for a variance of slope across the to
-population. This is done via an <a class="reference external" href="http://statsmodels.sourceforge.net/devel/example_formulas.html#multiplicative-interactions">&#8220;interaction&#8221;</a>.</p>
+population. This is done via an <a class="reference external" href="http://statsmodels.sourceforge.net/devel/example_formulas.html#multiplicative-interactions">“interaction”</a>.</p>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;wage ~ education + gender + education * gender&#39;</span><span class="p">,</span>
 <div class="newline"></div><span class="gp">... </span>                <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>    
@@ -1010,20 +1007,20 @@ interpretation.</li>
 </div>
 <div style='clear:both'></div></div>
 <div class="section" id="solutions-to-this-chapter-s-exercises">
-<h2><a class="toc-backref" href="#id25">3.1.7. Solutions to this chapter&#8217;s exercises</a><a class="headerlink" href="#solutions-to-this-chapter-s-exercises" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">3.1.7. Solutions to this chapter’s exercises</a><a class="headerlink" href="#solutions-to-this-chapter-s-exercises" title="Permalink to this headline">¶</a></h2>
 <div class="sphx-glr-thumbcontainer" tooltip="Going back to the brain size + IQ data, test if the VIQ of male and female are different after ..."><div class="figure" id="id9">
 <img alt="../../_images/sphx_glr_plot_brain_size_thumb.png" src="../../_images/sphx_glr_plot_brain_size_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="auto_examples/solutions/plot_brain_size.html#sphx-glr-packages-statistics-auto-examples-solutions-plot-brain-size-py"><span class="std std-ref">Relating Gender and IQ</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div style='clear:both'></div><div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
-<a class="reference download internal" href="../../_downloads/auto_examples_python8.zip" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></div>
-<div class="sphx-glr-download container">
-<a class="reference download internal" href="../../_downloads/auto_examples_jupyter8.zip" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></div>
+<div style='clear:both'></div><div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/auto_examples_python10.zip" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/auto_examples_jupyter10.zip" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Jupyter</span> <span class="pre">notebooks:</span> <span class="pre">auto_examples_jupyter.zip</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -1041,26 +1038,26 @@ interpretation.</li>
 <li><a class="reference internal" href="#data-representation-and-interaction">3.1.1. Data representation and interaction</a><ul>
 <li><a class="reference internal" href="#data-as-a-table">3.1.1.1. Data as a table</a></li>
 <li><a class="reference internal" href="#the-pandas-data-frame">3.1.1.2. The pandas data-frame</a><ul>
-<li><a class="reference internal" href="#creating-dataframes-reading-data-files-or-converting-arrays">3.1.1.2.1. Creating dataframes: reading data files or converting arrays</a></li>
-<li><a class="reference internal" href="#manipulating-data">3.1.1.2.2. Manipulating data</a></li>
-<li><a class="reference internal" href="#plotting-data">3.1.1.2.3. Plotting data</a></li>
+<li><a class="reference internal" href="#creating-dataframes-reading-data-files-or-converting-arrays">Creating dataframes: reading data files or converting arrays</a></li>
+<li><a class="reference internal" href="#manipulating-data">Manipulating data</a></li>
+<li><a class="reference internal" href="#plotting-data">Plotting data</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a class="reference internal" href="#hypothesis-testing-comparing-two-groups">3.1.2. Hypothesis testing: comparing two groups</a><ul>
-<li><a class="reference internal" href="#student-s-t-test-the-simplest-statistical-test">3.1.2.1. Student&#8217;s t-test: the simplest statistical test</a><ul>
-<li><a class="reference internal" href="#sample-t-test-testing-the-value-of-a-population-mean">3.1.2.1.1. 1-sample t-test: testing the value of a population mean</a></li>
-<li><a class="reference internal" href="#sample-t-test-testing-for-difference-across-populations">3.1.2.1.2. 2-sample t-test: testing for difference across populations</a></li>
+<li><a class="reference internal" href="#student-s-t-test-the-simplest-statistical-test">3.1.2.1. Student’s t-test: the simplest statistical test</a><ul>
+<li><a class="reference internal" href="#sample-t-test-testing-the-value-of-a-population-mean">1-sample t-test: testing the value of a population mean</a></li>
+<li><a class="reference internal" href="#sample-t-test-testing-for-difference-across-populations">2-sample t-test: testing for difference across populations</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#paired-tests-repeated-measurements-on-the-same-indivuals">3.1.2.2. Paired tests: repeated measurements on the same indivuals</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#linear-models-multiple-factors-and-analysis-of-variance">3.1.3. Linear models, multiple factors, and analysis of variance</a><ul>
-<li><a class="reference internal" href="#formulas-to-specify-statistical-models-in-python">3.1.3.1. &#8220;formulas&#8221; to specify statistical models in Python</a><ul>
-<li><a class="reference internal" href="#a-simple-linear-regression">3.1.3.1.1. A simple linear regression</a></li>
-<li><a class="reference internal" href="#categorical-variables-comparing-groups-or-multiple-categories">3.1.3.1.2. Categorical variables: comparing groups or multiple categories</a></li>
+<li><a class="reference internal" href="#formulas-to-specify-statistical-models-in-python">3.1.3.1. “formulas” to specify statistical models in Python</a><ul>
+<li><a class="reference internal" href="#a-simple-linear-regression">A simple linear regression</a></li>
+<li><a class="reference internal" href="#categorical-variables-comparing-groups-or-multiple-categories">Categorical variables: comparing groups or multiple categories</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#multiple-regression-including-multiple-factors">3.1.3.2. Multiple Regression: including multiple factors</a></li>
@@ -1076,7 +1073,7 @@ interpretation.</li>
 <li><a class="reference internal" href="#full-code-for-the-figures">3.1.6. Full code for the figures</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#solutions-to-this-chapter-s-exercises">3.1.7. Solutions to this chapter&#8217;s exercises</a></li>
+<li><a class="reference internal" href="#solutions-to-this-chapter-s-exercises">3.1.7. Solutions to this chapter’s exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -1138,8 +1135,8 @@ interpretation.</li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

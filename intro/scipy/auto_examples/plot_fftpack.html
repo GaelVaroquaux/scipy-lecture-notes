@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.5.12.18. Plotting and manipulating FFTs for filtering &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../../index.html" />
-    <link rel="up" title="1.5. Scipy : high-level scientific computing" href="../../scipy.html" />
-    <link rel="next" title="1.5.12.19.1. Crude periodicity finding" href="solutions/plot_periodicity_finder.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Crude periodicity finding" href="solutions/plot_periodicity_finder.html" />
     <link rel="prev" title="1.5.12.17. Plot filtering on images" href="plot_image_filters.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -136,7 +133,7 @@ $(function () {
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="solutions/plot_periodicity_finder.html" title="1.5.12.19.1. Crude periodicity finding"
+          <a href="solutions/plot_periodicity_finder.html" title="Crude periodicity finding"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="plot_image_filters.html" title="1.5.12.17. Plot filtering on images"
@@ -186,7 +183,7 @@ used.</p>
 <div class="newline"></div></pre></div>
 </div>
 <div class="section" id="generate-the-signal">
-<h2>1.5.12.18.1. Generate the signal<a class="headerlink" href="#generate-the-signal" title="Permalink to this headline">¶</a></h2>
+<h2>Generate the signal<a class="headerlink" href="#generate-the-signal" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Seed the random number generator</span>
 <div class="newline"></div><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>
 <div class="newline"></div>
@@ -204,7 +201,7 @@ used.</p>
 <img alt="../../../_images/sphx_glr_plot_fftpack_001.png" class="align-center" src="../../../_images/sphx_glr_plot_fftpack_001.png" />
 </div>
 <div class="section" id="compute-and-plot-the-power">
-<h2>1.5.12.18.2. Compute and plot the power<a class="headerlink" href="#compute-and-plot-the-power" title="Permalink to this headline">¶</a></h2>
+<h2>Compute and plot the power<a class="headerlink" href="#compute-and-plot-the-power" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># The FFT of the signal</span>
 <div class="newline"></div><span class="n">sig_fft</span> <span class="o">=</span> <span class="n">fftpack</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
 <div class="newline"></div>
@@ -242,7 +239,7 @@ used.</p>
 <img alt="../../../_images/sphx_glr_plot_fftpack_002.png" class="align-center" src="../../../_images/sphx_glr_plot_fftpack_002.png" />
 </div>
 <div class="section" id="remove-all-the-high-frequencies">
-<h2>1.5.12.18.3. Remove all the high frequencies<a class="headerlink" href="#remove-all-the-high-frequencies" title="Permalink to this headline">¶</a></h2>
+<h2>Remove all the high frequencies<a class="headerlink" href="#remove-all-the-high-frequencies" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>We now remove all the high frequencies and transform back from
 frequencies to signal.</div></blockquote>
@@ -266,14 +263,14 @@ cut-off in frequency space does not control distorsion on the signal.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.213 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.147 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_fftpack.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_fftpack.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_fftpack.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fftpack.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -288,9 +285,9 @@ cut-off in frequency space does not control distorsion on the signal.</p>
   <h3><a href="../../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1.5.12.18. Plotting and manipulating FFTs for filtering</a><ul>
-<li><a class="reference internal" href="#generate-the-signal">1.5.12.18.1. Generate the signal</a></li>
-<li><a class="reference internal" href="#compute-and-plot-the-power">1.5.12.18.2. Compute and plot the power</a></li>
-<li><a class="reference internal" href="#remove-all-the-high-frequencies">1.5.12.18.3. Remove all the high frequencies</a></li>
+<li><a class="reference internal" href="#generate-the-signal">Generate the signal</a></li>
+<li><a class="reference internal" href="#compute-and-plot-the-power">Compute and plot the power</a></li>
+<li><a class="reference internal" href="#remove-all-the-high-frequencies">Remove all the high frequencies</a></li>
 </ul>
 </li>
 </ul>
@@ -322,7 +319,7 @@ cut-off in frequency space does not control distorsion on the signal.</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="solutions/plot_periodicity_finder.html" title="1.5.12.19.1. Crude periodicity finding"
+          <a href="solutions/plot_periodicity_finder.html" title="Crude periodicity finding"
              >next</a></li>
         <li class="right" >
           <a href="plot_image_filters.html" title="1.5.12.17. Plot filtering on images"
@@ -353,8 +350,8 @@ cut-off in frequency space does not control distorsion on the signal.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

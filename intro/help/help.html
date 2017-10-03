@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.6. Getting help and finding documentation &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="1. Getting started with Python for science" href="../index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2. Advanced topics" href="../../advanced/index.html" />
-    <link rel="prev" title="1.5.12.19.4. Image denoising by FFT" href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" />
+    <link rel="prev" title="Image denoising by FFT" href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -139,7 +136,7 @@ $(function () {
           <a href="../../advanced/index.html" title="2. Advanced topics"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" title="1.5.12.19.4. Image denoising by FFT"
+          <a href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" title="Image denoising by FFT"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">1. Getting started with Python for science</a> &#187;</li>
@@ -179,7 +176,7 @@ find rapidly information throughout the documentation and the available
 help. Here are some ways to get information:</p>
 <ul>
 <li><p class="first">In Ipython, <code class="docutils literal"><span class="pre">help</span> <span class="pre">function</span></code> opens the docstring of the function. Only
-type the beginning of the function&#8217;s name and use tab completion to
+type the beginning of the function’s name and use tab completion to
 display the matching functions.</p>
 <div class="highlight-ipython"><div class="highlight"><pre><span></span><span class="gp">In [204]: </span><span class="n">help</span> <span class="n">np</span><span class="o">.</span><span class="n">v</span>
 <div class="newline"></div><span class="go">np.vander     np.vdot       np.version    np.void0      np.vstack</span>
@@ -192,10 +189,10 @@ display the matching functions.</p>
 </ul>
 <p>In Ipython it is not possible to open a separated window for help and
 documentation; however one can always open a second <code class="docutils literal"><span class="pre">Ipython</span></code> shell
-just to display help and docstrings...</p>
+just to display help and docstrings…</p>
 <a class="reference external image-reference" href="http://docs.scipy.org/doc/scipy/reference/"><img alt="../../_images/scipy_doc.png" class="align-right" src="../../_images/scipy_doc.png" style="width: 45%;" /></a>
 <ul>
-<li><p class="first">Numpy&#8217;s and Scipy&#8217;s documentations can be browsed online on
+<li><p class="first">Numpy’s and Scipy’s documentations can be browsed online on
 <a class="reference external" href="http://docs.scipy.org/doc">http://docs.scipy.org/doc</a>. The <code class="docutils literal"><span class="pre">search</span></code> button is quite useful inside
 the reference documentation of the two packages
 (<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">http://docs.scipy.org/doc/numpy/reference/</a> and
@@ -205,7 +202,7 @@ docstrings are found on this website.</p>
 <p><div style="clear: both"></div></p>
 <a class="reference external image-reference" href="http://docs.scipy.org/doc/numpy/"><img alt="../../_images/docwiki.png" class="align-right" src="../../_images/docwiki.png" style="width: 45%;" /></a>
 </li>
-<li><p class="first">Numpy&#8217;s and Scipy&#8217;s documentation is enriched and updated on a regular
+<li><p class="first">Numpy’s and Scipy’s documentation is enriched and updated on a regular
 basis by users on a wiki <a class="reference external" href="http://docs.scipy.org/doc/numpy/">http://docs.scipy.org/doc/numpy/</a>. As a result,
 some docstrings are clearer or more detailed on the wiki, and you may
 want to read directly the documentation on the wiki instead of the
@@ -220,14 +217,14 @@ common problems frequently encountered, such as fitting data points,
 solving ODE, etc.</p>
 <a class="reference external image-reference" href="http://matplotlib.org/"><img alt="../../_images/matplotlib.png" class="align-right" src="../../_images/matplotlib.png" style="width: 45%;" /></a>
 </li>
-<li><p class="first">Matplotlib&#8217;s website <a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a> features a very
+<li><p class="first">Matplotlib’s website <a class="reference external" href="http://matplotlib.org/">http://matplotlib.org/</a> features a very
 nice <strong>gallery</strong> with a large number of plots, each of them shows both
 the source code and the resulting plot. This is very useful for
 learning by example. More standard documentation is also available.</p>
 <p><div style="clear: both"></div></p>
 </li>
 </ul>
-<p>Finally, two more &#8220;technical&#8221; possibilities are useful as well:</p>
+<p>Finally, two more “technical” possibilities are useful as well:</p>
 <ul>
 <li><p class="first">In Ipython, the magical function <code class="docutils literal"><span class="pre">%psearch</span></code> search for objects
 matching patterns. This is useful if, for example, one does not know
@@ -267,8 +264,8 @@ the exact name  of a function.</p>
 <div class="newline"></div></pre></div>
 </div>
 </li>
-<li><p class="first">If everything listed above fails (and Google doesn&#8217;t have the
-answer)... don&#8217;t despair! Write to the mailing-list suited to your
+<li><p class="first">If everything listed above fails (and Google doesn’t have the
+answer)… don’t despair! Write to the mailing-list suited to your
 problem: you should have a quick answer if you describe your problem
 well. Experts on scientific python often give very enlightening
 explanations on the mailing-list.</p>
@@ -325,7 +322,7 @@ matplotlib.</li>
           <a href="../../advanced/index.html" title="2. Advanced topics"
              >next</a></li>
         <li class="right" >
-          <a href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" title="1.5.12.19.4. Image denoising by FFT"
+          <a href="../scipy/auto_examples/solutions/plot_fft_image_denoise.html" title="Image denoising by FFT"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Scipy lecture notes</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >1. Getting started with Python for science</a> &#187;</li>
@@ -352,8 +349,8 @@ matplotlib.</li>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

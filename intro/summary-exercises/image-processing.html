@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.5.11.3. Image processing application: counting bubbles and unmolten grains &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="1.5. Scipy : high-level scientific computing" href="../scipy.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.5.11.4. Example of solution for the image processing exercise: unmolten grains in glass" href="answers_image_processing.html" />
     <link rel="prev" title="1.5.11.2. Non linear least squares curve fitting: application to point extraction in topographical lidar data" href="optimize-fit.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -176,10 +173,10 @@ $(function () {
 <span id="summary-exercise-image-processing"></span><h1>1.5.11.3. Image processing application: counting bubbles and unmolten grains<a class="headerlink" href="#image-processing-application-counting-bubbles-and-unmolten-grains" title="Permalink to this headline">¶</a></h1>
 <img alt="../../_images/MV_HFV_012.jpg" class="align-center" src="../../_images/MV_HFV_012.jpg" />
 <div class="section" id="statement-of-the-problem">
-<h2>1.5.11.3.1. Statement of the problem<a class="headerlink" href="#statement-of-the-problem" title="Permalink to this headline">¶</a></h2>
+<h2>Statement of the problem<a class="headerlink" href="#statement-of-the-problem" title="Permalink to this headline">¶</a></h2>
 <p>1. Open the image file MV_HFV_012.jpg and display it. Browse through the
 keyword arguments in the docstring of <code class="docutils literal"><span class="pre">imshow</span></code> to display the image
-with the &#8220;right&#8221; orientation (origin in the bottom left corner, and not
+with the “right” orientation (origin in the bottom left corner, and not
 the upper left corner as for standard arrays).</p>
 <p>This Scanning Element Microscopy image shows a glass sample (light gray
 matrix) with some bubbles (on black) and unmolten sand grains (dark
@@ -208,7 +205,7 @@ sand mask grains that are smaller than 10 pixels. To do so, use
 </ol>
 </div>
 <div class="section" id="proposed-solution">
-<span id="image-answers"></span><h2>1.5.11.3.2. Proposed solution<a class="headerlink" href="#proposed-solution" title="Permalink to this headline">¶</a></h2>
+<span id="image-answers"></span><h2>Proposed solution<a class="headerlink" href="#proposed-solution" title="Permalink to this headline">¶</a></h2>
 <p><div style="clear: both"></div></p>
 </div>
 </div>
@@ -223,8 +220,8 @@ sand mask grains that are smaller than 10 pixels. To do so, use
   <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1.5.11.3. Image processing application: counting bubbles and unmolten grains</a><ul>
-<li><a class="reference internal" href="#statement-of-the-problem">1.5.11.3.1. Statement of the problem</a></li>
-<li><a class="reference internal" href="#proposed-solution">1.5.11.3.2. Proposed solution</a></li>
+<li><a class="reference internal" href="#statement-of-the-problem">Statement of the problem</a></li>
+<li><a class="reference internal" href="#proposed-solution">Proposed solution</a></li>
 </ul>
 </li>
 </ul>
@@ -287,8 +284,8 @@ sand mask grains that are smaller than 10 pixels. To do so, use
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

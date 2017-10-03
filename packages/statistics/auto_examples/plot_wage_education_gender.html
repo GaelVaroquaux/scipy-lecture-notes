@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>3.1.6.6. Test for an education/gender interaction in wages &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../../index.html" />
-    <link rel="up" title="3.1. Statistics in Python" href="../index.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="3.1.6.7. Visualizing factors influencing wages" href="plot_wage_data.html" />
     <link rel="prev" title="3.1.6.5. Multiple Regression" href="plot_regression_3d.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -179,7 +176,7 @@ is related to gender: not only does gender create an offset in wages, it
 also seems that wages increase more with education for males than
 females.</p>
 <p>Does our data support this last hypothesis? We will test this using
-statsmodels&#8217; formulas
+statsmodels’ formulas
 (<a class="reference external" href="http://statsmodels.sourceforge.net/stable/example_formulas.html">http://statsmodels.sourceforge.net/stable/example_formulas.html</a>).</p>
 <p>Load and massage the data</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
@@ -203,18 +200,18 @@ statsmodels&#8217; formulas
 <div class="newline"></div><span class="c1"># Convert genders to strings (this is particulary useful so that the</span>
 <div class="newline"></div><span class="c1"># statsmodels formulas detects that gender is a categorical variable)</span>
 <div class="newline"></div><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<div class="newline"></div><span class="n">data</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.choose.html#numpy.choose" title="View documentation for numpy.choose"><span class="n">np</span><span class="o">.</span><span class="n">choose</span></a><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">gender</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">])</span>
+<div class="newline"></div><span class="n">data</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">choose</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">gender</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">])</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Log-transform the wages, because they typically are increased with</span>
 <div class="newline"></div><span class="c1"># multiplicative factors</span>
-<div class="newline"></div><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">]</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.log10.html#numpy.log10" title="View documentation for numpy.log10"><span class="n">np</span><span class="o">.</span><span class="n">log10</span></a><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">])</span>
+<div class="newline"></div><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wage&#39;</span><span class="p">])</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>simple plotting</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span>
 <div class="newline"></div>
 <div class="newline"></div><span class="c1"># Plot 2 linear fits for male and female.</span>
-<div class="newline"></div><a href="http://seaborn.pydata.org/generated/seaborn.lmplot.html#seaborn.lmplot" title="View documentation for seaborn.lmplot"><span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span></a><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;wage&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<div class="newline"></div><span class="n">seaborn</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;wage&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;gender&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
 <img alt="../../../_images/sphx_glr_plot_wage_education_gender_001.png" class="align-center" src="../../../_images/sphx_glr_plot_wage_education_gender_001.png" />
@@ -234,8 +231,8 @@ statsmodels&#8217; formulas
 <div class="newline"></div><span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>                   <span class="n">wage</span>   <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>                       <span class="mf">0.193</span>
 <div class="newline"></div><span class="n">Model</span><span class="p">:</span>                            <span class="n">OLS</span>   <span class="n">Adj</span><span class="o">.</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>                  <span class="mf">0.190</span>
 <div class="newline"></div><span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>                     <span class="mf">63.42</span>
-<div class="newline"></div><span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Aug</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>           <span class="mf">2.01e-25</span>
-<div class="newline"></div><span class="n">Time</span><span class="p">:</span>                        <span class="mi">19</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">21</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>                 <span class="mf">86.654</span>
+<div class="newline"></div><span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">03</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>           <span class="mf">2.01e-25</span>
+<div class="newline"></div><span class="n">Time</span><span class="p">:</span>                        <span class="mi">07</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">30</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>                 <span class="mf">86.654</span>
 <div class="newline"></div><span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                 <span class="mi">534</span>   <span class="n">AIC</span><span class="p">:</span>                            <span class="o">-</span><span class="mf">167.3</span>
 <div class="newline"></div><span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>                     <span class="mi">531</span>   <span class="n">BIC</span><span class="p">:</span>                            <span class="o">-</span><span class="mf">154.5</span>
 <div class="newline"></div><span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>                           <span class="mi">2</span>
@@ -271,8 +268,8 @@ wage but also a different slope</p>
 <div class="newline"></div><span class="n">Dep</span><span class="o">.</span> <span class="n">Variable</span><span class="p">:</span>                   <span class="n">wage</span>   <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>                       <span class="mf">0.198</span>
 <div class="newline"></div><span class="n">Model</span><span class="p">:</span>                            <span class="n">OLS</span>   <span class="n">Adj</span><span class="o">.</span> <span class="n">R</span><span class="o">-</span><span class="n">squared</span><span class="p">:</span>                  <span class="mf">0.194</span>
 <div class="newline"></div><span class="n">Method</span><span class="p">:</span>                 <span class="n">Least</span> <span class="n">Squares</span>   <span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">:</span>                     <span class="mf">43.72</span>
-<div class="newline"></div><span class="n">Date</span><span class="p">:</span>                <span class="n">Thu</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Aug</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>           <span class="mf">2.94e-25</span>
-<div class="newline"></div><span class="n">Time</span><span class="p">:</span>                        <span class="mi">19</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">21</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>                 <span class="mf">88.503</span>
+<div class="newline"></div><span class="n">Date</span><span class="p">:</span>                <span class="n">Tue</span><span class="p">,</span> <span class="mi">03</span> <span class="n">Oct</span> <span class="mi">2017</span>   <span class="n">Prob</span> <span class="p">(</span><span class="n">F</span><span class="o">-</span><span class="n">statistic</span><span class="p">):</span>           <span class="mf">2.94e-25</span>
+<div class="newline"></div><span class="n">Time</span><span class="p">:</span>                        <span class="mi">07</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">30</span>   <span class="n">Log</span><span class="o">-</span><span class="n">Likelihood</span><span class="p">:</span>                 <span class="mf">88.503</span>
 <div class="newline"></div><span class="n">No</span><span class="o">.</span> <span class="n">Observations</span><span class="p">:</span>                 <span class="mi">534</span>   <span class="n">AIC</span><span class="p">:</span>                            <span class="o">-</span><span class="mf">169.0</span>
 <div class="newline"></div><span class="n">Df</span> <span class="n">Residuals</span><span class="p">:</span>                     <span class="mi">530</span>   <span class="n">BIC</span><span class="p">:</span>                            <span class="o">-</span><span class="mf">151.9</span>
 <div class="newline"></div><span class="n">Df</span> <span class="n">Model</span><span class="p">:</span>                           <span class="mi">3</span>
@@ -302,14 +299,14 @@ more than female (p-value &gt; 0.05).</p>
 <div class="newline"></div><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.721 seconds)</p>
-<div class="sphx-glr-footer container">
-<div class="sphx-glr-download container">
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.704 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_wage_education_gender1.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_wage_education_gender.py</span></code></a></div>
-<div class="sphx-glr-download container">
+<div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../../_downloads/plot_wage_education_gender1.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_wage_education_gender.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 <p><div style="clear: both"></div></p>
 </div>
 
@@ -378,8 +375,8 @@ more than female (p-value &gt; 0.05).</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>

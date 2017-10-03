@@ -13,9 +13,11 @@ data = load_boston()
 ##############################################################################
 # Print a histogram of the quantity to predict: price
 import matplotlib.pyplot as plt
+plt.figure(figsize=(4, 3))
 plt.hist(data.target)
 plt.xlabel('price ($1000s)')
 plt.ylabel('count')
+plt.tight_layout()
 
 ##############################################################################
 # Print the join histogram for each feature
@@ -31,7 +33,7 @@ for index, feature_name in enumerate(data.feature_names):
 ##############################################################################
 # Simple prediction
 
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(data.data, data.target)
 
 from sklearn.linear_model import LinearRegression

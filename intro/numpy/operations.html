@@ -1,37 +1,34 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1.3.2. Numerical operations on arrays &#8212; Scipy lecture notes</title>
-    
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '2016.1',
+        VERSION:     '2017.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/copybutton.js"></script>
-    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
-    <link rel="up" title="1.3. NumPy: creating and manipulating numerical data" href="index.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1.3.3. More elaborate arrays" href="elaborate_arrays.html" />
     <link rel="prev" title="1.3.1. The NumPy array object" href="array_object.html" />
    
     <link rel="stylesheet"
-	  href="http://yui.yahooapis.com/pure/0.6.0/base-min.css">
+	  href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
 
 <script type="text/javascript">
 $(function () {
@@ -69,7 +66,7 @@ $(function () {
 
 
   </head>
-  <body role="document">
+  <body>
    <!-- Use the header to add javascript -->
     
 
@@ -188,7 +185,7 @@ $(function () {
 <div class="section" id="elementwise-operations">
 <h2><a class="toc-backref" href="#id2">1.3.2.1. Elementwise operations</a><a class="headerlink" href="#elementwise-operations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="basic-operations">
-<h3>1.3.2.1.1. Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h3>
+<h3>Basic operations<a class="headerlink" href="#basic-operations" title="Permalink to this headline">¶</a></h3>
 <p>With scalars:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
@@ -256,7 +253,7 @@ with odd elements</li>
 </div>
 </div>
 <div class="section" id="other-operations">
-<h3>1.3.2.1.2. Other operations<a class="headerlink" href="#other-operations" title="Permalink to this headline">¶</a></h3>
+<h3>Other operations<a class="headerlink" href="#other-operations" title="Permalink to this headline">¶</a></h3>
 <p><strong>Comparisons:</strong></p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
@@ -306,7 +303,7 @@ with odd elements</li>
 <div class="newline"></div><span class="gr">ValueError</span>: <span class="n">operands could not be broadcast together with shapes (4) (2)</span>
 <div class="newline"></div></pre></div>
 </div>
-<p><em>Broadcasting?</em> We&#8217;ll return to that <a class="reference internal" href="#broadcasting"><span class="std std-ref">later</span></a>.</p>
+<p><em>Broadcasting?</em> We’ll return to that <a class="reference internal" href="#broadcasting"><span class="std std-ref">later</span></a>.</p>
 <p><strong>Transposition:</strong></p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># see help(np.triu)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
@@ -353,7 +350,7 @@ recommend the use of <a class="reference external" href="https://docs.scipy.org/
 <div class="section" id="basic-reductions">
 <h2><a class="toc-backref" href="#id3">1.3.2.2. Basic reductions</a><a class="headerlink" href="#basic-reductions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="computing-sums">
-<h3>1.3.2.2.1. Computing sums<a class="headerlink" href="#computing-sums" title="Permalink to this headline">¶</a></h3>
+<h3>Computing sums<a class="headerlink" href="#computing-sums" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <div class="newline"></div><span class="go">10</span>
@@ -390,8 +387,8 @@ recommend the use of <a class="reference external" href="https://docs.scipy.org/
 </div>
 </div>
 <div class="section" id="other-reductions">
-<h3>1.3.2.2.2. Other reductions<a class="headerlink" href="#other-reductions" title="Permalink to this headline">¶</a></h3>
-<p>&#8212; works the same way (and take <code class="docutils literal"><span class="pre">axis=</span></code>)</p>
+<h3>Other reductions<a class="headerlink" href="#other-reductions" title="Permalink to this headline">¶</a></h3>
+<p>— works the same way (and take <code class="docutils literal"><span class="pre">axis=</span></code>)</p>
 <p><strong>Extrema:</strong></p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
@@ -443,7 +440,7 @@ recommend the use of <a class="reference external" href="https://docs.scipy.org/
 <div class="newline"></div><span class="go">0.82915619758884995</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>... and many more (best to learn as you go).</p>
+<p>… and many more (best to learn as you go).</p>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercise: Reductions</strong></p>
 <blockquote>
@@ -474,8 +471,7 @@ Canada during 20 years.</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s1">&#39;Hare&#39;</span><span class="p">,</span> <span class="s1">&#39;Lynx&#39;</span><span class="p">,</span> <span class="s1">&#39;Carrot&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span> 
 <div class="newline"></div></pre></div>
 </div>
-<p>[<a class="reference external" href="../../plot_directive/pyplots/numpy_intro_4.py">source code</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_4.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_4.pdf">pdf</a>]</p>
-<img alt="../../_images/numpy_intro_4.png" src="../../_images/numpy_intro_4.png" />
+<a class="reference external image-reference" href="auto_examples/plot_populations.html"><img alt="../../_images/sphx_glr_plot_populations_001.png" class="align-center" src="../../_images/sphx_glr_plot_populations_001.png" style="width: 50%;" /></a>
 <p>The mean populations over time:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">populations</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">populations</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -502,9 +498,9 @@ Canada during 20 years.</p>
 walker jumps right or left with equal probability.</p>
 <p class="last">We are interested in finding the typical distance from the origin of a
 random walker after <code class="docutils literal"><span class="pre">t</span></code> left or right jumps? We are going to
-simulate many &#8220;walkers&#8221; to find this law, and we are going to do so
+simulate many “walkers” to find this law, and we are going to do so
 using array computing tricks: we are going to create a 2D array with
-the &#8220;stories&#8221; (each walker has a story) in one direction, and the
+the “stories” (each walker has a story) in one direction, and the
 time in the other:</p>
 </div>
 <a class="reference internal image-reference" href="../../_images/random_walk_schema.png"><img alt="../../_images/random_walk_schema.png" class="align-center" src="../../_images/random_walk_schema.png" style="width: 100%;" /></a>
@@ -533,14 +529,14 @@ time in the other:</p>
 <div class="newline"></div><span class="go">&lt;matplotlib.figure.Figure object at ...&gt;</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_sq_distance</span><span class="p">),</span> <span class="s1">&#39;g.&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;y-&#39;</span><span class="p">)</span> 
 <div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;, &lt;matplotlib.lines.Line2D object at ...&gt;]</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">r&quot;$t$&quot;</span><span class="p">)</span> 
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$&quot;</span><span class="p">)</span> 
 <div class="newline"></div><span class="go">&lt;matplotlib.text.Text object at ...&gt;</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">r&quot;$\sqrt{\langle (\delta x)^2 \rangle}$&quot;</span><span class="p">)</span> 
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\sqrt{\langle (\delta x)^2 \rangle}$&quot;</span><span class="p">)</span> 
 <div class="newline"></div><span class="go">&lt;matplotlib.text.Text object at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># provide sufficient space for labels</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>[<a class="reference external" href="../../plot_directive/pyplots/numpy_intro_5.py">source code</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_5.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_5.pdf">pdf</a>]</p>
-<img alt="../../_images/numpy_intro_5.png" src="../../_images/numpy_intro_5.png" />
+<a class="reference external image-reference" href="auto_examples/plot_randomwalk.html"><img alt="../../_images/sphx_glr_plot_randomwalk_001.png" class="align-center" src="../../_images/sphx_glr_plot_randomwalk_001.png" style="width: 50%;" /></a>
 <p>We find a well-known result in physics: the RMS distance grows as the
 square root of the time!</p>
 </div>
@@ -554,7 +550,7 @@ square root of the time!</p>
 <li><p class="first">This works on arrays of the same size.</p>
 <blockquote>
 <div><div class="line-block">
-<div class="line"><strong>Nevertheless</strong>, It&#8217;s also possible to do operations on arrays of different</div>
+<div class="line"><strong>Nevertheless</strong>, It’s also possible to do operations on arrays of different</div>
 <div class="line">sizes if <em>NumPy</em> can transform these arrays so that they all have</div>
 <div class="line">the same size: this conversion is called <strong>broadcasting</strong>.</div>
 </div>
@@ -563,7 +559,7 @@ square root of the time!</p>
 </ul>
 <p>The image below gives an example of broadcasting:</p>
 <a class="reference internal image-reference" href="../../_images/numpy_broadcasting.png"><img alt="../../_images/numpy_broadcasting.png" class="align-center" src="../../_images/numpy_broadcasting.png" style="width: 100%;" /></a>
-<p>Let&#8217;s verify:</p>
+<p>Let’s verify:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <div class="newline"></div><span class="go">array([[ 0,  0,  0],</span>
@@ -615,7 +611,7 @@ with more dimensions than input data.</p>
 </div>
 <div class="green topic">
 <p class="topic-title first">Worked Example: Broadcasting</p>
-<p>Let&#8217;s construct an array of distances (in miles) between cities of
+<p>Let’s construct an array of distances (in miles) between cities of
 Route 66: Chicago, Springfield, Saint-Louis, Tulsa, Oklahoma City,
 Amarillo, Santa Fe, Albuquerque, Flagstaff and Los Angeles.</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mileposts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">303</span><span class="p">,</span> <span class="mi">736</span><span class="p">,</span> <span class="mi">871</span><span class="p">,</span> <span class="mi">1175</span><span class="p">,</span> <span class="mi">1475</span><span class="p">,</span> <span class="mi">1544</span><span class="p">,</span>
@@ -654,10 +650,9 @@ the origin of points on a 10x10 grid, we can do</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>    
 <div class="newline"></div></pre></div>
 </div>
-<p>[<a class="reference external" href="../../plot_directive/pyplots/numpy_intro_6.py">source code</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_6.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_6.pdf">pdf</a>]</p>
-<img alt="../../_images/numpy_intro_6.png" src="../../_images/numpy_intro_6.png" />
-<p><strong>Remark</strong> : the <code class="docutils literal"><span class="pre">numpy.ogrid</span></code> function allows to directly create vectors x
-and y of the previous example, with two &#8220;significant dimensions&#8221;:</p>
+<a class="reference external image-reference" href="auto_examples/plot_distances.html"><img alt="../../_images/sphx_glr_plot_distances_001.png" class="align-center" src="../../_images/sphx_glr_plot_distances_001.png" style="width: 50%;" /></a>
+<p><strong>Remark</strong> : the <code class="xref py py-func docutils literal"><span class="pre">numpy.ogrid()</span></code> function allows to directly create vectors x
+and y of the previous example, with two “significant dimensions”:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span>
 <div class="newline"></div><span class="go">(array([[0],</span>
@@ -674,7 +669,7 @@ and y of the previous example, with two &#8220;significant dimensions&#8221;:</p
 <p class="first admonition-title">Tip</p>
 <p>So, <code class="docutils literal"><span class="pre">np.ogrid</span></code> is very useful as soon as we have to handle
 computations on a grid. On the other hand, <code class="docutils literal"><span class="pre">np.mgrid</span></code> directly
-provides matrices full of indices for cases where we can&#8217;t (or don&#8217;t
+provides matrices full of indices for cases where we can’t (or don’t
 want to) benefit from broadcasting:</p>
 <div class="last highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
@@ -699,7 +694,7 @@ the <a class="reference internal" href="../../advanced/advanced_numpy/index.html
 <div class="section" id="array-shape-manipulation">
 <h2><a class="toc-backref" href="#id5">1.3.2.4. Array shape manipulation</a><a class="headerlink" href="#array-shape-manipulation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="flattening">
-<h3>1.3.2.4.1. Flattening<a class="headerlink" href="#flattening" title="Permalink to this headline">¶</a></h3>
+<h3>Flattening<a class="headerlink" href="#flattening" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 <div class="newline"></div><span class="go">array([1, 2, 3, 4, 5, 6])</span>
@@ -711,10 +706,10 @@ the <a class="reference internal" href="../../advanced/advanced_numpy/index.html
 <div class="newline"></div><span class="go">array([1, 4, 2, 5, 3, 6])</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Higher dimensions: last dimensions ravel out &#8220;first&#8221;.</p>
+<p>Higher dimensions: last dimensions ravel out “first”.</p>
 </div>
 <div class="section" id="reshaping">
-<h3>1.3.2.4.2. Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">¶</a></h3>
+<h3>Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">¶</a></h3>
 <p>The inverse operation to flattening:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
 <div class="newline"></div><span class="go">(2, 3)</span>
@@ -758,7 +753,7 @@ or copy</p>
 </div>
 </div>
 <div class="section" id="adding-a-dimension">
-<h3>1.3.2.4.3. Adding a dimension<a class="headerlink" href="#adding-a-dimension" title="Permalink to this headline">¶</a></h3>
+<h3>Adding a dimension<a class="headerlink" href="#adding-a-dimension" title="Permalink to this headline">¶</a></h3>
 <p>Indexing with the <code class="docutils literal"><span class="pre">np.newaxis</span></code> object allows us to add an axis to an array
 (you have seen this already above in the broadcasting section):</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
@@ -776,7 +771,7 @@ or copy</p>
 </div>
 </div>
 <div class="section" id="dimension-shuffling">
-<h3>1.3.2.4.4. Dimension shuffling<a class="headerlink" href="#dimension-shuffling" title="Permalink to this headline">¶</a></h3>
+<h3>Dimension shuffling<a class="headerlink" href="#dimension-shuffling" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">shape</span>
 <div class="newline"></div><span class="go">(4, 3, 2)</span>
@@ -797,7 +792,7 @@ or copy</p>
 </div>
 </div>
 <div class="section" id="resizing">
-<h3>1.3.2.4.5. Resizing<a class="headerlink" href="#resizing" title="Permalink to this headline">¶</a></h3>
+<h3>Resizing<a class="headerlink" href="#resizing" title="Permalink to this headline">¶</a></h3>
 <p>Size of an array can be changed with <code class="docutils literal"><span class="pre">ndarray.resize</span></code>:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="o">.</span><span class="n">resize</span><span class="p">((</span><span class="mi">8</span><span class="p">,))</span>
@@ -931,22 +926,22 @@ well as to do some more <a class="reference internal" href="exercises.html#numpy
   <ul>
 <li><a class="reference internal" href="#">1.3.2. Numerical operations on arrays</a><ul>
 <li><a class="reference internal" href="#elementwise-operations">1.3.2.1. Elementwise operations</a><ul>
-<li><a class="reference internal" href="#basic-operations">1.3.2.1.1. Basic operations</a></li>
-<li><a class="reference internal" href="#other-operations">1.3.2.1.2. Other operations</a></li>
+<li><a class="reference internal" href="#basic-operations">Basic operations</a></li>
+<li><a class="reference internal" href="#other-operations">Other operations</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#basic-reductions">1.3.2.2. Basic reductions</a><ul>
-<li><a class="reference internal" href="#computing-sums">1.3.2.2.1. Computing sums</a></li>
-<li><a class="reference internal" href="#other-reductions">1.3.2.2.2. Other reductions</a></li>
+<li><a class="reference internal" href="#computing-sums">Computing sums</a></li>
+<li><a class="reference internal" href="#other-reductions">Other reductions</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#broadcasting">1.3.2.3. Broadcasting</a></li>
 <li><a class="reference internal" href="#array-shape-manipulation">1.3.2.4. Array shape manipulation</a><ul>
-<li><a class="reference internal" href="#flattening">1.3.2.4.1. Flattening</a></li>
-<li><a class="reference internal" href="#reshaping">1.3.2.4.2. Reshaping</a></li>
-<li><a class="reference internal" href="#adding-a-dimension">1.3.2.4.3. Adding a dimension</a></li>
-<li><a class="reference internal" href="#dimension-shuffling">1.3.2.4.4. Dimension shuffling</a></li>
-<li><a class="reference internal" href="#resizing">1.3.2.4.5. Resizing</a></li>
+<li><a class="reference internal" href="#flattening">Flattening</a></li>
+<li><a class="reference internal" href="#reshaping">Reshaping</a></li>
+<li><a class="reference internal" href="#adding-a-dimension">Adding a dimension</a></li>
+<li><a class="reference internal" href="#dimension-shuffling">Dimension shuffling</a></li>
+<li><a class="reference internal" href="#resizing">Resizing</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#sorting-data">1.3.2.5. Sorting data</a></li>
@@ -1013,8 +1008,8 @@ well as to do some more <a class="reference internal" href="exercises.html#numpy
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2012,2013,2015,2016.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.6.
+        &#169; Copyright 2012,2013,2015,2016,2017.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>
